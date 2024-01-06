@@ -48,16 +48,16 @@ const AdminCalendarioCard = ({ id, reservas, eliminarReserva }) => {
     <>
       {reservas.map((reserva, index) => (
         <DivReservas key={index}>
-          <P style={{ width: '79%' }}>{reserva.nombre}</P>
+          <P style={{ width: '78%' }}>{reserva.nombre}</P>
           <P style={{ width: '19%' }}>{reserva.personas}</P>
           <P style={{ width: '19%' }}>{reserva.dias}</P>
-          <P style={{ width: '79%' }}>{reserva.fecha}</P>
+          <P style={{ width: '78%' }}>{reserva.fecha}</P>
           <DivImg
             src={reserva.img}
             style={{ width: '100%' }}
             alt="Imagen Reserva"
           />
-          <P style={{ width: '69%' }}>{reserva.title}</P>
+          <P style={{ width: '68%' }}>{reserva.title}</P>
           <Div
             style={{ width: '29%' }}
             onClick={() => eliminarReserva(reserva.id)}

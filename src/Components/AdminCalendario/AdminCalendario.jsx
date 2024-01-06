@@ -252,7 +252,7 @@ const AdminCalendario = ({
                       height: '2.5rem'
                     },
                     // Para escalar todo el componente (incluyendo sus hijos)
-                    transform: 'scale(1.3)' // Ajusta el factor de escala según sea necesario
+                    transform: 'scale(1)' // Ajusta el factor de escala según sea necesario
                   }}
                 />
               </LocalizationProvider>
