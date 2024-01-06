@@ -126,7 +126,11 @@ const DivClose = styled.div`
   text-align: center;
   cursor: pointer;
 `
-const AdminCalendario = () => {
+const AdminCalendario = ({
+  reservas,
+  registrarMensajeReserva,
+  eliminarReserva
+}) => {
   const [time, setTime] = useState(dayjs(''))
   const [fechas, setFechas] = useState([])
 
@@ -145,20 +149,6 @@ const AdminCalendario = () => {
     console.log(datosAEnviar)
     setFechas([...fechas, datosAEnviar])
   }
-
-  const [data, setData] = useState(null)
-  console.log(data)
-  const manejarEnvio = async (datosDelFormulario) => {
-    // La URL '/enviar-datos' es donde tu servidor espera recibir los datos POST
-    // 'datosDelFormulario' es un objeto con los datos que quieres enviar
-    await enviar('/reservas', datosDelFormulario, setData)
-  }
-
-  const [reservas, setReservas] = useState([])
-  reservas.map((reserva) => console.log(reserva.fecha))
-  useEffect(() => {
-    buscar('/reservas', setReservas)
-  }, [])
 
   // Manejar el envío de la nueva reserva
   const handleSubmitReserva = (e) => {
@@ -181,7 +171,7 @@ const AdminCalendario = () => {
       title: cardInfo.title
     }
 
-    manejarEnvio(datos)
+    registrarMensajeReserva(datos)
   }
 
   const [usuario, setUsuario] = useState([])
@@ -335,7 +325,12 @@ const AdminCalendario = () => {
           <h1>Reserva</h1>
         </div>
         <Reservas>
-          <AdminCalendarioCard id={id} />
+          <AdminCalendarioCard
+            reservas={reservas}
+            registrarMensajeReserva={registrarMensajeReserva}
+            eliminarReserva={eliminarReserva}
+            id={id}
+          />
         </Reservas>
       </DivDashboard>
     </Div>

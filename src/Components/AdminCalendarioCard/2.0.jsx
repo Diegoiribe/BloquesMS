@@ -43,7 +43,27 @@ const Div = styled.div`
   cursor: pointer;
 `
 
-const AdminCalendarioCard = ({ id, reservas, eliminarReserva }) => {
+const AdminCalendarioCard = ({ id }) => {
+  const [reservas, setReservas] = useState([])
+
+  useEffect(() => {
+    buscar(`/reservas`, setReservas)
+  }, [])
+
+  const handleDelete = async (id) => {
+    try {
+      // Realiza la solicitud DELETE a la API
+      await eliminar(`/reservas/${id}`)
+
+      // Actualiza el estado para reflejar el cambio
+      const updatedReservas = reservas.filter((item) => item.id !== id)
+      setReservas(updatedReservas)
+    } catch (error) {
+      console.error('Error al eliminar el post:', error)
+      // Manejo de errores
+    }
+  }
+
   return (
     <>
       {reservas.map((reserva, index) => (
@@ -60,7 +80,7 @@ const AdminCalendarioCard = ({ id, reservas, eliminarReserva }) => {
           <P style={{ width: '69%' }}>{reserva.title}</P>
           <Div
             style={{ width: '29%' }}
-            onClick={() => eliminarReserva(reserva.id)}
+            onClick={() => handleDelete(reserva.id)}
           >
             <CloseIcon style={{ color: 'white' }} />
           </Div>

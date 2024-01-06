@@ -55,7 +55,7 @@ const DivNavBlock = styled.div`
   background: transparent;
 `
 
-const Admin = () => {
+const Admin = ({ reservas, registrarMensajeReserva, eliminarReserva }) => {
   const [card, setCard] = useState(true)
   const [calendario, setCalendario] = useState(false)
   const [usuarios, setUsuarios] = useState(false)
@@ -150,7 +150,13 @@ const Admin = () => {
       </DivNav>
       {/* Servicios de usuario */}
       {card ? <AdminCard /> : null}
-      {calendario ? <AdminCalendario /> : null}
+      {calendario ? (
+        <AdminCalendario
+          reservas={reservas}
+          registrarMensajeReserva={registrarMensajeReserva}
+          eliminarReserva={eliminarReserva}
+        />
+      ) : null}
       {usuarios ? <AdminUsuario /> : null}
     </Div>
   )
