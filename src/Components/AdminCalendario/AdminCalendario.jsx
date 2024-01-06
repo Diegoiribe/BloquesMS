@@ -123,7 +123,9 @@ const DivClose = styled.div`
   background: ${azul};
   border-radius: 10px;
   box-shadow: 0 1px 11px 0 rgba(0, 0, 0, 0.2);
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 `
 const AdminCalendario = ({
@@ -301,7 +303,7 @@ const AdminCalendario = ({
                 </P>
               ))}
               <DivClose
-                style={{ width: '9%' }}
+                style={{ width: '16%' }}
                 onClick={() => handleDelete(fecha)}
               >
                 <CloseIcon style={{ color: 'white' }} />
