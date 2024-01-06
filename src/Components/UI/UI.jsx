@@ -1,0 +1,5 @@
+export const blanco = 'white'
+export const azul = '#056dae'
+export const azulClaro = '#00a3e0'
+export const gris = '#636f7b'
+export const verde = '#13322b'
