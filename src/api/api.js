@@ -1,6 +1,8 @@
 import axios from 'axios'
 
-export const api = axios.create({ baseURL: 'https://4254523.vercel.app/' })
+export const api = axios.create({
+  baseURL: 'https://4254523-dic20-hotmailcom.vercel.app/'
+})
 
 // Metodo Get para buscar datos en la API
 export const buscar = async (url, setData) => {
