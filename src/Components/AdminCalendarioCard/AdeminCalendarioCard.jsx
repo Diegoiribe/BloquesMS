@@ -80,7 +80,7 @@ const AdminCalendarioCard = ({ id }) => {
           <P style={{ width: '69%' }}>{reserva.nombre}</P>
           <P style={{ width: '19%' }}>{reserva.personas}</P>
           <P style={{ width: '19%' }}>{reserva.dias}</P>
-          <P style={{ width: '79%' }}>Fecha: {reserva.fecha}</P>
+          <P style={{ width: '79%' }}>{reserva.fecha}</P>
           <DivImg
             src={reserva.img}
             style={{ width: '100%' }}
