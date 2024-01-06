@@ -74,7 +74,7 @@ const DivForm = styled.div`
     padding: 1rem;
     flex-direction: row;
     gap: 0.5rem;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
   }
@@ -284,7 +284,7 @@ const AdminCalendario = () => {
                 value={nombre}
                 onChange={(e) => setNombre(e.target.value)}
                 placeholder="Nombre completo"
-                style={{ width: '59%' }}
+                style={{ width: '69%' }}
               />
               <Input
                 type="text"

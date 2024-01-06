@@ -26,18 +26,20 @@ const DivReservas = styled.div`
   padding: 1rem;
   flex-direction: row;
   gap: 0.5rem;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
 `
 
 const Div = styled.div`
-  padding: 0.75rem;
+  padding: 0.9rem;
   font-weight: bold;
   background: ${azul};
   border-radius: 10px;
   box-shadow: 0 1px 11px 0 rgba(0, 0, 0, 0.2);
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 `
 
@@ -45,18 +47,7 @@ const AdminCalendarioCard = ({ id }) => {
   const [reservas, setReservas] = useState([])
 
   useEffect(() => {
-    // Define la función callback que actualizará el estado con los datos del usuario
-    const onUsuarioEncontrado = (cardData) => {
-      // Suponiendo que cardData debería ser un objeto
-      if (!Array.isArray(cardData) && cardData != null) {
-        setReservas([cardData]) // Coloca el objeto dentro de un arreglo
-      } else {
-        setReservas(cardData) // o manejar un error si los datos no son lo que esperabas
-      }
-    }
-
-    // Asegúrate de que tu función buscar puede manejar la ruta con un ID y una función callback
-    buscar(`/reservas`, onUsuarioEncontrado)
+    buscar(`/reservas`, setReservas)
   }, [])
 
   const handleDelete = async (id) => {
@@ -77,7 +68,7 @@ const AdminCalendarioCard = ({ id }) => {
     <>
       {reservas.map((reserva, index) => (
         <DivReservas key={index}>
-          <P style={{ width: '69%' }}>{reserva.nombre}</P>
+          <P style={{ width: '79%' }}>{reserva.nombre}</P>
           <P style={{ width: '19%' }}>{reserva.personas}</P>
           <P style={{ width: '19%' }}>{reserva.dias}</P>
           <P style={{ width: '79%' }}>{reserva.fecha}</P>
@@ -86,7 +77,7 @@ const AdminCalendarioCard = ({ id }) => {
             style={{ width: '100%' }}
             alt="Imagen Reserva"
           />
-          <P style={{ width: '59%' }}>{reserva.title}</P>
+          <P style={{ width: '69%' }}>{reserva.title}</P>
           <Div
             style={{ width: '29%' }}
             onClick={() => handleDelete(reserva.id)}
