@@ -38,9 +38,9 @@ function App() {
     }
   }, [reservas, loadingFromStorage])
 
-  const registrarMensajeReserva = (reservas) => {
-    console.log('Cita registrado', reservas)
-    setReservas([...reservas, reservas])
+  const registrarMensajeReserva = (datos) => {
+    console.log('Cita registrado', datos)
+    setReservas([...reservas, datos])
   }
 
   const eliminarReserva = (id) => {
