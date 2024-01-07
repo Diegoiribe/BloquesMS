@@ -8,8 +8,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from 'dayjs'
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar'
 import { v4 as uuid } from 'uuid'
-import UsuarioCalendarioCard from '../UsuarioCalendarioCard/UsuarioCalendarioCard'
 import CloseIcon from '@mui/icons-material/Close'
+import UsuarioCalendarioCard from '../UsuarioCalendarioCard/UsuarioCalendarioCard'
 
 const Div = styled.div`
   width: 85%;
@@ -74,7 +74,7 @@ const DivForm = styled.div`
     padding: 1rem;
     flex-direction: row;
     gap: 0.5rem;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
   }
@@ -123,11 +123,16 @@ const DivClose = styled.div`
   background: ${azul};
   border-radius: 10px;
   box-shadow: 0 1px 11px 0 rgba(0, 0, 0, 0.2);
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   cursor: pointer;
 `
-
-const UsuarioCalendario = () => {
+const AdminCalendario = ({
+  reservas,
+  registrarMensajeReserva,
+  eliminarReserva
+}) => {
   const [time, setTime] = useState(dayjs(''))
   const [fechas, setFechas] = useState([])
 
@@ -146,19 +151,6 @@ const UsuarioCalendario = () => {
     console.log(datosAEnviar)
     setFechas([...fechas, datosAEnviar])
   }
-
-  const [data, setData] = useState(null)
-  const manejarEnvio = async (datosDelFormulario) => {
-    // La URL '/enviar-datos' es donde tu servidor espera recibir los datos POST
-    // 'datosDelFormulario' es un objeto con los datos que quieres enviar
-    await enviar('/reservas', datosDelFormulario, setData)
-  }
-
-  const [reservas, setReservas] = useState([])
-  reservas.map((reserva) => console.log(reserva.fecha))
-  useEffect(() => {
-    buscar('/reservas', setReservas)
-  }, [])
 
   // Manejar el envío de la nueva reserva
   const handleSubmitReserva = (e) => {
@@ -181,9 +173,8 @@ const UsuarioCalendario = () => {
       title: cardInfo.title
     }
 
-    manejarEnvio(datos)
+    registrarMensajeReserva(datos)
   }
-  console.log(data)
 
   const [usuario, setUsuario] = useState([])
   const { id } = useParams() // Esto captura el ID de la URL
@@ -263,7 +254,7 @@ const UsuarioCalendario = () => {
                       height: '2.5rem'
                     },
                     // Para escalar todo el componente (incluyendo sus hijos)
-                    transform: 'scale(1.3)' // Ajusta el factor de escala según sea necesario
+                    transform: 'scale(1)' // Ajusta el factor de escala según sea necesario
                   }}
                 />
               </LocalizationProvider>
@@ -305,14 +296,14 @@ const UsuarioCalendario = () => {
                 <P
                   valor={fecha}
                   setValor={setFecha}
-                  style={{ width: '69%' }}
+                  style={{ width: '59%' }}
                   key={index}
                 >
-                  Fecha seleccionada: {item.fecha.format('DD/MM/YYYY')}
+                  {item.fecha.format('DD/MM/YYYY')}
                 </P>
               ))}
               <DivClose
-                style={{ width: '9%' }}
+                style={{ width: '16%' }}
                 onClick={() => handleDelete(fecha)}
               >
                 <CloseIcon style={{ color: 'white' }} />
@@ -320,7 +311,6 @@ const UsuarioCalendario = () => {
               {card.map((item, index) => (
                 <DivImg key={index} src={item.img} style={{ width: '100%' }} />
               ))}
-
               {card.map((item, index) => (
                 <P key={index} style={{ width: '100%' }}>
                   {item.title}
@@ -337,11 +327,16 @@ const UsuarioCalendario = () => {
           <h1>Reserva</h1>
         </div>
         <Reservas>
-          <UsuarioCalendarioCard id={id} />
+          <UsuarioCalendarioCard
+            reservas={reservas}
+            registrarMensajeReserva={registrarMensajeReserva}
+            eliminarReserva={eliminarReserva}
+            id={id}
+          />
         </Reservas>
       </DivDashboard>
     </Div>
   )
 }
 
-export default UsuarioCalendario
+export default AdminCalendario

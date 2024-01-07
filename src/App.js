@@ -20,6 +20,36 @@ function App() {
       idUsuario: '68894',
       img: 'https://img1.wsimg.com/isteam/ip/06c0c705-946a-4a72-851b-8bb928a539d7/IMG_1916%20(1).jpeg/:/',
       title: 'Vista Bonita'
+    },
+    {
+      nombre: 'Luis A. Meza Salazar',
+      personas: '2',
+      dias: '1',
+      fecha: '27/01/2024',
+      id: '2394c639-ae2e-463f-bf5c-4edc45d4bd',
+      idUsuario: '68794',
+      img: 'https://img1.wsimg.com/isteam/ip/06c0c705-946a-4a72-851b-8bb928a539d7/IMG_1916%20(1).jpeg/:/',
+      title: 'Vista Bonita'
+    },
+    {
+      nombre: 'Luis A. Meza Salazar',
+      personas: '2',
+      dias: '1',
+      fecha: '26/01/2024',
+      id: '2394c639-ae2e-463f-bf5c-4e6c45d4bd',
+      idUsuario: '68294',
+      img: 'https://img1.wsimg.com/isteam/ip/06c0c705-946a-4a72-851b-8bb928a539d7/IMG_1916%20(1).jpeg/:/',
+      title: 'Vista Bonita'
+    },
+    {
+      nombre: 'Luis A. Meza Salazar',
+      personas: '2',
+      dias: '1',
+      fecha: '30/01/2024',
+      id: '2394c639-ae2e-463f-bf5c-4e6c45d4bd',
+      idUsuario: '68894',
+      img: 'https://img1.wsimg.com/isteam/ip/06c0c705-946a-4a72-851b-8bb928a539d7/IMG_1916%20(1).jpeg/:/',
+      title: 'Vista Bonita'
     }
   ])
   const [loadingFromStorage, setLoadingFromStorage] = useState(true)
@@ -72,7 +102,16 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/usuario/:id" element={<Usuario />} />
+        <Route
+          path="/usuario/:id"
+          element={
+            <Usuario
+              reservas={reservas}
+              registrarMensajeReserva={registrarMensajeReserva}
+              eliminarReserva={eliminarReserva}
+            />
+          }
+        />
         <Route
           path="/admin/:id"
           element={
