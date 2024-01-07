@@ -135,7 +135,7 @@ function App() {
       inversion: '10,000.00',
       recibido: '0.00',
       bloques: '5',
-      id: '68894'
+      id: '68895'
     }
   ])
   const [loadingFromStorageUsuarios, setLoadingFromStorageUsuarios] =
