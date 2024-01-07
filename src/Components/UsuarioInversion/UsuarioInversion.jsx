@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { buscar } from '../../api/api'
+
 import { useParams } from 'react-router-dom'
 import { blanco, azul, gris } from '../UI/UI'
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline'
@@ -99,244 +99,235 @@ const DivLargoPlazo = styled.div`
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
 `
 
-const UsuarioInversion = () => {
-  const [usuario, setUsuario] = useState([])
-
+const UsuarioInversion = ({ usuarios }) => {
   const { id } = useParams() // Esto captura el ID de la URL
 
-  useEffect(() => {
-    // Define la función callback que actualizará el estado con los datos del usuario
-    const onUsuarioEncontrado = (usuarioData) => {
-      setUsuario(usuarioData)
-    }
-
-    // Asegúrate de que tu función buscar puede manejar la ruta con un ID y una función callback
-    buscar(`/usuarios/${id}`, onUsuarioEncontrado)
-  }, [id]) // El efecto se ejecutará cada vez que el ID cambie
-
   console.log(id)
-  console.log(usuario)
 
   return (
     <Div>
-      <DivDashboard>
-        <DivPrincipal>
-          <div>
-            <h1>Hola {usuario.nombre}</h1>
-            <p>
-              Este es un resumen de todas tus inversiones, su valor por proyecto
-              y tipo de inversion
-            </p>
-          </div>
-          <DivPortafolio>
-            <DivCard>
-              <DivCardOne>
-                <p>Valor actual de tu portafolio</p>
-                <p
-                  style={{
-                    fontSize: '2.5rem',
-                    fontWeight: 'bold',
-                    color: azul
-                  }}
-                >
-                  ${usuario.valorActual}*
+      {usuarios
+        .filter((item) => item.id === id)
+        .map((usuarios, index) => (
+          <DivDashboard key={index}>
+            <DivPrincipal>
+              <div>
+                <h1>Hola {usuarios.nombre}</h1>
+                <p>
+                  Este es un resumen de todas tus inversiones, su valor por
+                  proyecto y tipo de inversion
                 </p>
-              </DivCardOne>
-              <DivCardTwo>
-                <div>
-                  <p
-                    style={{
-                      fontSize: '20px',
-                      fontWeight: 'bold',
-                      color: azul
-                    }}
-                  >
-                    ${usuario.disponible}
-                  </p>
-                  <div style={{ display: 'flex' }}>
+              </div>
+              <DivPortafolio>
+                <DivCard>
+                  <DivCardOne>
+                    <p>Valor actual de tu portafolio</p>
                     <p
                       style={{
-                        fontSize: '11px',
-                        color: gris,
-                        padding: '4px 4px 0 0'
+                        fontSize: '2.5rem',
+                        fontWeight: 'bold',
+                        color: azul
                       }}
                     >
-                      Diponible
+                      ${usuarios.valorActual}*
                     </p>
-                    <span>
-                      <ErrorOutlineIcon fontSize="xs" />
-                    </span>
-                  </div>
-                </div>
-                <div style={{ textAlign: 'end' }}>
-                  <p
-                    style={{
-                      fontSize: '20px',
-                      fontWeight: 'bold',
-                      color: azul
-                    }}
-                  >
-                    ${usuario.processo}
-                  </p>
-                  <div style={{ display: 'flex' }}>
-                    <p
-                      style={{
-                        fontSize: '11px',
-                        color: gris,
-                        padding: '4px 4px 0 0'
-                      }}
-                    >
-                      En transferencia
-                    </p>
-                    <span>
-                      <ErrorOutlineIcon fontSize="xs" />
-                    </span>
-                  </div>
-                </div>
-              </DivCardTwo>
-              <DivCardThree>
-                <div>
-                  <p>Total Invertido:</p>
-                  <br />
-                  <p>+ Retornos generados:</p>
-                  <p>+ Plusvalia:</p>
-                  <p>- Pagos recibidos:</p>
-                  <br />
-                  <p style={{ color: azul, fontWeight: 'bold' }}>Valor:</p>
-                </div>
-                <div style={{ textAlign: 'end' }}>
-                  <p>${usuario.total}</p>
-                  <br />
-                  <p>${usuario.retorno}</p>
-                  <p>${usuario.plusvalia}</p>
-                  <p>${usuario.pagos}</p>
-                  <br />
-                  <p style={{ color: azul, fontWeight: 'bold' }}>
-                    ${usuario.valor}
-                  </p>
-                </div>
-              </DivCardThree>
-            </DivCard>
-            <DivTwo>
-              <DivCortoPlazo>
-                <div>
-                  <h2>Corto plazo</h2>
-                  <p
-                    style={{
-                      fontSize: '1.5rem',
-                      color: azul,
-                      fontWeight: 'bold',
-                      padding: '.5rem',
-                      textAlign: 'center'
-                    }}
-                  >
-                    ${usuario.valorActualCorto}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: '.75rem',
-                      textAlign: 'center'
-                    }}
-                  >
-                    Valor actual
-                  </p>
-                  <br />
-                  <p
-                    style={{
-                      fontSize: '.75rem',
-                      fontWeight: 600
-                    }}
-                  >
-                    {usuario.proyectosCorto} proyectos
-                  </p>
-                </div>
-                <div>
-                  <p>Total Invertido:</p>
-                  <br />
-                  <p>+ Retornos generados:</p>
-                  <p>+ Plusvalia:</p>
-                  <p>- Pagos recibidos:</p>
-                  <br />
-                  <p style={{ color: azul, fontWeight: 'bold' }}>Valor:</p>
-                </div>
-                <div style={{ textAlign: 'end' }}>
-                  <p>${usuario.totalCorto}</p>
-                  <br />
-                  <p>${usuario.retornoCorto}</p>
-                  <p>${usuario.plusvaliaCorto}</p>
-                  <p>${usuario.pagosCorto}</p>
-                  <br />
-                  <p style={{ color: azul, fontWeight: 'bold' }}>
-                    ${usuario.valorCorto}
-                  </p>
-                </div>
-              </DivCortoPlazo>
-              <DivLargoPlazo>
-                <div>
-                  <h2>Largo plazo</h2>
-                  <p
-                    style={{
-                      fontSize: '1.5rem',
-                      color: azul,
-                      fontWeight: 'bold',
-                      padding: '.5rem',
-                      textAlign: 'center'
-                    }}
-                  >
-                    ${usuario.valorActualLargo}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: '.75rem',
-                      textAlign: 'center'
-                    }}
-                  >
-                    Valor actual
-                  </p>
-                  <br />
-                  <p
-                    style={{
-                      fontSize: '.75rem',
-                      fontWeight: 600
-                    }}
-                  >
-                    {usuario.proyectosLargo} proyectos
-                  </p>
-                </div>
-                <div>
-                  <p>Total Invertido:</p>
-                  <br />
-                  <p>+ Retornos generados:</p>
-                  <p>+ Plusvalia:</p>
-                  <p>- Pagos recibidos:</p>
-                  <br />
-                  <p style={{ color: azul, fontWeight: 'bold' }}>Valor:</p>
-                </div>
-                <div style={{ textAlign: 'end' }}>
-                  <p>${usuario.totalLargo}</p>
-                  <br />
-                  <p>${usuario.retornoLargo}</p>
-                  <p>${usuario.plusvaliaLargo}</p>
-                  <p>${usuario.pagosLargo}</p>
-                  <br />
-                  <p style={{ color: azul, fontWeight: 'bold' }}>
-                    ${usuario.valorLargo}
-                  </p>
-                </div>
-              </DivLargoPlazo>
-            </DivTwo>
-          </DivPortafolio>
-        </DivPrincipal>
-        <div>
-          <div>
-            <h2>Mis inversiones</h2>
-            <p>Portafolio actual</p>
-          </div>
-          <div style={{ padding: '1rem' }}>
-            <UsuarioCardInversiones />
-          </div>
-        </div>
-      </DivDashboard>
+                  </DivCardOne>
+                  <DivCardTwo>
+                    <div>
+                      <p
+                        style={{
+                          fontSize: '20px',
+                          fontWeight: 'bold',
+                          color: azul
+                        }}
+                      >
+                        ${usuarios.disponible}
+                      </p>
+                      <div style={{ display: 'flex' }}>
+                        <p
+                          style={{
+                            fontSize: '11px',
+                            color: gris,
+                            padding: '4px 4px 0 0'
+                          }}
+                        >
+                          Diponible
+                        </p>
+                        <span>
+                          <ErrorOutlineIcon fontSize="xs" />
+                        </span>
+                      </div>
+                    </div>
+                    <div style={{ textAlign: 'end' }}>
+                      <p
+                        style={{
+                          fontSize: '20px',
+                          fontWeight: 'bold',
+                          color: azul
+                        }}
+                      >
+                        ${usuarios.processo}
+                      </p>
+                      <div style={{ display: 'flex' }}>
+                        <p
+                          style={{
+                            fontSize: '11px',
+                            color: gris,
+                            padding: '4px 4px 0 0'
+                          }}
+                        >
+                          En transferencia
+                        </p>
+                        <span>
+                          <ErrorOutlineIcon fontSize="xs" />
+                        </span>
+                      </div>
+                    </div>
+                  </DivCardTwo>
+                  <DivCardThree>
+                    <div>
+                      <p>Total Invertido:</p>
+                      <br />
+                      <p>+ Retornos generados:</p>
+                      <p>+ Plusvalia:</p>
+                      <p>- Pagos recibidos:</p>
+                      <br />
+                      <p style={{ color: azul, fontWeight: 'bold' }}>Valor:</p>
+                    </div>
+                    <div style={{ textAlign: 'end' }}>
+                      <p>${usuarios.total}</p>
+                      <br />
+                      <p>${usuarios.retorno}</p>
+                      <p>${usuarios.plusvalia}</p>
+                      <p>${usuarios.pagos}</p>
+                      <br />
+                      <p style={{ color: azul, fontWeight: 'bold' }}>
+                        ${usuarios.valor}
+                      </p>
+                    </div>
+                  </DivCardThree>
+                </DivCard>
+                <DivTwo>
+                  <DivCortoPlazo>
+                    <div>
+                      <h2>Corto plazo</h2>
+                      <p
+                        style={{
+                          fontSize: '1.5rem',
+                          color: azul,
+                          fontWeight: 'bold',
+                          padding: '.5rem',
+                          textAlign: 'center'
+                        }}
+                      >
+                        ${usuarios.valorActualCorto}
+                      </p>
+                      <p
+                        style={{
+                          fontSize: '.75rem',
+                          textAlign: 'center'
+                        }}
+                      >
+                        Valor actual
+                      </p>
+                      <br />
+                      <p
+                        style={{
+                          fontSize: '.75rem',
+                          fontWeight: 600
+                        }}
+                      >
+                        {usuarios.proyectosCorto} proyectos
+                      </p>
+                    </div>
+                    <div>
+                      <p>Total Invertido:</p>
+                      <br />
+                      <p>+ Retornos generados:</p>
+                      <p>+ Plusvalia:</p>
+                      <p>- Pagos recibidos:</p>
+                      <br />
+                      <p style={{ color: azul, fontWeight: 'bold' }}>Valor:</p>
+                    </div>
+                    <div style={{ textAlign: 'end' }}>
+                      <p>${usuarios.totalCorto}</p>
+                      <br />
+                      <p>${usuarios.retornoCorto}</p>
+                      <p>${usuarios.plusvaliaCorto}</p>
+                      <p>${usuarios.pagosCorto}</p>
+                      <br />
+                      <p style={{ color: azul, fontWeight: 'bold' }}>
+                        ${usuarios.valorCorto}
+                      </p>
+                    </div>
+                  </DivCortoPlazo>
+                  <DivLargoPlazo>
+                    <div>
+                      <h2>Largo plazo</h2>
+                      <p
+                        style={{
+                          fontSize: '1.5rem',
+                          color: azul,
+                          fontWeight: 'bold',
+                          padding: '.5rem',
+                          textAlign: 'center'
+                        }}
+                      >
+                        ${usuarios.valorActualLargo}
+                      </p>
+                      <p
+                        style={{
+                          fontSize: '.75rem',
+                          textAlign: 'center'
+                        }}
+                      >
+                        Valor actual
+                      </p>
+                      <br />
+                      <p
+                        style={{
+                          fontSize: '.75rem',
+                          fontWeight: 600
+                        }}
+                      >
+                        {usuarios.proyectosLargo} proyectos
+                      </p>
+                    </div>
+                    <div>
+                      <p>Total Invertido:</p>
+                      <br />
+                      <p>+ Retornos generados:</p>
+                      <p>+ Plusvalia:</p>
+                      <p>- Pagos recibidos:</p>
+                      <br />
+                      <p style={{ color: azul, fontWeight: 'bold' }}>Valor:</p>
+                    </div>
+                    <div style={{ textAlign: 'end' }}>
+                      <p>${usuarios.totalLargo}</p>
+                      <br />
+                      <p>${usuarios.retornoLargo}</p>
+                      <p>${usuarios.plusvaliaLargo}</p>
+                      <p>${usuarios.pagosLargo}</p>
+                      <br />
+                      <p style={{ color: azul, fontWeight: 'bold' }}>
+                        ${usuarios.valorLargo}
+                      </p>
+                    </div>
+                  </DivLargoPlazo>
+                </DivTwo>
+              </DivPortafolio>
+            </DivPrincipal>
+            <div>
+              <div>
+                <h2>Mis inversiones</h2>
+                <p>Portafolio actual</p>
+              </div>
+              <div style={{ padding: '1rem' }}>
+                <UsuarioCardInversiones id={id} usuarios={usuarios} />
+              </div>
+            </div>
+          </DivDashboard>
+        ))}
     </Div>
   )
 }

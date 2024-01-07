@@ -55,17 +55,27 @@ const DivNavBlock = styled.div`
   background: transparent;
 `
 
-const Admin = ({ reservas, registrarMensajeReserva, eliminarReserva }) => {
+const Admin = ({
+  reservas,
+  registrarMensajeReserva,
+  eliminarReserva,
+  post,
+  registrarMensajePost,
+  eliminarPost,
+  usuarios,
+  registrarMensajeUsuarios,
+  eliminarUsuarios
+}) => {
   const [card, setCard] = useState(true)
   const [calendario, setCalendario] = useState(false)
-  const [usuarios, setUsuarios] = useState(false)
+  const [usuario, setUsuario] = useState(false)
 
   const cardActive = () => {
     setCard(!card)
     console.log(card)
     if (card === false) {
       setCalendario(false)
-      setUsuarios(false)
+      setUsuario(false)
     }
   }
 
@@ -73,13 +83,13 @@ const Admin = ({ reservas, registrarMensajeReserva, eliminarReserva }) => {
     setCalendario(!calendario)
     if (calendario === false) {
       setCard(false)
-      setUsuarios(false)
+      setUsuario(false)
     }
   }
 
   const usuariosActive = () => {
-    setUsuarios(!usuarios)
-    if (usuarios === false) {
+    setUsuario(!usuario)
+    if (usuario === false) {
       setCard(false)
       setCalendario(false)
     }
@@ -133,31 +143,45 @@ const Admin = ({ reservas, registrarMensajeReserva, eliminarReserva }) => {
           onClick={() => {
             usuariosActive()
           }}
-          style={{ background: usuarios ? '#e9efff' : 'transparent' }}
+          style={{ background: usuario ? '#e9efff' : 'transparent' }}
         >
           <DivHover>
-            <span style={{ color: usuarios ? azul : 'black' }}>
+            <span style={{ color: usuario ? azul : 'black' }}>
               <FeedIcon />
             </span>
-            <p style={{ width: '80%', color: usuarios ? azul : 'black' }}>
-              Usuarios
+            <p style={{ width: '80%', color: usuario ? azul : 'black' }}>
+              Usuario
             </p>
             <DivNavBlock
-              style={{ background: usuarios ? azul : 'transparent' }}
+              style={{ background: usuario ? azul : 'transparent' }}
             ></DivNavBlock>
           </DivHover>
         </DivNavStyle>
       </DivNav>
       {/* Servicios de usuario */}
-      {card ? <AdminCard /> : null}
+      {card ? (
+        <AdminCard
+          post={post}
+          registrarMensajePost={registrarMensajePost}
+          eliminarPost={eliminarPost}
+        />
+      ) : null}
       {calendario ? (
         <AdminCalendario
           reservas={reservas}
           registrarMensajeReserva={registrarMensajeReserva}
           eliminarReserva={eliminarReserva}
+          post={post}
+          usuarios={usuarios}
         />
       ) : null}
-      {usuarios ? <AdminUsuario /> : null}
+      {usuario ? (
+        <AdminUsuario
+          usuarios={usuarios}
+          registrarMensajeUsuarios={registrarMensajeUsuarios}
+          eliminarUsuarios={eliminarUsuarios}
+        />
+      ) : null}
     </Div>
   )
 }

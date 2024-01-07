@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Btn from '../Btn/Btn'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
-import { buscar } from '../../api/api'
+
 import { blanco, azul } from '../UI/UI'
 
 const DivCard = styled.div`
@@ -87,15 +87,7 @@ const DivPie = styled.div`
   padding: 1rem;
 `
 
-const HomeContainerCard = () => {
-  //Guardando los datos de la api en el estado
-  const [post, setPost] = useState([])
-
-  //Obteniendo los datos de la api
-  useEffect(() => {
-    buscar('/post', setPost)
-  }, [])
-
+const HomeContainerCard = ({ post }) => {
   return (
     <>
       {/* Mapeando los datos de la api */}

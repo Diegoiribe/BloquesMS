@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Input from '../Components/Input/Input'
-import { buscar } from '../api/api'
 import { blanco, azul, gris } from '../Components/UI/UI'
 import { useNavigate } from 'react-router-dom'
 
@@ -52,45 +51,41 @@ const Btn = styled.button`
   cursor: pointer;
 `
 
-const Login = () => {
+const Login = ({ usuarios }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target
-    if (name === 'email') setEmail(value)
-    if (name === 'password') setPassword(value)
-  }
 
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
+    // Comprobar si 'usuarios' está definido y es un arreglo
+    const usuariosArray = Array.isArray(usuarios)
+      ? usuarios
+      : [usuarios].filter(Boolean)
+    console.log(usuariosArray)
     try {
-      // Utiliza la función buscar para obtener los usuarios
-      await buscar('/usuarios', (usuarios) => {
-        const usuarioEncontrado = usuarios.find(
-          (user) => user.email === email && user.password === password
-        )
+      const usuarioEncontrado = usuariosArray.find(
+        (user) => user.email === email && user.password === password
+      )
 
-        if (usuarioEncontrado) {
-          console.log('Credenciales correctas')
-          // Aquí agregas la lógica para determinar a qué página redirigir
-          if (usuarioEncontrado.email === 'admin@bloquesms.com') {
-            navigate(`/admin/${usuarioEncontrado.id}`)
-          } else {
-            navigate(`/usuario/${usuarioEncontrado.id}`)
-          }
-
-          // Manejo de credenciales correctas
+      if (usuarioEncontrado) {
+        console.log('Credenciales correctas')
+        // Aquí agregas la lógica para determinar a qué página redirigir
+        if (usuarioEncontrado.email === 'admin@bloquesms.com') {
+          navigate(`/admin/${usuarioEncontrado.id}`)
         } else {
-          console.log('Credenciales incorrectas')
-          // Manejo de credenciales incorrectas
+          navigate(`/usuario/${usuarioEncontrado.id}`)
         }
-      })
+
+        // Manejo de credenciales correctas
+      } else {
+        console.log('Credenciales incorrectas')
+        // Manejo de credenciales incorrectas
+      }
     } catch (error) {
-      console.error('Error al obtener datos:', error)
+      console.log(error)
     }
   }
 
@@ -117,7 +112,7 @@ const Login = () => {
               placeholder="Correo electronico"
               value={email}
               setValor={setEmail}
-              onChange={handleInputChange}
+              onChange={handleSubmit}
               width="100%"
               height="3rem"
               padding="1rem"
@@ -132,7 +127,7 @@ const Login = () => {
               placeholder="Ingrese su contraseña"
               value={password}
               setValor={setPassword}
-              onChange={handleInputChange}
+              onChange={handleSubmit}
               width="100%"
               height="3rem"
               padding="1rem"

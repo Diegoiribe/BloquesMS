@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { AdminInput, AdminTextArea } from '../AdminInput/AdminInput'
 import { v4 as uuid } from 'uuid'
-import { enviar } from '../../api/api'
+
 import { azul } from '../UI/UI'
 
 const Form = styled.form`
@@ -24,7 +24,7 @@ const Button = styled.button`
   cursor: pointer;
 `
 
-const AdminCardForm = () => {
+const AdminCardForm = ({ registrarMensajePost }) => {
   const [title, setTitle] = useState('')
   const [place, setPlace] = useState('')
   const [logo, setLogo] = useState('')
@@ -32,13 +32,6 @@ const AdminCardForm = () => {
   const [monto, setMonto] = useState('')
   const [plazo, setPlazo] = useState('')
   const [img, setImg] = useState('')
-
-  const [data, setData] = useState(null)
-  const manejarEnvio = async (datosDelFormulario) => {
-    // La URL '/enviar-datos' es donde tu servidor espera recibir los datos POST
-    // 'datosDelFormulario' es un objeto con los datos que quieres enviar
-    await enviar('/post', datosDelFormulario, setData)
-  }
 
   const handleSubmit = (e) => {
     let datos = {
@@ -51,11 +44,9 @@ const AdminCardForm = () => {
       img: img,
       id: uuid()
     }
-    manejarEnvio(datos)
+    registrarMensajePost(datos)
     console.log(datos)
   }
-
-  console.log(data)
 
   return (
     <div>

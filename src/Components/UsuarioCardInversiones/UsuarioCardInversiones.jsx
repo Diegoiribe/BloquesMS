@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { azul, blanco, gris } from '../UI/UI'
-import { buscar } from '../../api/api'
+
 import { useParams } from 'react-router-dom'
 
 const Div = styled.div`
@@ -36,66 +36,64 @@ const DivFour = styled.div`
   gap: 1rem;
 `
 
-const UsuarioCardInversiones = () => {
-  const [card, setCard] = useState([])
-  const { id } = useParams() // Esto captura el ID de la URL
-
-  useEffect(() => {
-    // Define la función callback que actualizará el estado con los datos del usuario
-    const onUsuarioEncontrado = (cardData) => {
-      // Suponiendo que cardData debería ser un objeto
-      if (!Array.isArray(cardData) && cardData != null) {
-        setCard([cardData]) // Coloca el objeto dentro de un arreglo
-      } else {
-        setCard(cardData) // o manejar un error si los datos no son lo que esperabas
-      }
-    }
-
-    // Asegúrate de que tu función buscar puede manejar la ruta con un ID y una función callback
-    buscar(`/usuarios/${id}`, onUsuarioEncontrado)
-  }, [id]) // El efecto se ejecutará cada vez que el ID cambie
-  console.log(card)
+const UsuarioCardInversiones = ({ usuarios, id }) => {
+  // Si usuarios no es un arreglo, muestra un mensaje o retorna null
+  const usuariosArray = Array.isArray(usuarios) ? usuarios : [usuarios]
   return (
     <>
-      {card.map((card, index) => (
-        <Div key={index}>
-          <DivOne>
-            <h2>{card.title}</h2>
-            <p style={{ fontSize: '.75rem', color: gris }}>{card.place}</p>
-            <p style={{ fontSize: '1rem', color: azul, fontWeight: 'bold' }}>
-              Bloques: {card.bloques}
-            </p>
-          </DivOne>
-          <DivTwo>
-            <DivThree>
-              <p style={{ fontWeight: 'bold' }}>Tasa anualizada</p>
-              <p
-                style={{ fontSize: '1.5rem', color: azul, fontWeight: 'bold' }}
-              >
-                {card.tasa}
+      {usuariosArray
+        .filter((item) => item.id === id)
+        .map((item, index) => (
+          <Div key={index}>
+            <DivOne>
+              <h2>{item.title}</h2>
+              <p style={{ fontSize: '.75rem', color: gris }}>{item.place}</p>
+              <p style={{ fontSize: '1rem', color: azul, fontWeight: 'bold' }}>
+                Bloques: {item.bloques}
               </p>
-            </DivThree>
-            <DivFour>
-              <div>
-                <p style={{ fontSize: '1rem' }}>Invertiste:</p>
-                <p style={{ fontSize: '1rem' }}>Recibiste:</p>
-              </div>
-              <div>
+            </DivOne>
+            <DivTwo>
+              <DivThree>
+                <p style={{ fontWeight: 'bold' }}>Tasa anualizada</p>
                 <p
-                  style={{ fontSize: '1rem', color: azul, fontWeight: 'bold' }}
+                  style={{
+                    fontSize: '1.5rem',
+                    color: azul,
+                    fontWeight: 'bold'
+                  }}
                 >
-                  ${card.inversion}
+                  {item.tasa}
                 </p>
-                <p
-                  style={{ fontSize: '1rem', color: azul, fontWeight: 'bold' }}
-                >
-                  ${card.recibido}
-                </p>
-              </div>
-            </DivFour>
-          </DivTwo>
-        </Div>
-      ))}
+              </DivThree>
+              <DivFour>
+                <div>
+                  <p style={{ fontSize: '1rem' }}>Invertiste:</p>
+                  <p style={{ fontSize: '1rem' }}>Recibiste:</p>
+                </div>
+                <div>
+                  <p
+                    style={{
+                      fontSize: '1rem',
+                      color: azul,
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    ${item.inversion}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: '1rem',
+                      color: azul,
+                      fontWeight: 'bold'
+                    }}
+                  >
+                    ${item.recibido}
+                  </p>
+                </div>
+              </DivFour>
+            </DivTwo>
+          </Div>
+        ))}
     </>
   )
 }

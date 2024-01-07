@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { buscar, enviar } from '../../api/api'
+
 import { useParams } from 'react-router-dom'
 import { blanco, azul } from '../UI/UI'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
@@ -128,10 +128,12 @@ const DivClose = styled.div`
   align-items: center;
   cursor: pointer;
 `
-const AdminCalendario = ({
+const UsuarioCalendario = ({
   reservas,
   registrarMensajeReserva,
-  eliminarReserva
+  eliminarReserva,
+  post,
+  usuarios
 }) => {
   const [time, setTime] = useState(dayjs(''))
   const [fechas, setFechas] = useState([])
@@ -168,68 +170,15 @@ const AdminCalendario = ({
       dias: dias,
       fecha: time.format('DD/MM/YYYY'),
       id: uuid(),
-      idUsuario: usuario.id,
-      img: cardInfo.img,
-      title: cardInfo.title
+      idUsuario: usuarios.id,
+      img: post.img,
+      title: post.title
     }
 
     registrarMensajeReserva(datos)
   }
 
-  const [usuario, setUsuario] = useState([])
-  const { id } = useParams() // Esto captura el ID de la URL
-  console.log(id)
-
-  useEffect(() => {
-    const onUsuario = (cardData) => {
-      if (cardData && typeof cardData === 'object') {
-        setUsuario(cardData) // Asegúrate de que cardData es un objeto
-      } else {
-        // Manejo de error o datos no esperados
-        console.error('Datos de usuario no disponibles o en formato incorrecto')
-      }
-    }
-
-    buscar(`/usuarios/${id}`, onUsuario)
-  }, [id])
-  console.log(usuario.id)
-
-  const [card, setCard] = useState([])
-  // Esto captura el ID de la URL
-
-  useEffect(() => {
-    // Define la función callback que actualizará el estado con los datos del usuario
-    const onUsuarioEncontrado = (cardData) => {
-      // Suponiendo que cardData debería ser un objeto
-      if (!Array.isArray(cardData) && cardData != null) {
-        setCard([cardData]) // Coloca el objeto dentro de un arreglo
-      } else {
-        setCard(cardData) // o manejar un error si los datos no son lo que esperabas
-      }
-    }
-
-    // Asegúrate de que tu función buscar puede manejar la ruta con un ID y una función callback
-    buscar(`/post/1`, onUsuarioEncontrado)
-  }, []) // El efecto se ejecutará cada vez que el ID cambie
-
-  const [cardInfo, setCardInfo] = useState([])
-  // Esto captura el ID de la URL
-
-  useEffect(() => {
-    // Define la función callback que actualizará el estado con los datos del usuario
-    const UsuarioEncontrado = (cardData) => {
-      // Suponiendo que cardData debería ser un objeto
-      if (cardData && typeof cardData === 'object') {
-        setCardInfo(cardData) // Asegúrate de que cardData es un objeto
-      } else {
-        // Manejo de error o datos no esperados
-        console.error('Datos de usuario no disponibles o en formato incorrecto')
-      }
-    }
-
-    // Asegúrate de que tu función buscar puede manejar la ruta con un ID y una función callback
-    buscar(`/post/1`, UsuarioEncontrado)
-  }, []) // El efecto se ejecutará cada vez que el ID cambie
+  const { id } = useParams()
 
   const handleDelete = () => {
     setFechas([])
@@ -308,10 +257,10 @@ const AdminCalendario = ({
               >
                 <CloseIcon style={{ color: 'white' }} />
               </DivClose>
-              {card.map((item, index) => (
+              {post.map((item, index) => (
                 <DivImg key={index} src={item.img} style={{ width: '100%' }} />
               ))}
-              {card.map((item, index) => (
+              {post.map((item, index) => (
                 <P key={index} style={{ width: '100%' }}>
                   {item.title}
                 </P>
@@ -339,4 +288,4 @@ const AdminCalendario = ({
   )
 }
 
-export default AdminCalendario
+export default UsuarioCalendario

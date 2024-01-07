@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { buscar, eliminar } from '../../api/api'
+
 import { blanco, azul } from '../UI/UI'
 import CloseIcon from '@mui/icons-material/Close'
 

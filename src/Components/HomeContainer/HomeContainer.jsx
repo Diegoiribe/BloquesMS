@@ -39,7 +39,7 @@ const DivCard = styled.div`
   flex-wrap: wrap;
 `
 
-const HomeContainer = () => {
+const HomeContainer = ({ post }) => {
   return (
     <>
       <Div>
@@ -58,7 +58,7 @@ const HomeContainer = () => {
         </DivSubtitulo>
       </Div>
       <DivCard>
-        <HomeContainerCard />
+        <HomeContainerCard post={post} />
       </DivCard>
     </>
   )

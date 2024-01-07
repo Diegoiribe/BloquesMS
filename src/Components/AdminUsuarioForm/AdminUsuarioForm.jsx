@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { AdminInput } from '../AdminInput/AdminInput'
 import { v4 as uuid } from 'uuid'
-import { enviar } from '../../api/api'
+
 import { azul } from '../UI/UI'
 
 const Form = styled.form`
@@ -24,7 +24,7 @@ const Button = styled.button`
   cursor: pointer;
 `
 
-const AdminUsuarioForm = () => {
+const AdminUsuarioForm = ({ registrarMensajeUsuarios }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [nombre, setNombre] = useState('')
@@ -57,13 +57,6 @@ const AdminUsuarioForm = () => {
   const [inversion, setInversion] = useState('')
   const [recibido, setRecibido] = useState('')
   const [bloques, setBloques] = useState('')
-
-  const [data, setData] = useState(null)
-  const manejarEnvio = async (datosDelFormulario) => {
-    // La URL '/enviar-datos' es donde tu servidor espera recibir los datos POST
-    // 'datosDelFormulario' es un objeto con los datos que quieres enviar
-    await enviar('/usuarios', datosDelFormulario, setData)
-  }
 
   const handleSubmit = (e) => {
     let datos = {
@@ -100,11 +93,9 @@ const AdminUsuarioForm = () => {
       bloques: bloques,
       id: uuid()
     }
-    manejarEnvio(datos)
+    registrarMensajeUsuarios(datos)
     console.log(datos)
   }
-
-  console.log(data)
 
   return (
     <div>

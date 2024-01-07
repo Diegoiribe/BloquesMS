@@ -52,7 +52,13 @@ const DivNavBlock = styled.div`
   background: transparent;
 `
 
-const Usuario = ({ reservas, eliminarReserva, registrarMensajeReserva }) => {
+const Usuario = ({
+  reservas,
+  eliminarReserva,
+  registrarMensajeReserva,
+  post,
+  usuarios
+}) => {
   const [inversiones, setInversiones] = useState(true)
   const [calendario, setCalendario] = useState(false)
   const [noticias, setNoticias] = useState(false)
@@ -146,12 +152,14 @@ const Usuario = ({ reservas, eliminarReserva, registrarMensajeReserva }) => {
         </DivNavStyle>
       </DivNav>
       {/* Servicios de usuario */}
-      {inversiones && <UsuarioInversion />}
+      {inversiones && <UsuarioInversion usuarios={usuarios} />}
       {calendario && (
         <UsuarioCalendario
           reservas={reservas}
           registrarMensajeReserva={registrarMensajeReserva}
           eliminarReserva={eliminarReserva}
+          post={post}
+          usuarios={usuarios}
         />
       )}
     </Div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { buscar, eliminar } from '../../api/api'
+
 import { blanco, azul } from '../UI/UI'
 import CloseIcon from '@mui/icons-material/Close'
 
@@ -43,7 +43,7 @@ const Div = styled.div`
   cursor: pointer;
 `
 
-const AdminCalendarioCard = ({ id, reservas, eliminarReserva }) => {
+const UsuarioCalendarioCard = ({ id, reservas, eliminarReserva }) => {
   console.log(reservas)
   console.log(id)
   return (
@@ -74,4 +74,4 @@ const AdminCalendarioCard = ({ id, reservas, eliminarReserva }) => {
   )
 }
 
-export default AdminCalendarioCard
+export default UsuarioCalendarioCard

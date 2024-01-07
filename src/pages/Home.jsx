@@ -7,10 +7,10 @@ const DivHome = styled.div`
   margin: 20vh 10vw 0;
 `
 
-const Home = () => {
+const Home = ({ post }) => {
   return (
     <DivHome>
-      <HomeContainer />
+      <HomeContainer post={post} />
     </DivHome>
   )
 }

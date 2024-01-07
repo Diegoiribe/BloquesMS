@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
-import { buscar, eliminar } from '../../api/api'
+
 import { azul } from '../UI/UI'
 
 const Div = styled.div`
@@ -27,29 +27,7 @@ const DivIcon = styled.div`
   cursor: pointer;
 `
 
-const AdminUsuarioDelete = () => {
-  //Guardando los datos de la api en el estado
-  const [usuarios, setUsuarios] = useState([])
-
-  //Obteniendo los datos de la api
-  useEffect(() => {
-    buscar('/usuarios', setUsuarios)
-  }, [])
-
-  const handleDelete = async (id) => {
-    try {
-      // Realiza la solicitud DELETE a la API
-      await eliminar(`/usuarios/${id}`)
-
-      // Actualiza el estado para reflejar el cambio
-      const updatedUsuarios = usuarios.filter((item) => item.id !== id)
-      setUsuarios(updatedUsuarios)
-    } catch (error) {
-      console.error('Error al eliminar el usuario:', error)
-      // Manejo de errores
-    }
-  }
-
+const AdminUsuarioDelete = ({ usuarios, eliminarUsuarios }) => {
   return (
     <>
       {/* Mapeando los datos de la api */}
@@ -60,7 +38,7 @@ const AdminUsuarioDelete = () => {
             <p>{item.email}</p>
           </div>
 
-          <DivIcon onClick={() => handleDelete(item.id)}>
+          <DivIcon onClick={() => eliminarUsuarios(item.id)}>
             <DeleteForeverIcon style={{ color: 'white' }} />
           </DivIcon>
         </Div>
