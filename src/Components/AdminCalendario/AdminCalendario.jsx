@@ -186,6 +186,11 @@ const AdminCalendario = ({
     setFechas([])
   }
 
+  const fechaNueva = (newValue) => {
+    setFechas([])
+    setTime(newValue)
+  }
+
   return (
     <Div>
       <DivDashboard>
@@ -196,7 +201,7 @@ const AdminCalendario = ({
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateCalendar
                   valor={time}
-                  onChange={(newValue) => setTime(newValue)}
+                  onChange={(newValue) => fechaNueva(newValue)}
                   sx={{
                     width: 500, // Ajusta a la anchura deseada
                     height: 500, // Ajusta a la altura deseada
