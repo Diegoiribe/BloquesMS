@@ -144,6 +144,10 @@ const UsuarioCalendario = ({
   const [dias, setDias] = useState('')
   const [fecha, setFecha] = useState('')
 
+  const img = Array.isArray(post) ? post[0].img : post.img
+  const title = Array.isArray(post) ? post[0].title : post.title
+  const { id } = useParams()
+
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('Formulario enviado', e)
@@ -170,15 +174,13 @@ const UsuarioCalendario = ({
       dias: dias,
       fecha: time.format('DD/MM/YYYY'),
       id: uuid(),
-      idUsuario: usuarios.id,
-      img: post.img,
-      title: post.title
+      idUsuario: id,
+      img: img,
+      title: title
     }
 
     registrarMensajeReserva(datos)
   }
-
-  const { id } = useParams()
 
   const handleDelete = () => {
     setFechas([])
