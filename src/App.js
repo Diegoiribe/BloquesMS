@@ -18,7 +18,7 @@ function App() {
       title: 'Mirador del Valle',
       place: 'Querétaro, Qro.',
       logo: 'https://files.briq.mx/uploads/developer/logo/191/Logo_R_K.jpg',
-      img: 'https://www.construyehogar.com/wp-content/uploads/2014/09/Edificios-de-departamentos.jpg',
+      img: 'https://arquine.com/wp-content/uploads/2019/12/arquine_iconico_division_del_norte_vivienda_9.jpg',
       tasa: 26.75,
       monto: 35000,
       plazo: 'Entre 6 y 48 meses',

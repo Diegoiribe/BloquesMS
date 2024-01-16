@@ -46,7 +46,7 @@ const DivColor = styled.div`
 const DivImg = styled.img`
   width: 100%;
   height: 40%;
-  object-fit: fill;
+  object-fit: cover;
 `
 const DivBody = styled.div`
   width: 100%;
