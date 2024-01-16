@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Btn from '../Btn/Btn'
 import LocationOnIcon from '@mui/icons-material/LocationOn'
-
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { blanco, azul } from '../UI/UI'
 
 const DivCard = styled.div`
@@ -88,6 +88,20 @@ const DivPie = styled.div`
 `
 
 const HomeContainerCard = ({ post }) => {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const currentURL = location.pathname
+  const segments = currentURL.split('/')
+  const id = segments[2]
+  console.log(id)
+
+  const pago = () => {
+    if (id !== undefined) {
+      window.location.href = `https://buy.stripe.com/test_28o00Mf2A2dK5eE6oo`
+    } else {
+      navigate('/login')
+    }
+  }
   return (
     <>
       {/* Mapeando los datos de la api */}
@@ -108,10 +122,16 @@ const HomeContainerCard = ({ post }) => {
 
           <DivBody>
             <PBTitulo>Tasa anual fija</PBTitulo>
-            <PBTasa>{post.tasa}</PBTasa>
+            <PBTasa>{post.tasa}%</PBTasa>
             <DivBSub>
               <p>Minimo de inversion</p>
-              <PBSub>{post.monto}</PBSub>
+              <PBSub>
+                $
+                {post.monto.toLocaleString('en-US', {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2
+                })}
+              </PBSub>
             </DivBSub>
             <DivBSub>
               <p>Plazo</p>
@@ -119,32 +139,39 @@ const HomeContainerCard = ({ post }) => {
             </DivBSub>
           </DivBody>
           <DivPie>
-            <Btn
-              titulo="Conoce mas"
-              width="100%"
-              padding=".75rem 2rem"
-              borderRadius="5px"
-              background={blanco}
-              fontSize="1rem"
-              fontWeight="bold"
-              borderColor="#000000"
-              border="1px solid"
-              textDecoration="none"
-              color="#000000"
-            />
-            <Btn
-              titulo="Quiero invertir"
-              width="100%"
-              padding=".75rem 2rem"
-              borderRadius="5px"
-              background={azul}
-              color={blanco}
-              fontSize="1rem"
-              fontWeight="bold"
-              borderColor={azul}
-              border="1px solid"
-              textDecoration="none"
-            />
+            <Link
+              style={{ textDecoration: 'none' }}
+              to={`/home/informacion/${post.id}/${id}`}
+            >
+              <Btn
+                titulo="Conoce mas"
+                width="100%"
+                padding=".75rem 2rem"
+                borderRadius="5px"
+                background={blanco}
+                fontSize="1rem"
+                fontWeight="bold"
+                borderColor="#000000"
+                border="1px solid"
+                textDecoration="none"
+                color="#000000"
+              />
+            </Link>
+            <div onClick={() => pago()}>
+              <Btn
+                titulo="Quiero invertir"
+                width="100%"
+                padding=".75rem 2rem"
+                borderRadius="5px"
+                background={azul}
+                color={blanco}
+                fontSize="1rem"
+                fontWeight="bold"
+                borderColor={azul}
+                border="1px solid"
+                textDecoration="none"
+              />
+            </div>
           </DivPie>
         </DivCard>
       ))}

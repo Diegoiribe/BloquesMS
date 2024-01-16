@@ -28,7 +28,18 @@
       "img": "https://img1.wsimg.com/isteam/ip/06c0c705-946a-4a72-851b-8bb928a539d7/IMG_1916%20(1).jpeg/:/",
       "tasa": "18.25%",
       "monto": "$ 42,000",
-      "plazo": "Entre 5 y 60 meses"
+      "plazo": "Entre 5 y 60 meses",
+      "descripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae aliquam n",
+      "tipoGarantia": "fiduciaria",
+      "pagoInteres": "Mensual",
+      "pagoDescripcion": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae aliquam n",
+      "analisis": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae aliquam n",
+      "garantia": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae aliquam n",
+      "detalles": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla euismod, nisl eget ultricies aliquam, nunc nisl ultricies nunc, vitae aliquam n",
+      "tipo": "Largo Plazo",
+      "edad": "Nuevo",
+      "bloques": "1,000",
+      "name": "MS constructora"
     },
     {
       "id": 4,

@@ -264,14 +264,12 @@ const UsuarioCalendario = ({
               >
                 <CloseIcon style={{ color: 'white' }} />
               </DivClose>
-              {post.map((item, index) => (
-                <DivImg key={index} src={item.img} style={{ width: '100%' }} />
-              ))}
-              {post.map((item, index) => (
-                <P key={index} style={{ width: '100%' }}>
-                  {item.title}
-                </P>
-              ))}
+              {post.length > 0 && (
+                <DivImg src={post[0].img} style={{ width: '100%' }} />
+              )}
+              {post.length > 0 && (
+                <P style={{ width: '100%' }}>{post[0].title}</P>
+              )}
 
               <Button style={{ width: '100%' }} type="submit">
                 Reservar

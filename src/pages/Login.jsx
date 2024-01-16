@@ -76,7 +76,7 @@ const Login = ({ usuarios }) => {
         if (usuarioEncontrado.email === 'admin@bloquesms.com') {
           navigate(`/admin/${usuarioEncontrado.id}`)
         } else {
-          navigate(`/usuario/${usuarioEncontrado.id}`)
+          navigate(`/home/${usuarioEncontrado.id}`)
         }
 
         // Manejo de credenciales correctas

@@ -49,7 +49,7 @@ const UsuarioCalendarioCard = ({ id, reservas, eliminarReserva }) => {
   return (
     <>
       {reservas
-        .filter((reserva) => reserva.idUsuario === id)
+        .filter((reserva) => reserva.idUsuario == id)
         .map((reserva, index) => (
           <DivReservas key={index}>
             <P style={{ width: '78%' }}>{reserva.nombre}</P>

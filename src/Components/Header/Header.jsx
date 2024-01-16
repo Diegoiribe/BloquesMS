@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import logo from '../../assets/img/logo.png'
 import { blanco, azul } from '../UI/UI'
 
@@ -36,6 +36,7 @@ const Img = styled.div`
 const Logo = styled.p`
   font-size: 1.75rem;
   font-weight: bold;
+  color: black;
 `
 
 const DivLinks = styled.div`
@@ -49,6 +50,7 @@ const DivLinks = styled.div`
 const PLinks = styled.p`
   font-size: 1.2rem;
   padding: 0 1.5rem;
+  color: black;
 `
 
 const DivLogin = styled.div`
@@ -66,7 +68,13 @@ const PLogin = styled.p`
   color: ${blanco};
 `
 
-const Header = () => {
+const Header = ({ usuarios }) => {
+  const location = useLocation()
+  const currentURL = location.pathname
+  const segments = currentURL.split('/')
+  const idFromURL = segments[segments.length - 1] // El último segmento debería ser el ID
+  const isValidId = usuarios.some((item) => item.id === idFromURL)
+
   return (
     <Nav>
       <DivImg>
@@ -75,12 +83,34 @@ const Header = () => {
           style={{ margin: '0 5px', color: '#012d48' }}
         /> */}
         <Img></Img>
-        <Logo>BLOQUES MS</Logo>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          <Logo>BLOQUES MS</Logo>
+        </Link>
       </DivImg>
       <DivLinks>
-        <PLinks>Oportunidades para invertir</PLinks>
-        <PLinks>Contacto y ayuda</PLinks>
-
+        {isValidId ? (
+          <>
+            <Link to={`/home/${idFromURL}`} style={{ textDecoration: 'none' }}>
+              <PLinks>Oportunidades para invertir</PLinks>
+            </Link>
+            <Link
+              to={`/usuario/${idFromURL}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <PLinks>Dashboard</PLinks>
+            </Link>
+          </>
+        ) : (
+          <>
+            {/* Si no es válido, mostramos el texto sin el componente Link */}
+            <PLinks style={{ pointerEvents: 'none', opacity: 0.5 }}>
+              Oportunidades para invertir
+            </PLinks>
+            <PLinks style={{ pointerEvents: 'none', opacity: 0.5 }}>
+              Dashboard
+            </PLinks>
+          </>
+        )}
         <DivLogin>
           <Link to="/login" style={{ textDecoration: 'none' }}>
             <PLogin>Inicia sesion</PLogin>
