@@ -69,30 +69,6 @@ const DivInteres = styled.div`
     color: #4f5766;
   }
 `
-
-const Calculadora = styled.div`
-  width: 90%;
-  margin: 1rem 5%;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 0.25rem;
-  border: 1px solid ${azul};
-  cursor: pointer;
-  :hover {
-    scale: 1.1;
-    transition: all 0.5s ease-in-out;
-  }
-  p {
-    width: 100%;
-    padding: 1.5rem;
-    font-weight: bold;
-    font-size: 1.25rem;
-    color: ${azul};
-  }
-`
-
 const Main = ({ post, id }) => {
   return (
     <>

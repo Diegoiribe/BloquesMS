@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link, useLocation } from 'react-router-dom'
 import logo from '../../assets/img/logo.png'
 import { blanco, azul } from '../UI/UI'
+// Añadir ícono para el botón de menú (si lo necesitas)
+import MenuIcon from '@mui/icons-material/Menu'
 
 const Nav = styled.nav`
   position: fixed;
@@ -24,6 +26,10 @@ const DivImg = styled.div`
   justify-content: start;
   align-items: center;
   gap: 5px;
+  @media (max-width: 980px) {
+    width: 60%;
+    margin: 0 0 0 5%;
+  }
 `
 
 const Img = styled.div`
@@ -37,86 +43,245 @@ const Logo = styled.p`
   font-size: 1.75rem;
   font-weight: bold;
   color: black;
+  @media (max-width: 980px) {
+    font-size: 1.25rem;
+  }
 `
 
 const DivLinks = styled.div`
   width: 50%;
   height: 100%;
-
   display: flex;
   justify-content: end;
   align-items: center;
+  @media (max-width: 980px) {
+    display: none;
+  }
 `
 const PLinks = styled.p`
   font-size: 1.2rem;
-  padding: 0 1.5rem;
+  padding: 0 0.5rem;
   color: black;
 `
 
 const DivLogin = styled.div`
-  width: 25%;
+  width: 15%;
   height: 100%;
-  padding: 0 5%;
   background: ${azul};
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 980px) {
+    width: 25%;
+  }
 `
 
 const PLogin = styled.p`
   font-size: 1.2rem;
   color: ${blanco};
+  @media (max-width: 980px) {
+    font-size: 0.85rem;
+  }
+`
+
+const ToggleButton = styled.button`
+  display: none;
+  @media (max-width: 980px) {
+    display: block;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+`
+
+const MobileMenu = styled.div`
+  display: none;
+  @media (max-width: 980px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: ${blanco};
+    top: 9vh;
+    width: 100%;
+    height: 50%;
+  }
 `
 
 const Header = ({ usuarios }) => {
+  const [menuVisible, setMenuVisible] = useState(false)
   const location = useLocation()
   const currentURL = location.pathname
   const segments = currentURL.split('/')
-  const idFromURL = segments[segments.length - 1] // El último segmento debería ser el ID
+  const idFromURL = segments[segments.length - 1]
   const isValidId = usuarios.some((item) => item.id === idFromURL)
 
   return (
-    <Nav>
-      <DivImg>
-        {/* <SelectAllIcon
-          fontSize="large"
-          style={{ margin: '0 5px', color: '#012d48' }}
-        /> */}
+    <Nav
+      style={{
+        height: menuVisible ? '25vh' : '9vh',
+        flexDirection: menuVisible ? 'column' : 'row',
+        gap: menuVisible ? '.5rem' : '0'
+      }}
+    >
+      <DivImg
+        style={{
+          height: menuVisible ? '25%' : '60%',
+          justifyContent: menuVisible ? 'center' : 'start',
+          margin: menuVisible ? '0 0 0 0' : '0 0 0 5%'
+        }}
+      >
         <Img></Img>
         <Link to="/" style={{ textDecoration: 'none' }}>
           <Logo>BLOQUES MS</Logo>
         </Link>
       </DivImg>
+      <ToggleButton onClick={() => setMenuVisible(!menuVisible)}>
+        <MenuIcon />
+      </ToggleButton>
+      <MobileMenu
+        style={{
+          display: menuVisible ? 'flex' : 'none'
+        }}
+      >
+        {isValidId ? (
+          <>
+            <Link
+              to={`/home/${idFromURL}`}
+              style={{
+                textDecoration: 'none',
+                width: menuVisible ? '100%' : 'none'
+              }}
+            >
+              <PLinks
+                style={{
+                  borderTop: menuVisible ? '2px solid #000' : 'none',
+                  width: menuVisible ? '100%' : 'none',
+                  textAlign: menuVisible ? 'center' : 'none',
+                  padding: menuVisible ? '.5rem' : 'none'
+                }}
+              >
+                Oportunidades para invertir
+              </PLinks>
+            </Link>
+            <Link
+              to={`/usuario/${idFromURL}`}
+              style={{
+                textDecoration: 'none',
+                width: menuVisible ? '100%' : 'none'
+              }}
+            >
+              <PLinks
+                style={{
+                  borderTop: menuVisible ? '2px solid #000' : 'none',
+                  borderBottom: menuVisible ? '2px solid #000' : 'none',
+                  width: menuVisible ? '100%' : 'none',
+                  textAlign: menuVisible ? 'center' : 'none',
+                  padding: menuVisible ? '.5rem' : 'none'
+                }}
+              >
+                Dashboard
+              </PLinks>
+            </Link>
+          </>
+        ) : (
+          <>
+            <PLinks
+              style={{
+                pointerEvents: 'none',
+                opacity: 0.5,
+                borderTop: menuVisible ? '2px solid #000' : 'none',
+                width: menuVisible ? '100%' : 'none',
+                textAlign: menuVisible ? 'center' : 'none',
+                padding: menuVisible ? '.5rem' : 'none'
+              }}
+            >
+              Oportunidades para invertir
+            </PLinks>
+            <PLinks
+              style={{
+                pointerEvents: 'none',
+                opacity: 0.5,
+                border: menuVisible ? '2px solid #000' : 'none',
+                width: menuVisible ? '100%' : 'none',
+                textAlign: menuVisible ? 'center' : 'none',
+                padding: menuVisible ? '.5rem' : 'none'
+              }}
+            >
+              Dashboard
+            </PLinks>
+          </>
+        )}
+      </MobileMenu>
       <DivLinks>
         {isValidId ? (
           <>
             <Link to={`/home/${idFromURL}`} style={{ textDecoration: 'none' }}>
-              <PLinks>Oportunidades para invertir</PLinks>
+              <PLinks
+                style={{
+                  border: menuVisible ? '2px solid #000' : 'none',
+                  width: menuVisible ? '100%' : 'none',
+                  textAlign: menuVisible ? 'center' : 'none',
+                  padding: menuVisible ? '.5rem' : 'none'
+                }}
+              >
+                Oportunidades para invertir
+              </PLinks>
             </Link>
             <Link
               to={`/usuario/${idFromURL}`}
               style={{ textDecoration: 'none' }}
             >
-              <PLinks>Dashboard</PLinks>
+              <PLinks
+                style={{
+                  border: menuVisible ? '2px solid #000' : 'none',
+                  width: menuVisible ? '100%' : 'none',
+                  textAlign: menuVisible ? 'center' : 'none',
+                  padding: menuVisible ? '.5rem' : 'none'
+                }}
+              >
+                Dashboard
+              </PLinks>
             </Link>
           </>
         ) : (
           <>
-            {/* Si no es válido, mostramos el texto sin el componente Link */}
-            <PLinks style={{ pointerEvents: 'none', opacity: 0.5 }}>
+            <PLinks
+              style={{
+                pointerEvents: 'none',
+                opacity: 0.5,
+                border: menuVisible ? '2px solid #000' : 'none',
+                width: menuVisible ? '100%' : 'none',
+                textAlign: menuVisible ? 'center' : 'none',
+                padding: menuVisible ? '.5rem' : 'none'
+              }}
+            >
               Oportunidades para invertir
             </PLinks>
-            <PLinks style={{ pointerEvents: 'none', opacity: 0.5 }}>
+            <PLinks
+              style={{
+                pointerEvents: 'none',
+                opacity: 0.5,
+                border: menuVisible ? '2px solid #000' : 'none',
+                width: menuVisible ? '100%' : 'none',
+                textAlign: menuVisible ? 'center' : 'none',
+                padding: menuVisible ? '.5rem' : 'none'
+              }}
+            >
               Dashboard
             </PLinks>
           </>
         )}
-        <DivLogin>
-          <Link to="/login" style={{ textDecoration: 'none' }}>
-            <PLogin>Inicia sesion</PLogin>
-          </Link>
-        </DivLogin>
       </DivLinks>
+      <DivLogin
+        style={{
+          display: menuVisible ? 'none' : 'flex'
+        }}
+      >
+        <Link to="/login" style={{ textDecoration: 'none' }}>
+          <PLogin>Inicia sesion</PLogin>
+        </Link>
+      </DivLogin>
     </Nav>
   )
 }

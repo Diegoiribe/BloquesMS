@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
-
 import { azul } from '../UI/UI'
+import { deleteDoc, doc } from 'firebase/firestore'
+import { db } from './../../config'
 
 const Div = styled.div`
   width: 30%;
@@ -27,7 +28,17 @@ const DivIcon = styled.div`
   cursor: pointer;
 `
 
-const AdminUsuarioDelete = ({ usuarios, eliminarUsuarios }) => {
+const AdminUsuarioDelete = ({ usuarios, setUsuarios }) => {
+  const eliminarUsuarios = async (id) => {
+    try {
+      await deleteDoc(doc(db, 'usuarios', id))
+      // Actualizar el estado local para reflejar la eliminación
+      const updatedUsuarios = usuarios.filter((item) => item.id !== id)
+      setUsuarios(updatedUsuarios)
+    } catch (error) {
+      console.error('Error al eliminar el usuario: ', error)
+    }
+  }
   return (
     <>
       {/* Mapeando los datos de la api */}

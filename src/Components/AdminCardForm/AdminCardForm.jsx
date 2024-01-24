@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { AdminInput, AdminTextArea } from '../AdminInput/AdminInput'
-import { v4 as uuid } from 'uuid'
-
 import { azul } from '../UI/UI'
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../../config'
 
 const Form = styled.form`
   width: 100%;
@@ -34,6 +34,7 @@ const AdminCardForm = ({ registrarMensajePost }) => {
   const [img, setImg] = useState('')
 
   const handleSubmit = (e) => {
+    e.preventDefault()
     let datos = {
       title: title,
       place: place,
@@ -41,11 +42,10 @@ const AdminCardForm = ({ registrarMensajePost }) => {
       tasa: tasa,
       monto: monto,
       plazo: plazo,
-      img: img,
-      id: uuid()
+      img: img
     }
-    registrarMensajePost(datos)
-    console.log(datos)
+    const registroPost = collection(db, 'post')
+    addDoc(registroPost, datos)
   }
 
   return (

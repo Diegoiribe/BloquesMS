@@ -21,14 +21,14 @@ const DivHome = styled.div`
   flex-wrap: wrap;
   align-items: center;
 `
-const AdminCard = ({ post, registrarMensajePost, eliminarPost }) => {
+const AdminCard = ({ post, setPost }) => {
   return (
     <>
       <Div>
         <h1>Crear un nuevo proyecto</h1>
-        <AdminCardForm registrarMensajePost={registrarMensajePost} />
+        <AdminCardForm />
         <DivHome>
-          <AdminCardDelete post={post} eliminarPost={eliminarPost} />
+          <AdminCardDelete post={post} setPost={setPost} />
         </DivHome>
       </Div>
     </>

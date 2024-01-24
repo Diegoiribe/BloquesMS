@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-
 import { useParams } from 'react-router-dom'
 import { blanco, azul } from '../UI/UI'
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 import dayjs from 'dayjs'
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar'
-import { v4 as uuid } from 'uuid'
 import AdminCalendarioCard from '../AdminCalendarioCard/AdeminCalendarioCard'
 import CloseIcon from '@mui/icons-material/Close'
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../../config'
 
 const Div = styled.div`
   width: 85%;
@@ -128,13 +128,7 @@ const DivClose = styled.div`
   align-items: center;
   cursor: pointer;
 `
-const AdminCalendario = ({
-  reservas,
-  registrarMensajeReserva,
-  eliminarReserva,
-  post,
-  usuarios
-}) => {
+const AdminCalendario = ({ reservas, setReservas, post, usuarios }) => {
   const [time, setTime] = useState(dayjs(''))
   const [fechas, setFechas] = useState([])
 
@@ -173,13 +167,13 @@ const AdminCalendario = ({
       personas: personas,
       dias: dias,
       fecha: time.format('DD/MM/YYYY'),
-      id: uuid(),
       idUsuario: id,
       img: img,
       title: title
     }
 
-    registrarMensajeReserva(datos)
+    const registroReserva = collection(db, 'reservas')
+    addDoc(registroReserva, datos)
   }
 
   const handleDelete = () => {
@@ -285,8 +279,7 @@ const AdminCalendario = ({
         <Reservas>
           <AdminCalendarioCard
             reservas={reservas}
-            registrarMensajeReserva={registrarMensajeReserva}
-            eliminarReserva={eliminarReserva}
+            setReservas={setReservas}
             id={id}
           />
         </Reservas>

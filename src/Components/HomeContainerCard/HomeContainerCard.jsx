@@ -12,6 +12,10 @@ const DivCard = styled.div`
   border-radius: 10px;
   margin: 1rem 1rem;
   box-shadow: 0 1px 11px 0 rgba(0, 0, 0, 0.2);
+  @media (max-width: 980px) {
+    width: 85vw;
+    height: 87.5vh;
+  }
 `
 const DivHeader = styled.div`
   width: 100%;
@@ -65,6 +69,9 @@ const PBTasa = styled.p`
   color: ${azul};
   font-weight: bold;
   font-size: 2rem;
+  @media (max-width: 980px) {
+    font-size: 1.5rem;
+  }
 `
 
 const DivBSub = styled.div`
@@ -85,6 +92,12 @@ const DivPie = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 1rem;
+`
+
+const H1 = styled.h1`
+  @media (max-width: 980px) {
+    font-size: 1.5rem;
+  }
 `
 
 const HomeContainerCard = ({ post }) => {
@@ -110,7 +123,7 @@ const HomeContainerCard = ({ post }) => {
           <DivHeader>
             <DivHImg src={post.logo} />
             <div>
-              <h1>{post.title}</h1>
+              <H1>{post.title}</H1>
               <DivHSub>
                 <LocationOnIcon style={{ color: azul }} />
                 <p>{post.place}</p>

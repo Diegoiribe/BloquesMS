@@ -10,8 +10,3 @@
 *::-webkit-scrollbar {
   display: none; /* Ocultar scroll */
 }
-
-.App {
-  width: auto;
-  height: 100vh;
-}

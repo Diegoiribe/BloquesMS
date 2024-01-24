@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-
 import { blanco, azul } from '../UI/UI'
 import CloseIcon from '@mui/icons-material/Close'
+import { deleteDoc, doc } from 'firebase/firestore'
+import { db } from './../../config'
 
 const DivImg = styled.img`
   width: 100%;
@@ -43,7 +44,17 @@ const Div = styled.div`
   cursor: pointer;
 `
 
-const AdminCalendarioCard = ({ id, reservas, eliminarReserva }) => {
+const AdminCalendarioCard = ({ id, reservas, setReservas }) => {
+  const eliminarReserva = async (id) => {
+    try {
+      await deleteDoc(doc(db, 'reservas', id))
+      // Actualizar el estado local para reflejar la eliminación
+      const updatedReservas = reservas.filter((item) => item.id !== id)
+      setReservas(updatedReservas)
+    } catch (error) {
+      console.error('Error al eliminar la reserva: ', error)
+    }
+  }
   return (
     <>
       {reservas.map((reserva, index) => (

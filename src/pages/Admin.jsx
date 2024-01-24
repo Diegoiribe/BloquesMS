@@ -57,14 +57,11 @@ const DivNavBlock = styled.div`
 
 const Admin = ({
   reservas,
-  registrarMensajeReserva,
-  eliminarReserva,
+  setReservas,
   post,
-  registrarMensajePost,
-  eliminarPost,
+  setPost,
   usuarios,
-  registrarMensajeUsuarios,
-  eliminarUsuarios
+  setUsuarios
 }) => {
   const [card, setCard] = useState(true)
   const [calendario, setCalendario] = useState(false)
@@ -159,28 +156,17 @@ const Admin = ({
         </DivNavStyle>
       </DivNav>
       {/* Servicios de usuario */}
-      {card ? (
-        <AdminCard
-          post={post}
-          registrarMensajePost={registrarMensajePost}
-          eliminarPost={eliminarPost}
-        />
-      ) : null}
+      {card ? <AdminCard post={post} setPost={setPost} /> : null}
       {calendario ? (
         <AdminCalendario
           reservas={reservas}
-          registrarMensajeReserva={registrarMensajeReserva}
-          eliminarReserva={eliminarReserva}
+          setReservas={setReservas}
           post={post}
           usuarios={usuarios}
         />
       ) : null}
       {usuario ? (
-        <AdminUsuario
-          usuarios={usuarios}
-          registrarMensajeUsuarios={registrarMensajeUsuarios}
-          eliminarUsuarios={eliminarUsuarios}
-        />
+        <AdminUsuario usuarios={usuarios} setUsuarios={setUsuarios} />
       ) : null}
     </Div>
   )

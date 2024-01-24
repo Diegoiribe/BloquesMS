@@ -21,21 +21,14 @@ const DivHome = styled.div`
   flex-wrap: wrap;
   align-items: center;
 `
-const AdminUsuario = ({
-  usuarios,
-  registrarMensajeUsuarios,
-  eliminarUsuarios
-}) => {
+const AdminUsuario = ({ usuarios, setUsuarios }) => {
   return (
     <>
       <Div>
         <h1>Crear un nuevo Usuario</h1>
-        <AdminUsuarioForm registrarMensajeUsuarios={registrarMensajeUsuarios} />
+        <AdminUsuarioForm />
         <DivHome>
-          <AdminUsuarioDelete
-            usuarios={usuarios}
-            eliminarUsuarios={eliminarUsuarios}
-          />
+          <AdminUsuarioDelete usuarios={usuarios} setUsuarios={setUsuarios} />
         </DivHome>
       </Div>
     </>

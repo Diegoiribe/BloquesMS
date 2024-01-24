@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { AdminInput } from '../AdminInput/AdminInput'
-import { v4 as uuid } from 'uuid'
-
 import { azul } from '../UI/UI'
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../../config'
 
 const Form = styled.form`
   width: 100%;
@@ -24,7 +24,7 @@ const Button = styled.button`
   cursor: pointer;
 `
 
-const AdminUsuarioForm = ({ registrarMensajeUsuarios }) => {
+const AdminUsuarioForm = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [nombre, setNombre] = useState('')
@@ -59,6 +59,7 @@ const AdminUsuarioForm = ({ registrarMensajeUsuarios }) => {
   const [bloques, setBloques] = useState('')
 
   const handleSubmit = (e) => {
+    e.preventDefault()
     let datos = {
       email: email,
       password: password,
@@ -90,11 +91,10 @@ const AdminUsuarioForm = ({ registrarMensajeUsuarios }) => {
       tasa: tasa,
       inversion: inversion,
       recibido: recibido,
-      bloques: bloques,
-      id: uuid()
+      bloques: bloques
     }
-    registrarMensajeUsuarios(datos)
-    console.log(datos)
+    const registroUsuario = collection(db, 'usuarios')
+    addDoc(registroUsuario, datos)
   }
 
   return (
