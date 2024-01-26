@@ -57,29 +57,6 @@ function App() {
     return () => unUsuarios()
   }, [])
 
-  const eliminarUsuarios = (id) => {
-    console.log('Eliminar', id)
-    const nuevaUsuarios = usuarios.filter((item) => item.id !== id)
-    setUsuarios(nuevaUsuarios)
-    // Recuperar los datos almacenados en localStorage
-    const storedDataUsuarios = localStorage.getItem('usuarios')
-
-    // Verificar si hay datos en localStorage
-    if (storedDataUsuarios) {
-      // Parsear los datos de JSON a un objeto JavaScript
-      const dataUsuarios = JSON.parse(storedDataUsuarios)
-
-      // Eliminar el elemento que deseas (por ejemplo, utilizando filter)
-      const updatedDataUsuarios = dataUsuarios.filter((item) => item.id !== id)
-
-      // Guardar los datos actualizados en localStorage
-      localStorage.setItem('usuarios', JSON.stringify(updatedDataUsuarios))
-
-      // Actualizar el estado si es necesario (opcional)
-      setUsuarios(updatedDataUsuarios)
-    }
-  }
-
   // Metodo para guardar datos en localStorage de reservas
   const [reservas, setReservas] = useState([])
   const [loadingFromStorage, setLoadingFromStorage] = useState(true)
@@ -97,33 +74,6 @@ function App() {
     return () => unReservas()
   }, [])
 
-  const registrarMensajeReserva = (datos) => {
-    console.log('Cita registrado', datos)
-    setReservas([...reservas, datos])
-  }
-
-  const eliminarReserva = (id) => {
-    console.log('Eliminar', id)
-    const nuevaReserva = reservas.filter((item) => item.id !== id)
-    setReservas(nuevaReserva)
-    // Recuperar los datos almacenados en localStorage
-    const storedData = localStorage.getItem('reservas')
-
-    // Verificar si hay datos en localStorage
-    if (storedData) {
-      // Parsear los datos de JSON a un objeto JavaScript
-      const data = JSON.parse(storedData)
-
-      // Eliminar el elemento que deseas (por ejemplo, utilizando filter)
-      const updatedData = data.filter((item) => item.id !== id)
-
-      // Guardar los datos actualizados en localStorage
-      localStorage.setItem('reservas', JSON.stringify(updatedData))
-
-      // Actualizar el estado si es necesario (opcional)
-      setReservas(updatedData)
-    }
-  }
   // almacenar datos de Principal
 
   const [mainCard, setMainCard] = useState([
@@ -238,7 +188,9 @@ function App() {
         <Route path="/Home/:id/" element={<Home post={post} />} />
         <Route
           path="/Home/informacion/:id/:id"
-          element={<Informacion post={post} usuarios={usuarios} />}
+          element={
+            <Informacion post={post} usuarios={usuarios} setPost={setPost} />
+          }
         />
         <Route path="/login" element={<Login usuarios={usuarios} />} />
         <Route
@@ -246,8 +198,7 @@ function App() {
           element={
             <Usuario
               reservas={reservas}
-              registrarMensajeReserva={registrarMensajeReserva}
-              eliminarReserva={eliminarReserva}
+              setReservas={setReservas}
               post={post}
               usuarios={usuarios}
             />
@@ -258,8 +209,7 @@ function App() {
           element={
             <Admin
               reservas={reservas}
-              registrarMensajeReserva={registrarMensajeReserva}
-              eliminarReserva={eliminarReserva}
+              setReservas={setReservas}
               post={post}
               setPost={setPost}
               usuarios={usuarios}

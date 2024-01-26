@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { azul } from '../../UI/UI'
 import { useNavigate, useLocation, Link } from 'react-router-dom'
+import { doc, updateDoc } from 'firebase/firestore'
+import { db } from '../../../config'
 
 const Div = styled.div`
   width: 90%;
@@ -65,6 +67,9 @@ const One = styled.div`
   p {
     font-size: 0.75rem;
   }
+  @media (max-width: 980px) {
+    display: none;
+  }
 `
 const Span = styled.span`
   width: 25px;
@@ -108,7 +113,20 @@ const Img = styled.div`
   margin: 0 -3% 0 0;
 `
 
-const Article = ({ post, id, usuarios }) => {
+const PValoracion = styled.p`
+  @media (max-width: 980px) {
+    display: none;
+  }
+`
+
+const PTasa = styled.p`
+  align-items: center;
+  @media (max-width: 980px) {
+    align-items: start;
+  }
+`
+
+const Article = ({ post, id, usuarios, setPost }) => {
   const navigate = useNavigate()
   const location = useLocation()
   const currentURL = location.pathname
@@ -116,15 +134,36 @@ const Article = ({ post, id, usuarios }) => {
   const idUsuario = segments[4]
   console.log(idUsuario)
 
-  const [valor, setValor] = useState(0)
-  const [porcentaje, setPorcentaje] = useState(0)
-
-  const handleChange = (valor, bloques) => {
-    let porcentajes = (1 * 100) / bloques
-    setPorcentaje(porcentaje + porcentajes)
-    setValor(valor + porcentajes)
-
+  const ActualizarItems = (id) => {
     if (usuarios.find((item) => item.id === idUsuario)) {
+      // Encuentra el producto que quieres actualizar
+      const productToUpdate = post.find((item) => item.id === id)
+
+      if (productToUpdate) {
+        // Calcula el nuevo valor de 'vendidos'
+        const newVendidosValue = productToUpdate.item + 1
+
+        // Crea una referencia al documento en Firestore
+        const productRef = doc(db, 'post', id)
+
+        // Actualiza el campo en Firestore
+        updateDoc(productRef, {
+          item: newVendidosValue
+        })
+          .then(() => {
+            // Actualiza el estado local después de que Firestore se haya actualizado
+            const newPost = post.map((item) => {
+              if (item.id === id) {
+                return { ...item, item: newVendidosValue }
+              }
+              return item
+            })
+            setPost(newPost)
+          })
+          .catch((error) => {
+            console.error('Error al actualizar el documento: ', error)
+          })
+      }
       window.location.href = `https://buy.stripe.com/test_28o00Mf2A2dK5eE6oo`
     } else {
       navigate('/login')
@@ -132,7 +171,7 @@ const Article = ({ post, id, usuarios }) => {
   }
 
   const bloquesRestantes = (bloques, valor) => {
-    let calculo = bloques - valor * 10
+    let calculo = bloques - valor
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 0,
@@ -142,7 +181,7 @@ const Article = ({ post, id, usuarios }) => {
   }
 
   const montoActual = (valor, monto, bloques) => {
-    let calculoInicial = bloques - valor * 10 - bloques
+    let calculoInicial = bloques - valor - bloques
     let calculo = calculoInicial * monto * -1
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'decimal',
@@ -172,11 +211,11 @@ const Article = ({ post, id, usuarios }) => {
               <p>
                 Bloques disponibles:{' '}
                 <span style={{ color: azul, fontWeight: 'bold' }}>
-                  {bloquesRestantes(item.bloques, valor)}
+                  {bloquesRestantes(item.bloques, item.item)}
                 </span>
               </p>
               <Range>
-                <Barra value={porcentaje}></Barra>
+                <Barra value={item.item}></Barra>
               </Range>
             </DivOne>
             <DivTwo>
@@ -184,27 +223,26 @@ const Article = ({ post, id, usuarios }) => {
                 <p>Monto conseguido:</p>
                 <p>Monto a conseguir:</p>
                 <SubOne>
-                  <p style={{ textAlign: 'center' }}>Tasa anual fija</p>
-                  <p
+                  <PTasa>Tasa anual fija</PTasa>
+                  <PTasa
                     style={{
-                      textAlign: 'center',
                       color: azul,
                       fontWeight: 'bold',
                       fontSize: '1.5rem'
                     }}
                   >
                     {item.tasa}%
-                  </p>
+                  </PTasa>
                 </SubOne>
               </Subb>
               <Sub>
                 <p style={{ fontWeight: 'bold' }}>
-                  $ {montoActual(valor, item.monto, item.bloques)}
+                  $ {montoActual(item.item, item.monto, item.bloques)}
                 </p>
                 <p>$ {montoFinal(item.monto, item.bloques)}</p>
 
                 <SubOne>
-                  <p>Valuacion de riesgo:</p>
+                  <PValoracion>Valoración de proyecto:</PValoracion>
                   <div style={{ display: 'flex', gap: '.5rem' }}>
                     <One>
                       <p>1.6</p>
@@ -232,7 +270,7 @@ const Article = ({ post, id, usuarios }) => {
             </DivTwo>
             <DivFooter>
               <h3>Quedan 8 dias para invertir</h3>
-              <Btn onClick={() => handleChange(valor, item.bloques)}>
+              <Btn onClick={() => ActualizarItems(item.id)}>
                 {usuarios.find((item) => item.id === idUsuario) ? (
                   <p>Comprar</p>
                 ) : (

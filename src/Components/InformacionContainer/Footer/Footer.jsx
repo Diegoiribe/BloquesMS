@@ -9,7 +9,6 @@ const Div = styled.div`
 `
 const Ul = styled.ul`
   width: 100%;
-
   background: white;
   display: flex;
   flex-direction: row;
@@ -23,6 +22,9 @@ const Ul = styled.ul`
 const Li = styled.li`
   font-size: 1.5rem;
   cursor: pointer;
+  @media (max-width: 980px) {
+    font-size: 1.25rem;
+  }
 `
 
 const DivText = styled.div`
@@ -32,6 +34,11 @@ const DivText = styled.div`
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
     font-weight: 500;
+  }
+  @media (max-width: 980px) {
+    p {
+      font-size: 1rem;
+    }
   }
 `
 const Calculadoraa = styled.a`

@@ -119,7 +119,7 @@ const Header = ({ usuarios }) => {
   return (
     <Nav
       style={{
-        height: menuVisible ? '25vh' : '9vh',
+        height: menuVisible ? '27vh' : '9vh',
         flexDirection: menuVisible ? 'column' : 'row',
         gap: menuVisible ? '.5rem' : '0'
       }}
@@ -141,7 +141,8 @@ const Header = ({ usuarios }) => {
       </ToggleButton>
       <MobileMenu
         style={{
-          display: menuVisible ? 'flex' : 'none'
+          display: menuVisible ? 'flex' : 'none',
+          gap: menuVisible ? '.5rem' : '0'
         }}
       >
         {isValidId ? (
@@ -150,15 +151,20 @@ const Header = ({ usuarios }) => {
               to={`/home/${idFromURL}`}
               style={{
                 textDecoration: 'none',
-                width: menuVisible ? '100%' : 'none'
+                width: menuVisible ? '100%' : 'none',
+                display: menuVisible ? 'flex' : 'none',
+                alignItems: menuVisible ? 'center' : 'none',
+                justifyContent: menuVisible ? 'center' : 'none'
               }}
             >
               <PLinks
                 style={{
-                  borderTop: menuVisible ? '2px solid #000' : 'none',
-                  width: menuVisible ? '100%' : 'none',
+                  width: menuVisible ? '80%' : 'none',
                   textAlign: menuVisible ? 'center' : 'none',
-                  padding: menuVisible ? '.5rem' : 'none'
+                  padding: menuVisible ? '.5rem' : 'none',
+                  backgroundColor: menuVisible ? azul : 'none',
+                  borderRadius: menuVisible ? '10px' : 'none',
+                  color: menuVisible ? 'white' : 'black'
                 }}
               >
                 Oportunidades para invertir
@@ -168,16 +174,20 @@ const Header = ({ usuarios }) => {
               to={`/usuario/${idFromURL}`}
               style={{
                 textDecoration: 'none',
-                width: menuVisible ? '100%' : 'none'
+                width: menuVisible ? '100%' : 'none',
+                display: menuVisible ? 'flex' : 'none',
+                alignItems: menuVisible ? 'center' : 'none',
+                justifyContent: menuVisible ? 'center' : 'none'
               }}
             >
               <PLinks
                 style={{
-                  borderTop: menuVisible ? '2px solid #000' : 'none',
-                  borderBottom: menuVisible ? '2px solid #000' : 'none',
-                  width: menuVisible ? '100%' : 'none',
+                  width: menuVisible ? '80%' : 'none',
                   textAlign: menuVisible ? 'center' : 'none',
-                  padding: menuVisible ? '.5rem' : 'none'
+                  padding: menuVisible ? '.5rem' : 'none',
+                  backgroundColor: menuVisible ? azul : 'none',
+                  borderRadius: menuVisible ? '10px' : 'none',
+                  color: menuVisible ? 'white' : 'black'
                 }}
               >
                 Dashboard
@@ -190,10 +200,13 @@ const Header = ({ usuarios }) => {
               style={{
                 pointerEvents: 'none',
                 opacity: 0.5,
-                borderTop: menuVisible ? '2px solid #000' : 'none',
-                width: menuVisible ? '100%' : 'none',
+
+                width: menuVisible ? '80%' : 'none',
                 textAlign: menuVisible ? 'center' : 'none',
-                padding: menuVisible ? '.5rem' : 'none'
+                padding: menuVisible ? '.5rem' : 'none',
+                backgroundColor: menuVisible ? azul : 'none',
+                borderRadius: menuVisible ? '10px' : 'none',
+                color: menuVisible ? 'white' : 'black'
               }}
             >
               Oportunidades para invertir
@@ -202,10 +215,12 @@ const Header = ({ usuarios }) => {
               style={{
                 pointerEvents: 'none',
                 opacity: 0.5,
-                border: menuVisible ? '2px solid #000' : 'none',
-                width: menuVisible ? '100%' : 'none',
+                width: menuVisible ? '80%' : 'none',
                 textAlign: menuVisible ? 'center' : 'none',
-                padding: menuVisible ? '.5rem' : 'none'
+                padding: menuVisible ? '.5rem' : 'none',
+                backgroundColor: menuVisible ? azul : 'none',
+                borderRadius: menuVisible ? '10px' : 'none',
+                color: menuVisible ? 'white' : 'black'
               }}
             >
               Dashboard
@@ -217,31 +232,13 @@ const Header = ({ usuarios }) => {
         {isValidId ? (
           <>
             <Link to={`/home/${idFromURL}`} style={{ textDecoration: 'none' }}>
-              <PLinks
-                style={{
-                  border: menuVisible ? '2px solid #000' : 'none',
-                  width: menuVisible ? '100%' : 'none',
-                  textAlign: menuVisible ? 'center' : 'none',
-                  padding: menuVisible ? '.5rem' : 'none'
-                }}
-              >
-                Oportunidades para invertir
-              </PLinks>
+              <PLinks>Oportunidades para invertir</PLinks>
             </Link>
             <Link
               to={`/usuario/${idFromURL}`}
               style={{ textDecoration: 'none' }}
             >
-              <PLinks
-                style={{
-                  border: menuVisible ? '2px solid #000' : 'none',
-                  width: menuVisible ? '100%' : 'none',
-                  textAlign: menuVisible ? 'center' : 'none',
-                  padding: menuVisible ? '.5rem' : 'none'
-                }}
-              >
-                Dashboard
-              </PLinks>
+              <PLinks>Dashboard</PLinks>
             </Link>
           </>
         ) : (
@@ -249,11 +246,7 @@ const Header = ({ usuarios }) => {
             <PLinks
               style={{
                 pointerEvents: 'none',
-                opacity: 0.5,
-                border: menuVisible ? '2px solid #000' : 'none',
-                width: menuVisible ? '100%' : 'none',
-                textAlign: menuVisible ? 'center' : 'none',
-                padding: menuVisible ? '.5rem' : 'none'
+                opacity: 0.5
               }}
             >
               Oportunidades para invertir
@@ -261,11 +254,7 @@ const Header = ({ usuarios }) => {
             <PLinks
               style={{
                 pointerEvents: 'none',
-                opacity: 0.5,
-                border: menuVisible ? '2px solid #000' : 'none',
-                width: menuVisible ? '100%' : 'none',
-                textAlign: menuVisible ? 'center' : 'none',
-                padding: menuVisible ? '.5rem' : 'none'
+                opacity: 0.5
               }}
             >
               Dashboard

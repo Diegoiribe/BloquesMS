@@ -12,18 +12,31 @@ const Div = styled.div`
   display: flex;
   flex-direction: row;
   gap: 2rem;
+  @media (max-width: 980px) {
+    width: 95vw;
+    margin: 15vh 2.5vw 0;
+    flex-direction: column;
+  }
 `
 const SubDivInfo = styled.div`
   width: 60%;
+  @media (max-width: 980px) {
+    width: 100%;
+  }
 `
 const SubDivPago = styled.div`
   width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media (max-width: 980px) {
+    width: 100%;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+  }
 `
 
-const InformacionContainer = ({ post, usuarios }) => {
+const InformacionContainer = ({ post, usuarios, setPost }) => {
   const location = useLocation()
   const currentURL = location.pathname
   const segments = currentURL.split('/')
@@ -37,7 +50,7 @@ const InformacionContainer = ({ post, usuarios }) => {
         <Footer post={post} id={id} />
       </SubDivInfo>
       <SubDivPago>
-        <Article post={post} id={id} usuarios={usuarios} />
+        <Article post={post} id={id} usuarios={usuarios} setPost={setPost} />
       </SubDivPago>
     </Div>
   )

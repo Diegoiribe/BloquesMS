@@ -47,10 +47,22 @@ const Info = styled.div`
   gap: 0.5rem;
   align-items: center;
   padding: 0 1rem 2rem;
+  @media (max-width: 980px) {
+    padding: 0 0.5rem 1rem;
+    justify-content: space-between;
+    div {
+      p {
+        font-size: 0.75rem;
+      }
+    }
+  }
 `
 const P = styled.p`
   font-weight: bold;
   font-size: 2rem;
+  @media (max-width: 980px) {
+    font-size: 1.75rem;
+  }
 `
 
 const Head = ({ post, id }) => {
@@ -94,17 +106,19 @@ const Head = ({ post, id }) => {
                     background: azulClaro
                   }}
                 >
-                  {item.tipo}
+                  <p>{item.tipo}</p>
                 </div>
                 <div style={{ color: azul, fontWeight: 'bold' }}>
-                  Bloques:{' '}
-                  {item.bloques.toLocaleString('en-US', {
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 0
-                  })}
+                  <p>
+                    Bloques:{' '}
+                    {item.bloques.toLocaleString('en-US', {
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 0
+                    })}
+                  </p>
                 </div>
                 <div style={{ color: azul, fontWeight: 'bold' }}>
-                  Lugar: {item.place}
+                  <p>Lugar: {item.place}</p>
                 </div>
               </Info>
             </DivSecundario>

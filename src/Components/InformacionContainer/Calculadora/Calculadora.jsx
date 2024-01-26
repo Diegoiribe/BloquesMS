@@ -24,6 +24,9 @@ const DivOne = styled.div`
   border-bottom: 1px solid #cdd3d9;
   border-top: 1px solid #cdd3d9;
   padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 `
 const DivTwo = styled.div`
   width: 100%;
@@ -56,16 +59,47 @@ const SubThree = styled.div`
       font-weight: 200;
       font-size: 1.15rem;
     }
+    @media (max-width: 980px) {
+      p {
+        font-weight: 200;
+        font-size: 0.9rem;
+      }
+    }
   }
 `
 const Span = styled.span`
   font-weight: bold;
   font-size: 1.5rem;
+  @media (max-width: 980px) {
+    font-size: 1.25rem;
+  }
 `
+
+const Input = styled.input`
+  font-size: 1.2rem;
+  padding: 1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  border: none;
+  &:focus {
+    outline: none;
+  }
+`
+
 const Spann = styled.span`
   color: ${azul};
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
+
+  @media (max-width: 980px) {
+    font-size: 1.25rem;
+  }
+`
+
+const H1 = styled.h1`
+  @media (max-width: 980px) {
+    font-size: 1.25rem;
+  }
 `
 
 const Calculadora = ({ post, id }) => {
@@ -122,36 +156,25 @@ const Calculadora = ({ post, id }) => {
         .map((item, index) => (
           <Div key={index}>
             <Container>
-              <h1>Elige el numero de Bloques</h1>
-              <Spann>
-                Bloques:{' '}
-                {valor.toLocaleString('en-US', {
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 0
-                })}
-              </Spann>
+              <H1>Elige el numero de Bloques</H1>
+
               <DivOne>
-                <input
-                  type="range"
-                  min="1"
+                <Input
+                  type="number"
                   max={item.bloques}
-                  step="1"
+                  placeholder="Ingresa el numero de bloques"
                   value={valor}
                   onChange={handleChange}
                   style={{ width: '100%', height: '2rem' }}
                 />
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center'
-                  }}
-                >
-                  <p style={{ color: '#636f7b', fontSize: '1.5rem' }}>1</p>
-                  <p style={{ color: '#636f7b', fontSize: '1.5rem' }}>
-                    {item.bloques}
-                  </p>
-                </div>
+
+                <Spann>
+                  Bloques:{' '}
+                  {valor.toLocaleString('en-US', {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
+                  })}
+                </Spann>
               </DivOne>
             </Container>
             <DivTwo>
@@ -163,7 +186,7 @@ const Calculadora = ({ post, id }) => {
                     maximumFractionDigits: 0
                   })}
                 </Span>{' '}
-                bloques, ganará $<Spann>{interes(item.tasa, item.monto)}</Spann>{' '}
+                bloques, ganará <Spann>${interes(item.tasa, item.monto)}</Spann>{' '}
                 de intereses.
               </p>
               <p>

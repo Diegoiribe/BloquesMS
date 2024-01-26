@@ -11,6 +11,9 @@ const Div = styled.div`
 `
 const P = styled.p`
   font-size: 1.25rem;
+  @media (max-width: 980px) {
+    font-size: 1rem;
+  }
 `
 const SubDiv = styled.div`
   width: 100%;
@@ -34,6 +37,13 @@ const SubDivOne = styled.div`
       color: #4f5766;
     }
   }
+  @media (max-width: 980px) {
+    div {
+      p {
+        font-size: 0.85rem;
+      }
+    }
+  }
 `
 const SubDivTwo = styled.div`
   width: 50%;
@@ -52,6 +62,13 @@ const SubDivTwo = styled.div`
       color: #4f5766;
     }
   }
+  @media (max-width: 980px) {
+    div {
+      p {
+        font-size: 0.85rem;
+      }
+    }
+  }
 `
 
 const DivInteres = styled.div`
@@ -67,6 +84,11 @@ const DivInteres = styled.div`
     font-weight: 100;
     font-size: 1.15rem;
     color: #4f5766;
+  }
+  @media (max-width: 980px) {
+    p {
+      font-size: 1rem;
+    }
   }
 `
 const Main = ({ post, id }) => {
@@ -94,7 +116,7 @@ const Main = ({ post, id }) => {
               </SubDivOne>
               <SubDivTwo>
                 <div>
-                  <p>Minimo para invertir</p>
+                  <p>Minimo</p>
                   <p>Tasa anual</p>
                   <p>Garantia</p>
                 </div>

@@ -12,6 +12,15 @@ const DivLogin = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width: 1540px) {
+    height: auto;
+    margin: 20vh 10vw;
+  }
+  @media (max-width: 980px) {
+    width: 90vw;
+    height: auto;
+    margin: 15vh 5vw 15vh;
+  }
 `
 const DivTop = styled.div`
   width: 45%;
@@ -19,10 +28,23 @@ const DivTop = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+
+  @media (max-width: 980px) {
+    width: 100%;
+    h1 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 0.95rem;
+    }
+  }
 `
 const DivBottom = styled.div`
   width: 45%;
   height: 55%;
+  @media (max-width: 980px) {
+    width: 100%;
+  }
 `
 const Label = styled.label`
   font-size: 0.75rem;
@@ -39,7 +61,19 @@ const DivInput = styled.div`
 const DivCondiciones = styled.div`
   display: flex;
   flex-direction: row;
+  @media (max-width: 980px) {
+    width: 95%;
+    gap: 1rem;
+  }
 `
+
+const LabelInput = styled.label`
+  width: 20px;
+  @media (max-width: 980px) {
+    width: 30px;
+  }
+`
+
 const Btn = styled.button`
   width: 100%;
   height: 3rem;
@@ -138,9 +172,9 @@ const Login = ({ usuarios }) => {
             />
           </DivInput>
           <DivCondiciones>
-            <label style={{ width: '20px' }}>
+            <LabelInput>
               <input type="checkbox" id="span" />
-            </label>
+            </LabelInput>
             <Label for="span">
               Estoy de acuerdo con los Términos y condiciones y con el
               tratamiento de mis datos según el Aviso de Privacidad.

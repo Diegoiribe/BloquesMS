@@ -12,6 +12,9 @@ const DivCard = styled.div`
   border-radius: 10px;
   margin: 1rem 1rem;
   box-shadow: 0 1px 11px 0 rgba(0, 0, 0, 0.2);
+  @media (max-width: 1540px) {
+    height: 95vh;
+  }
   @media (max-width: 980px) {
     width: 85vw;
     height: 87.5vh;
