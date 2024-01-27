@@ -70,7 +70,7 @@ const DivCondiciones = styled.div`
 const LabelInput = styled.label`
   width: 20px;
   @media (max-width: 980px) {
-    width: 30px;
+    width: 40px;
   }
 `
 
