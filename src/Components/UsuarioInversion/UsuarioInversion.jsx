@@ -11,6 +11,9 @@ const Div = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  @media (max-width: 980px) {
+    width: 100%;
+  }
 `
 
 const DivDashboard = styled.div`
@@ -20,12 +23,18 @@ const DivDashboard = styled.div`
   gap: 2rem;
   padding: 2.5rem;
   background-color: #f4f5f7;
+  @media (max-width: 980px) {
+    padding: 2rem 0.5rem 1rem;
+  }
 `
 const DivPrincipal = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  @media (max-width: 980px) {
+    gap: 1rem;
+  }
 `
 
 const DivPortafolio = styled.div`
@@ -34,6 +43,10 @@ const DivPortafolio = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 0.5rem;
+  @media (max-width: 980px) {
+    width: 100%;
+    flex-direction: column;
+  }
 `
 const DivCard = styled.div`
   width: 35%;
@@ -45,10 +58,21 @@ const DivCard = styled.div`
   border-radius: 5px;
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 0.5rem;
+  @media (max-width: 980px) {
+    width: 100%;
+    padding: 1rem;
+    margin: 0 0 1rem;
+  }
 `
 const DivCardOne = styled.div`
   width: 100%;
   text-align: center;
+`
+
+const Titulo = styled.div`
+  @media (max-width: 980px) {
+    padding: 1rem;
+  }
 `
 
 const DivCardTwo = styled.div`
@@ -73,6 +97,9 @@ const DivTwo = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: 0.5rem;
+  @media (max-width: 980px) {
+    width: 100%;
+  }
 `
 
 const DivCortoPlazo = styled.div`
@@ -85,6 +112,16 @@ const DivCortoPlazo = styled.div`
   padding: 2rem;
   border-radius: 5px;
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+  @media (max-width: 980px) {
+    width: 100%;
+    flex-direction: column;
+    padding: 1rem;
+    div {
+      h2 {
+        text-align: center;
+      }
+    }
+  }
 `
 
 const DivLargoPlazo = styled.div`
@@ -97,6 +134,43 @@ const DivLargoPlazo = styled.div`
   padding: 2rem;
   border-radius: 5px;
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
+  @media (max-width: 980px) {
+    width: 100%;
+    flex-direction: column;
+    padding: 1rem;
+    div {
+      h2 {
+        text-align: center;
+      }
+    }
+  }
+`
+const Invertido = styled.div`
+  @media (max-width: 980px) {
+    display: none;
+  }
+`
+const P = styled.p`
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: ${azul};
+  @media (max-width: 980px) {
+    font-size: 2rem;
+  }
+`
+
+const UsuarioCard = styled.div`
+  @media (max-width: 980px) {
+    padding: 0.5rem;
+  }
+`
+
+const Card = styled.div`
+  padding: 1rem;
+  @media (max-width: 980px) {
+    padding: 0.5rem;
+    width: 100%;
+  }
 `
 
 const UsuarioInversion = ({ usuarios }) => {
@@ -111,26 +185,15 @@ const UsuarioInversion = ({ usuarios }) => {
         .map((usuarios, index) => (
           <DivDashboard key={index}>
             <DivPrincipal>
-              <div>
+              <Titulo>
                 <h1>Hola {usuarios.nombre}</h1>
-                <p>
-                  Este es un resumen de todas tus inversiones, su valor por
-                  proyecto y tipo de inversion
-                </p>
-              </div>
+                <p>Este es un resumen de todas tus inversiones</p>
+              </Titulo>
               <DivPortafolio>
                 <DivCard>
                   <DivCardOne>
                     <p>Valor actual de tu portafolio</p>
-                    <p
-                      style={{
-                        fontSize: '2.5rem',
-                        fontWeight: 'bold',
-                        color: azul
-                      }}
-                    >
-                      ${usuarios.valorActual}*
-                    </p>
+                    <P>${usuarios.valorActual}</P>
                   </DivCardOne>
                   <DivCardTwo>
                     <div>
@@ -240,7 +303,7 @@ const UsuarioInversion = ({ usuarios }) => {
                         {usuarios.proyectosCorto} proyectos
                       </p>
                     </div>
-                    <div>
+                    <Invertido>
                       <p>Total Invertido:</p>
                       <br />
                       <p>+ Retornos generados:</p>
@@ -248,8 +311,8 @@ const UsuarioInversion = ({ usuarios }) => {
                       <p>- Pagos recibidos:</p>
                       <br />
                       <p style={{ color: azul, fontWeight: 'bold' }}>Valor:</p>
-                    </div>
-                    <div style={{ textAlign: 'end' }}>
+                    </Invertido>
+                    <Invertido style={{ textAlign: 'end' }}>
                       <p>${usuarios.totalCorto}</p>
                       <br />
                       <p>${usuarios.retornoCorto}</p>
@@ -259,7 +322,7 @@ const UsuarioInversion = ({ usuarios }) => {
                       <p style={{ color: azul, fontWeight: 'bold' }}>
                         ${usuarios.valorCorto}
                       </p>
-                    </div>
+                    </Invertido>
                   </DivCortoPlazo>
                   <DivLargoPlazo>
                     <div>
@@ -293,7 +356,7 @@ const UsuarioInversion = ({ usuarios }) => {
                         {usuarios.proyectosLargo} proyectos
                       </p>
                     </div>
-                    <div>
+                    <Invertido>
                       <p>Total Invertido:</p>
                       <br />
                       <p>+ Retornos generados:</p>
@@ -301,8 +364,8 @@ const UsuarioInversion = ({ usuarios }) => {
                       <p>- Pagos recibidos:</p>
                       <br />
                       <p style={{ color: azul, fontWeight: 'bold' }}>Valor:</p>
-                    </div>
-                    <div style={{ textAlign: 'end' }}>
+                    </Invertido>
+                    <Invertido style={{ textAlign: 'end' }}>
                       <p>${usuarios.totalLargo}</p>
                       <br />
                       <p>${usuarios.retornoLargo}</p>
@@ -312,20 +375,20 @@ const UsuarioInversion = ({ usuarios }) => {
                       <p style={{ color: azul, fontWeight: 'bold' }}>
                         ${usuarios.valorLargo}
                       </p>
-                    </div>
+                    </Invertido>
                   </DivLargoPlazo>
                 </DivTwo>
               </DivPortafolio>
             </DivPrincipal>
-            <div>
+            <UsuarioCard>
               <div>
                 <h2>Mis inversiones</h2>
                 <p>Portafolio actual</p>
               </div>
-              <div style={{ padding: '1rem' }}>
+              <Card>
                 <UsuarioCardInversiones id={id} usuarios={usuarios} />
-              </div>
-            </div>
+              </Card>
+            </UsuarioCard>
           </DivDashboard>
         ))}
     </Div>

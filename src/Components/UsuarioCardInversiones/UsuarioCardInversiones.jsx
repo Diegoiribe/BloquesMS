@@ -13,6 +13,10 @@ const Div = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  @media (max-width: 980px) {
+    padding: 1rem;
+    width: 100%;
+  }
 `
 const DivOne = styled.div``
 
@@ -22,13 +26,28 @@ const DivTwo = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  @media (max-width: 980px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
 `
 const DivThree = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  @media (max-width: 980px) {
+    p {
+      font-size: 1rem;
+    }
+  }
 `
+const Tasa = styled.p`
+  font-size: 1.5rem;
+  color: ${azul};
+  font-weight: bold;
+`
+
 const DivFour = styled.div`
   display: flex;
   flex-direction: row;
@@ -55,15 +74,7 @@ const UsuarioCardInversiones = ({ usuarios, id }) => {
             <DivTwo>
               <DivThree>
                 <p style={{ fontWeight: 'bold' }}>Tasa anualizada</p>
-                <p
-                  style={{
-                    fontSize: '1.5rem',
-                    color: azul,
-                    fontWeight: 'bold'
-                  }}
-                >
-                  {item.tasa}
-                </p>
+                <Tasa>{item.tasa}</Tasa>
               </DivThree>
               <DivFour>
                 <div>

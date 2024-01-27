@@ -119,7 +119,7 @@ const Header = ({ usuarios }) => {
   return (
     <Nav
       style={{
-        height: menuVisible ? '27vh' : '9vh',
+        height: menuVisible ? '40vh' : '9vh',
         flexDirection: menuVisible ? 'column' : 'row',
         gap: menuVisible ? '.5rem' : '0'
       }}
