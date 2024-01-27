@@ -22,6 +22,11 @@ const Button = styled.button`
   padding: 0.5rem 1rem;
   color: white;
   font-weight: 500;
+  cursor: pointer;
+  @media (max-width: 980px) {
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
 `
 const Label = styled.label`
   font-size: 0.75rem;

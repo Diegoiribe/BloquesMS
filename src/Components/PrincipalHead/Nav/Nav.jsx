@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import DehazeIcon from '@mui/icons-material/Dehaze'
 import { useState, useEffect } from 'react'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward'
 import { grisNav, hoverNav, azul } from '../../UI/UI'
@@ -52,6 +52,9 @@ const Ul = styled.ul`
   max-width: 40%;
   border-radius: 4.375rem;
   padding: 0.05rem;
+  @media (max-width: 980px) {
+    min-width: auto;
+  }
 `
 const Li = styled.a`
   font-size: 0.875rem;
@@ -62,6 +65,9 @@ const Li = styled.a`
   cursor: pointer;
   text-decoration: none;
   color: black;
+  @media (max-width: 980px) {
+    padding: 0.45rem 0.5rem;
+  }
 `
 
 const Nav = () => {
@@ -95,57 +101,67 @@ const Nav = () => {
     padding: '0.15rem 1.2rem'
   }
 
+  const mobil = window.innerWidth < 980
+
   return (
     <DivNav>
       <Div id="section0">
         {/* Asegúrate de tener una key única aquí */}
-        <Ul>
-          <Li
-            style={seccion === '0' ? customStyleLi : null}
-            onClick={() => cambiarSeccion('0')}
-            href="#section1"
-          >
-            <ArrowUpwardIcon
-              style={seccion === '0' ? customStyleArrow : Arrow}
-            />
-          </Li>
-          <Li
-            style={seccion === '1' ? customStyle : null}
-            onClick={() => cambiarSeccion('1')}
-            href="#section1"
-          >
-            Inicio
-          </Li>
+        {mobil ? (
+          <Ul>
+            <Li>
+              <DehazeIcon />
+            </Li>
+          </Ul>
+        ) : (
+          <Ul>
+            <Li
+              style={seccion === '0' ? customStyleLi : null}
+              onClick={() => cambiarSeccion('0')}
+              href="#section1"
+            >
+              <ArrowUpwardIcon
+                style={seccion === '0' ? customStyleArrow : Arrow}
+              />
+            </Li>
+            <Li
+              style={seccion === '1' ? customStyle : null}
+              onClick={() => cambiarSeccion('1')}
+              href="#section1"
+            >
+              Inicio
+            </Li>
 
-          <Li
-            style={seccion === '2' ? customStyle : null}
-            onClick={() => cambiarSeccion('2')}
-            href="#section2"
-          >
-            Sobre Nosotros
-          </Li>
-          <Li
-            style={seccion === '3' ? customStyle : null}
-            onClick={() => cambiarSeccion('3')}
-            href="#section3"
-          >
-            Proyectos
-          </Li>
-          <Li
-            style={seccion === '4' ? customStyle : null}
-            onClick={() => cambiarSeccion('4')}
-            href="#section4"
-          >
-            Galeria
-          </Li>
-          <Li
-            style={seccion === '5' ? customStyle : null}
-            onClick={() => cambiarSeccion('5')}
-            href="#section5"
-          >
-            Contacto
-          </Li>
-        </Ul>
+            <Li
+              style={seccion === '2' ? customStyle : null}
+              onClick={() => cambiarSeccion('2')}
+              href="#section2"
+            >
+              Sobre Nosotros
+            </Li>
+            <Li
+              style={seccion === '3' ? customStyle : null}
+              onClick={() => cambiarSeccion('3')}
+              href="#section3"
+            >
+              Proyectos
+            </Li>
+            <Li
+              style={seccion === '4' ? customStyle : null}
+              onClick={() => cambiarSeccion('4')}
+              href="#section4"
+            >
+              Galeria
+            </Li>
+            <Li
+              style={seccion === '5' ? customStyle : null}
+              onClick={() => cambiarSeccion('5')}
+              href="#section5"
+            >
+              Contacto
+            </Li>
+          </Ul>
+        )}
         <Btn>
           <Link
             style={{ width: '100%', height: '100%', textDecoration: 'none' }}

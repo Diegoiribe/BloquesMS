@@ -11,6 +11,9 @@ const Div = styled.div`
   display: flex;
   align-items: center;
   justify-content: end;
+  @media (max-width: 980px) {
+    height: auto;
+  }
 `
 const Container = styled.div`
   width: 100%;
@@ -24,6 +27,9 @@ const Container = styled.div`
 `
 const H1 = styled.h1`
   font-size: 48px;
+  @media (max-width: 980px) {
+    font-size: 1.5rem;
+  }
 `
 const Card = styled.div`
   height: 70%;

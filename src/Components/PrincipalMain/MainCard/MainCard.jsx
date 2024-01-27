@@ -8,12 +8,21 @@ const Div = styled.div`
   width: 17vw;
   height: 100%;
   border-radius: 28px;
+  @media (max-width: 980px) {
+    width: 50vw;
+    height: 65vh;
+  }
 `
 const Container = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 28px;
   padding: 1rem;
+  display: flex;
+  flex-direction: row;
+  @media (max-width: 980px) {
+    flex-direction: column;
+  }
 `
 const DivOne = styled.div`
   background: transparent;
@@ -55,6 +64,9 @@ const P = styled.p`
     sans-serif;
   color: #f5f5f7;
   background: transparent;
+  @media (max-width: 980px) {
+    font-size: 20px;
+  }
 `
 
 //Diseño activo
@@ -66,6 +78,10 @@ const DivOneActivo = styled.div`
   align-items: start;
   justify-content: space-around;
   background: transparent;
+  @media (max-width: 980px) {
+    width: 100%;
+    height: 50%;
+  }
 `
 const Titulo = styled.div`
   width: 100%;
@@ -74,6 +90,11 @@ const Titulo = styled.div`
 const Informacion = styled.div`
   width: 100%;
   background: transparent;
+  @media (max-width: 980px) {
+    p {
+      font-size: 0.85rem;
+    }
+  }
 `
 const DivTwoActivo = styled.div`
   width: 40%;
@@ -84,6 +105,11 @@ const DivTwoActivo = styled.div`
   justify-content: space-between;
   background: transparent;
   padding: 2rem 2rem 0;
+  @media (max-width: 980px) {
+    width: 100%;
+    height: 50%;
+    padding: 0.5rem 0.5rem 0 0.5rem;
+  }
 `
 const DivIconActivo = styled.div`
   width: 100%;
@@ -94,8 +120,21 @@ const DivIconActivo = styled.div`
 `
 
 const MainCard = ({ mainCard, widthMainCard }) => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth)
+    }
+
+    window.addEventListener('resize', handleResize)
+
+    // Limpiar el escuchador de eventos al desmontar el componente
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   const styleDiv = {
-    width: '51vw'
+    width: windowWidth < 980 ? '75vw' : '51vw'
   }
 
   console.log(mainCard)
@@ -106,9 +145,7 @@ const MainCard = ({ mainCard, widthMainCard }) => {
           <Div key={index} style={styleDiv}>
             <Container
               style={{
-                background: item.color,
-                display: 'flex',
-                flexDirection: 'row'
+                background: item.color
               }}
             >
               <DivOneActivo>

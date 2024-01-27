@@ -13,6 +13,9 @@ const Input = styled.input`
   &:focus {
     outline: none;
   }
+  @media (max-width: 980px) {
+    font-size: 0.85rem;
+  }
 `
 
 const ContactInput = (props) => {
@@ -51,6 +54,9 @@ const TextArea = styled.textarea`
   font-size: 1vw;
   &:focus {
     outline: none;
+  }
+  @media (max-width: 980px) {
+    font-size: 0.85rem;
   }
 `
 

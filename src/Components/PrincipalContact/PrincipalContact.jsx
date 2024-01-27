@@ -4,24 +4,34 @@ import ContactForm from './ContactForm/ContactForm'
 
 const Div = styled.div`
   width: 74%;
-  height: 90vh;
+  height: 130vh;
   margin: 7.5% 13% 0;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5rem;
+  @media (max-width: 980px) {
+    flex-direction: column-reverse;
+    width: 100%;
+    margin: 0;
+    gap: 2rem;
+  }
 `
 
 const DivContact = styled.div`
   width: 50%;
   height: 100%;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 1rem;
   gap: 5rem;
+  @media (max-width: 980px) {
+    width: 95%;
+    height: auto;
+    gap: 2rem;
+  }
 `
 
 const DivCard = styled.div`
@@ -39,10 +49,17 @@ const DivCard = styled.div`
     width: 100%; /* Ajusta el ancho al 100% del contenedor */
     height: 100%; /* Ajusta la altura al 100% del contenedor */
   }
+  @media (max-width: 980px) {
+    width: 95%;
+    height: 50%;
+  }
 `
 
 const H1 = styled.h1`
   font-size: 48px;
+  @media (max-width: 980px) {
+    font-size: 1.5rem;
+  }
 `
 
 const PrincipalContact = () => {

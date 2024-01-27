@@ -169,6 +169,21 @@ function App() {
   }
 
   const [gallery, setGallery] = useState([])
+  const [loadingFromStorageGallery, setLoadingFromStorageGallery] =
+    useState(true)
+
+  useEffect(() => {
+    const galleryRef = collection(db, 'gallery')
+    const unGallery = onSnapshot(galleryRef, (querySnapshot) => {
+      const data = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data()
+      }))
+      setGallery(data)
+      setLoadingFromStorageGallery(false)
+    })
+    return () => unGallery()
+  }, [])
 
   return (
     <Router className="App">
