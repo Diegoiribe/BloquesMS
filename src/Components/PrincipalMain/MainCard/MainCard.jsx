@@ -19,7 +19,7 @@ const Container = styled.div`
   border-radius: 28px;
   padding: 1rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   @media (max-width: 980px) {
     flex-direction: column;
   }
@@ -105,6 +105,7 @@ const DivTwoActivo = styled.div`
   justify-content: space-between;
   background: transparent;
   padding: 2rem 2rem 0;
+
   @media (max-width: 980px) {
     width: 100%;
     height: 50%;
