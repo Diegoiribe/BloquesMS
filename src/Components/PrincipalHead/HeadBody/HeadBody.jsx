@@ -134,6 +134,8 @@ const CardOne = styled.div`
     .one {
       div {
         margin: 0 0 0;
+        width: 110px;
+        height: 110px;
       }
 
       p {
