@@ -58,7 +58,7 @@ const DivCard = styled.div`
 const H1 = styled.h1`
   font-size: 48px;
   @media (max-width: 980px) {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 `
 

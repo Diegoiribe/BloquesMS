@@ -25,7 +25,7 @@ const Button = styled.button`
   cursor: pointer;
   @media (max-width: 980px) {
     font-size: 1rem;
-    margin-top: 1rem;
+    margin: 1rem 0;
   }
 `
 const Label = styled.label`
@@ -106,6 +106,7 @@ const ContactForm = () => {
             de mis datos según el Aviso de Privacidad.
           </Label>
         </div>
+
         <Button type="submit">Enviar</Button>
       </Form>
     </div>

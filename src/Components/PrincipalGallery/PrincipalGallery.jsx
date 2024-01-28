@@ -10,6 +10,9 @@ const H1 = styled.h1`
     sans-serif;
   background: transparent;
   margin-bottom: 3rem;
+  @media (max-width: 980px) {
+    font-size: 2rem;
+  }
 `
 
 const PrincipalGallery = ({ gallery }) => {
