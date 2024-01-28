@@ -14,10 +14,6 @@ const DivNav = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  @media (max-width: 980px) {
-    background: fill;
-    backdrop-filter: blur(10px);
-  }
 `
 
 const Div = styled.div`
@@ -48,9 +44,7 @@ const P = styled.p`
 
 const Ul = styled.ul`
   display: flex;
-
   align-items: center;
-
   background-color: ${grisNav};
   min-width: 25.5%;
   max-width: 40%;
@@ -71,24 +65,13 @@ const Li = styled.a`
   color: black;
   @media (max-width: 980px) {
     padding: 0.45rem 0.5rem;
-  }
-`
-
-const MobileMenu = styled.div`
-  display: none;
-  @media (max-width: 980px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: white;
-    top: 9vh;
-    width: 100%;
-    height: 50%;
+    font-size: 0.75rem;
   }
 `
 
 const Nav = () => {
   const [seccion, setSeccion] = useState('1')
+  console.log(seccion)
 
   const cambiarSeccion = (nombre) => {
     setSeccion(nombre)
@@ -119,15 +102,78 @@ const Nav = () => {
   }
 
   const mobil = window.innerWidth < 980
+  const [toggleMenu, setToggleMenu] = useState(false)
+
+  const toggleNav = () => {
+    setToggleMenu(!toggleMenu)
+    setTimeout(() => {
+      setToggleMenu(toggleMenu)
+    }, 5000)
+  }
 
   return (
     <DivNav>
       <Div id="section0">
         {/* Asegúrate de tener una key única aquí */}
         {mobil ? (
-          <Ul>
+          <Ul
+            style={{
+              maxWidth: toggleMenu ? '100%' : '40%'
+            }}
+          >
             <Li>
-              <DehazeIcon />
+              <DehazeIcon onClick={() => toggleNav()} />
+            </Li>
+            <Li
+              style={{
+                ...(seccion === '1' ? customStyle : {}),
+                display: toggleMenu ? 'flex' : 'none'
+              }}
+              onClick={() => cambiarSeccion('1')}
+              href="#section1"
+            >
+              Inicio
+            </Li>
+
+            <Li
+              style={{
+                ...(seccion === '2' ? customStyle : {}),
+                display: toggleMenu ? 'flex' : 'none'
+              }}
+              onClick={() => cambiarSeccion('2')}
+              href="#section2"
+            >
+              Sobre Nosotros
+            </Li>
+            <Li
+              style={{
+                ...(seccion === '3' ? customStyle : {}),
+                display: toggleMenu ? 'flex' : 'none'
+              }}
+              onClick={() => cambiarSeccion('3')}
+              href="#section3"
+            >
+              Proyectos
+            </Li>
+            <Li
+              style={{
+                ...(seccion === '4' ? customStyle : {}),
+                display: toggleMenu ? 'flex' : 'none'
+              }}
+              onClick={() => cambiarSeccion('4')}
+              href="#section4"
+            >
+              Galeria
+            </Li>
+            <Li
+              style={{
+                ...(seccion === '5' ? customStyle : {}),
+                display: toggleMenu ? 'flex' : 'none'
+              }}
+              onClick={() => cambiarSeccion('5')}
+              href="#section5"
+            >
+              Contacto
             </Li>
           </Ul>
         ) : (
@@ -179,7 +225,7 @@ const Nav = () => {
             </Li>
           </Ul>
         )}
-        <Btn>
+        <Btn style={{ display: toggleMenu ? 'none' : 'block' }}>
           <Link
             style={{ width: '100%', height: '100%', textDecoration: 'none' }}
             to="/home"
