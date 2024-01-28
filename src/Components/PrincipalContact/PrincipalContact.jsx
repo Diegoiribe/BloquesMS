@@ -64,7 +64,7 @@ const H1 = styled.h1`
 
 const PrincipalContact = () => {
   return (
-    <Div>
+    <Div id="section5">
       <DivContact>
         <H1>Contacto</H1>
         <ContactForm />

@@ -14,6 +14,8 @@ const DivNav = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  background: fill;
+  backdrop-filter: blur(10px);
 `
 
 const Div = styled.div`
@@ -67,6 +69,19 @@ const Li = styled.a`
   color: black;
   @media (max-width: 980px) {
     padding: 0.45rem 0.5rem;
+  }
+`
+
+const MobileMenu = styled.div`
+  display: none;
+  @media (max-width: 980px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: white;
+    top: 9vh;
+    width: 100%;
+    height: 50%;
   }
 `
 
