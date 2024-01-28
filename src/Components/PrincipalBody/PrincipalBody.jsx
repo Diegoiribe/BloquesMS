@@ -41,7 +41,7 @@ const Imagen = styled.div`
 `
 const Inf = styled.div`
   width: 100%;
-  height: 10%;
+  height: 20%;
   background: transparent;
   padding: 1rem;
   p {
@@ -118,10 +118,10 @@ const PrincipalBody = () => {
           <DivImg>
             <Imagen
               style={{
-                backgroundImage: `url(https://www.malagahoy.es/2023/11/15/malaga/Carlos-Barrera-CEO-Enrolux-cambiando_1848425274_197071928_667x375.png)`,
+                backgroundImage: `url(https://static.vecteezy.com/system/resources/previews/032/318/935/non_2x/ai-generated-modern-handsome-businessman-suit-confidence-attractive-successful-white-caucasian-person-professional-adult-male-hair-executive-business-mature-men-portrait-studio-free-photo.jpg)`,
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
-                backgroundPosition: 'center bottom 10%'
+                backgroundPosition: 'center top 10%'
               }}
             >
               <Inf>
