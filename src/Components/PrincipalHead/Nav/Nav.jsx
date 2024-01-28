@@ -14,8 +14,10 @@ const DivNav = styled.div`
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background: fill;
-  backdrop-filter: blur(10px);
+  @media (max-width: 980px) {
+    background: fill;
+    backdrop-filter: blur(10px);
+  }
 `
 
 const Div = styled.div`
