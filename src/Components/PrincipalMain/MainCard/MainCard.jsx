@@ -19,23 +19,31 @@ const Container = styled.div`
   border-radius: 28px;
   padding: 1rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   @media (max-width: 980px) {
     flex-direction: column;
   }
 `
 const DivOne = styled.div`
   background: transparent;
-  width: 100%;
-  height: 50%;
+  width: 90%;
+  height: 100%;
+  @media (max-width: 980px) {
+    width: 100%;
+    height: 50%;
+  }
 `
 const DivTwo = styled.div`
   background: transparent;
-  width: 100%;
-  height: 50%;
+  width: 10%;
+  height: 100%;
   display: flex;
   align-items: end;
   justify-content: end;
+  @media (max-width: 980px) {
+    width: 100%;
+    height: 50%;
+  }
 `
 const DivIcon = styled.div`
   background: #37373a;

@@ -49,6 +49,10 @@ const ImgText = styled.div`
     color: ${azul};
     font-weight: bold;
   }
+  @media (max-width: 1540px) {
+    height: auto;
+  }
+
   @media (max-width: 980px) {
     padding: 2rem 0 2rem 1rem;
     height: 60%;

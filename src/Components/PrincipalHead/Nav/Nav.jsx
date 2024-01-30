@@ -143,7 +143,7 @@ const Nav = () => {
               onClick={() => cambiarSeccion('2')}
               href="#section2"
             >
-              Sobre Nosotros
+              Nosotros
             </Li>
             <Li
               style={{

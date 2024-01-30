@@ -16,6 +16,8 @@ const H1 = styled.h1`
 `
 
 const PrincipalGallery = ({ gallery }) => {
+  const mobil = window.innerWidth < 980
+
   return (
     <>
       <span id="section4"></span>
@@ -27,15 +29,18 @@ const PrincipalGallery = ({ gallery }) => {
         }}
       >
         <H1>Galeria</H1>
-
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(20px, 133px))',
-            gridAutoFlow: 'dense', // Esta propiedad intenta llenar los espacios más efectivamente
+            gridTemplateColumns: mobil
+              ? 'repeat(auto-fill, minmax(50px, 100px))'
+              : 'repeat(auto-fill, minmax(20px, 133px))',
+            gridAutoFlow: mobil ? 'dense' : 'dense', // Esta propiedad intenta llenar los espacios más efectivamente
+            gridAutoRows: mobil ? '50px' : null,
             gap: '10px',
             width: '100%',
-            height: '80%'
+            height: '80%',
+            overflowY: 'hidden'
           }}
         >
           {gallery.map((item, index) => {

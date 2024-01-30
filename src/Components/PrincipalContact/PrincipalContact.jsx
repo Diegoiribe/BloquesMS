@@ -13,8 +13,10 @@ const Div = styled.div`
   @media (max-width: 980px) {
     flex-direction: column-reverse;
     width: 100%;
-    margin: 0;
+    margin: 0 0 5rem 0;
     gap: 2rem;
+    justify-content: start;
+    height: auto;
   }
 `
 
@@ -51,7 +53,7 @@ const DivCard = styled.div`
   }
   @media (max-width: 980px) {
     width: 95%;
-    height: 50%;
+    height: 20%;
   }
 `
 
