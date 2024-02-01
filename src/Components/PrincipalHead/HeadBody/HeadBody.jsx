@@ -74,11 +74,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-around;
   gap: 2rem;
-  background: linear-gradient(
-    to bottom left,
-    rgb(0, 163, 224),
-    rgb(5, 109, 174)
-  );
+  background: rgb(5, 109, 174);
   @media (max-width: 980px) {
     padding: 0 5%;
     flex-direction: column;

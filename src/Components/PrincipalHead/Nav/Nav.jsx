@@ -115,8 +115,32 @@ const Nav = () => {
     }, 5000)
   }
 
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Cambia el estado dependiendo de la posición del scroll
+      if (window.scrollY > 100) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+
+    // Añade el event listener cuando el componente se monta
+    window.addEventListener('scroll', handleScroll)
+
+    // Limpieza del event listener cuando el componente se desmonta
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
-    <DivNav>
+    <DivNav
+      style={{
+        background: isScrolled ? 'white' : 'transparent',
+        transition: 'background-color 0.3s ease'
+      }}
+    >
       <Div id="section0">
         {/* Asegúrate de tener una key única aquí */}
         {mobil ? (
