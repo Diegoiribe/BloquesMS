@@ -13,6 +13,10 @@ const Div = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  @media (max-width: 1300px) {
+    padding: 1rem;
+    width: 50%;
+  }
   @media (max-width: 980px) {
     padding: 1rem;
     width: 100%;
@@ -26,7 +30,7 @@ const DivTwo = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     flex-direction: column;
     gap: 1rem;
   }
@@ -36,7 +40,7 @@ const DivThree = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     p {
       font-size: 1rem;
     }

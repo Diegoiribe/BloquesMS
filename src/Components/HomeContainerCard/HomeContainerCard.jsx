@@ -15,6 +15,9 @@ const DivCard = styled.div`
   @media (max-width: 1540px) {
     height: 95vh;
   }
+  @media (max-width: 1300px) {
+    width: 35vw;
+  }
   @media (max-width: 980px) {
     width: 85vw;
     height: 87.5vh;
@@ -54,6 +57,9 @@ const DivImg = styled.img`
   width: 100%;
   height: 40%;
   object-fit: cover;
+  @media (max-width: 1300px) {
+    height: 35%;
+  }
 `
 const DivBody = styled.div`
   width: 100%;
@@ -72,7 +78,8 @@ const PBTasa = styled.p`
   color: ${azul};
   font-weight: bold;
   font-size: 2rem;
-  @media (max-width: 980px) {
+
+  @media (max-width: 1300px) {
     font-size: 1.5rem;
   }
 `
@@ -98,7 +105,7 @@ const DivPie = styled.div`
 `
 
 const H1 = styled.h1`
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     font-size: 1.5rem;
   }
 `

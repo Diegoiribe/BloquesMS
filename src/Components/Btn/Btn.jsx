@@ -14,7 +14,10 @@ const StyledButton = styled.div`
   border-color: ${(props) => props.borderColor};
   border: ${(props) => props.border};
   cursor: pointer;
-
+  @media (max-width: 1300px) {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
   @media (max-width: 980px) {
     font-size: 0.75rem;
     padding: 0.75rem 1.5rem;

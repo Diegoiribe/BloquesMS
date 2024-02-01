@@ -39,6 +39,9 @@ const DivLineaLeft = styled.div`
   width: 30vw;
   height: 1px;
   background: ${blanco};
+  @media (max-width: 1300px) {
+    margin: 0 0 0 5vw;
+  }
 `
 
 const DivIcons = styled.div`
@@ -50,6 +53,9 @@ const DivIcons = styled.div`
   align-items: center;
   gap: 2.5rem;
   padding: 1rem;
+  @media (max-width: 1300px) {
+    width: 30vw;
+  }
 `
 
 const DivLineaRight = styled.div`
@@ -57,6 +63,9 @@ const DivLineaRight = styled.div`
   width: 30vw;
   height: 1px;
   background: ${blanco};
+  @media (max-width: 1300px) {
+    margin: 0 5 0 0vw;
+  }
 `
 const DivFooterBottom = styled.div`
   H1 {

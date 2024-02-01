@@ -67,7 +67,7 @@ const One = styled.div`
   p {
     font-size: 0.75rem;
   }
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     display: none;
   }
 `
@@ -114,14 +114,14 @@ const Img = styled.div`
 `
 
 const PValoracion = styled.p`
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     display: none;
   }
 `
 
 const PTasa = styled.p`
   align-items: center;
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     align-items: start;
   }
 `

@@ -53,6 +53,10 @@ const Ul = styled.ul`
   @media (max-width: 980px) {
     min-width: auto;
   }
+  @media (max-width: 1300px) {
+    min-width: auto;
+    max-width: 70%;
+  }
 `
 const Li = styled.a`
   font-size: 0.875rem;

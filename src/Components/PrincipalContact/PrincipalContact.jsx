@@ -51,6 +51,9 @@ const DivCard = styled.div`
     width: 100%; /* Ajusta el ancho al 100% del contenedor */
     height: 100%; /* Ajusta la altura al 100% del contenedor */
   }
+  @media (max-width: 1300px) {
+    height: 60%;
+  }
   @media (max-width: 980px) {
     width: 95%;
     height: 20%;

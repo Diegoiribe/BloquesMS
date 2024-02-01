@@ -12,6 +12,10 @@ const Div = styled.div`
   display: flex;
   flex-direction: row;
   gap: 2rem;
+  @media (max-width: 1300px) {
+    width: 90vw;
+    margin: 10vh 5vw 0;
+  }
   @media (max-width: 980px) {
     width: 95vw;
     margin: 15vh 2.5vw 0;
@@ -29,6 +33,7 @@ const SubDivPago = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   @media (max-width: 980px) {
     width: 100%;
     margin-bottom: 2rem;

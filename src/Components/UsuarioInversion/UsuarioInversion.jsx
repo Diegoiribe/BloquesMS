@@ -11,7 +11,7 @@ const Div = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     width: 100%;
   }
 `
@@ -23,7 +23,7 @@ const DivDashboard = styled.div`
   gap: 2rem;
   padding: 2.5rem;
   background-color: #f4f5f7;
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     padding: 2rem 0.5rem 1rem;
   }
 `
@@ -32,7 +32,7 @@ const DivPrincipal = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     gap: 1rem;
   }
 `
@@ -43,7 +43,7 @@ const DivPortafolio = styled.div`
   flex-direction: row;
   justify-content: space-between;
   padding: 0.5rem;
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     width: 100%;
     flex-direction: column;
   }
@@ -58,7 +58,7 @@ const DivCard = styled.div`
   border-radius: 5px;
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
   margin: 0.5rem;
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     width: 100%;
     padding: 1rem;
     margin: 0 0 1rem;
@@ -70,7 +70,7 @@ const DivCardOne = styled.div`
 `
 
 const Titulo = styled.div`
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     padding: 1rem;
   }
 `
@@ -97,7 +97,7 @@ const DivTwo = styled.div`
   flex-direction: column;
   gap: 1rem;
   padding: 0.5rem;
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     width: 100%;
   }
 `
@@ -112,7 +112,7 @@ const DivCortoPlazo = styled.div`
   padding: 2rem;
   border-radius: 5px;
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     width: 100%;
     flex-direction: column;
     padding: 1rem;
@@ -134,7 +134,7 @@ const DivLargoPlazo = styled.div`
   padding: 2rem;
   border-radius: 5px;
   box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.2);
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     width: 100%;
     flex-direction: column;
     padding: 1rem;
@@ -146,7 +146,7 @@ const DivLargoPlazo = styled.div`
   }
 `
 const Invertido = styled.div`
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     display: none;
   }
 `
@@ -154,20 +154,20 @@ const P = styled.p`
   font-size: 2.5rem;
   font-weight: bold;
   color: ${azul};
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     font-size: 2rem;
   }
 `
 
 const UsuarioCard = styled.div`
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     padding: 0.5rem;
   }
 `
 
 const Card = styled.div`
   padding: 1rem;
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     padding: 0.5rem;
     width: 100%;
   }

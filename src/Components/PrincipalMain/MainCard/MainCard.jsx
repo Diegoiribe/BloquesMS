@@ -8,6 +8,9 @@ const Div = styled.div`
   width: 17vw;
   height: 100%;
   border-radius: 28px;
+  @media (max-width: 1300px) {
+    width: 30vw;
+  }
   @media (max-width: 980px) {
     width: 50vw;
     height: 65vh;
@@ -72,6 +75,9 @@ const P = styled.p`
     sans-serif;
   color: #f5f5f7;
   background: transparent;
+  @media (max-width: 1300px) {
+    font-size: 20px;
+  }
   @media (max-width: 980px) {
     font-size: 20px;
   }
@@ -113,7 +119,9 @@ const DivTwoActivo = styled.div`
   justify-content: space-between;
   background: transparent;
   padding: 2rem 2rem 0;
-
+  @media (max-width: 1300px) {
+    padding: 1rem 1rem 0;
+  }
   @media (max-width: 980px) {
     width: 100%;
     height: 50%;

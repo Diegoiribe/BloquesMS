@@ -28,6 +28,9 @@ const DivNav = styled.div`
   :hover {
     color: ${azul};
   }
+  @media (max-width: 1300px) {
+    width: 27%;
+  }
   @media (max-width: 980px) {
     flex-direction: row;
     width: 100%;

@@ -17,6 +17,20 @@ const H1 = styled.h1`
 
 const PrincipalGallery = ({ gallery }) => {
   const mobil = window.innerWidth < 980
+  const desktop = window.innerWidth > 1300
+
+  // Establece las columnas de la cuadrícula según sea móvil, escritorio, o el valor predeterminado
+  const gridTemplateColumns = mobil
+    ? 'repeat(auto-fill, minmax(50px, 100px))' // Diseño para móvil
+    : desktop
+    ? 'repeat(auto-fill, minmax(100px, 100px))' // Diseño para escritorio
+    : 'repeat(auto-fill, minmax(20px, 133px))'
+
+  const gridAutoRows = mobil
+    ? '50px' // Diseño para móvil
+    : desktop
+    ? '100px' // Diseño para escritorio
+    : 'null'
 
   return (
     <>
@@ -32,11 +46,9 @@ const PrincipalGallery = ({ gallery }) => {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: mobil
-              ? 'repeat(auto-fill, minmax(50px, 100px))'
-              : 'repeat(auto-fill, minmax(20px, 133px))',
+            gridTemplateColumns: gridTemplateColumns,
             gridAutoFlow: mobil ? 'dense' : 'dense', // Esta propiedad intenta llenar los espacios más efectivamente
-            gridAutoRows: mobil ? '50px' : null,
+            gridAutoRows: gridAutoRows,
             gap: '10px',
             width: '100%',
             height: '80%',

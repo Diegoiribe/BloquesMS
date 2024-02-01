@@ -147,6 +147,25 @@ const CardOne = styled.div`
       }
     }
   }
+  @media (max-width: 1030px) {
+    width: 70%;
+    height: 90%;
+
+    .one {
+      div {
+        margin: 0 0 0;
+        width: 80px;
+        height: 80px;
+      }
+      h1 {
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
   @media (max-width: 980px) {
     width: 100%;
     padding: 1rem;
@@ -174,6 +193,8 @@ const CardTwo = styled.div`
   div {
     div {
       padding: 1rem 0;
+      width: 150px;
+      height: 150px;
     }
     h1 {
     }
@@ -196,6 +217,24 @@ const CardTwo = styled.div`
       }
     }
   }
+  @media (max-width: 1030px) {
+    height: 90%;
+    div {
+      div {
+        width: 80px;
+        height: 80px;
+        margin: 0 0 1rem;
+      }
+      h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
   @media (max-width: 980px) {
     display: none;
   }
@@ -228,7 +267,7 @@ const HeadBody = () => {
           <div>
             <div>
               <HealthAndSafetyIcon
-                style={{ width: '150px', height: '150px', color: azul }}
+                style={{ width: '100%', height: '100%', color: azul }}
               />
             </div>
             <h1>Seguro de inversor</h1>

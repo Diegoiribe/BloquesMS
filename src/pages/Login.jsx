@@ -61,7 +61,7 @@ const DivInput = styled.div`
 const DivCondiciones = styled.div`
   display: flex;
   flex-direction: row;
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     width: 95%;
     gap: 1rem;
   }
@@ -69,7 +69,7 @@ const DivCondiciones = styled.div`
 
 const LabelInput = styled.label`
   width: 20px;
-  @media (max-width: 980px) {
+  @media (max-width: 1300px) {
     width: 40px;
   }
 `
