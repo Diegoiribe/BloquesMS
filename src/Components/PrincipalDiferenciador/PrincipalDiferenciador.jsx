@@ -15,6 +15,7 @@ const DivContainer = styled.div`
   gap: 1.5rem;
   @media (max-width: 980px) {
     align-items: start;
+    height: 100vh;
   }
 `
 
@@ -41,7 +42,7 @@ const Div = styled.div`
   justify-content: center;
   gap: 1.5rem;
   @media (max-width: 980px) {
-    align-items: start;
+    justify-content: start;
   }
 `
 
@@ -71,8 +72,8 @@ const Sub = styled.div`
   max-width: 768px;
   max-height: 600px;
   @media (max-width: 980px) {
-    height: 32%;
-    max-height: 32%;
+    height: 37%;
+    max-height: 37%;
   }
 `
 const Nav = styled.div`
@@ -93,7 +94,7 @@ const Nav = styled.div`
     gap: 0.5rem;
     p {
       padding: 0.25rem 0.5rem;
-      font-size: 0.75rem;
+      font-size: 0.65rem;
     }
   }
 `
