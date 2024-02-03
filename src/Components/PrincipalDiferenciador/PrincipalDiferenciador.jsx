@@ -16,12 +16,13 @@ const DivContainer = styled.div`
 `
 
 const ImgBloque = styled.div`
-  background: url('https://expansive.mx/wp-content/uploads/image-of-como-funciona-expansive.webp');
+  background: url('https://images.adsttc.com/media/images/619c/1e1b/9a95/7a30/380b/a15f/medium_jpg/1.jpg?1637621316');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  width: 100%;
-  height: 50%;
+  width: calc(100% - 768px);
+  height: 100%;
+  max-height: 756px;
   border-radius: 1rem;
 `
 
@@ -51,7 +52,6 @@ const Sub = styled.div`
   height: 80%;
   display: flex;
   flex-direction: column;
-
   gap: 1rem;
   background: #85b8d8;
   border-radius: 1rem;
