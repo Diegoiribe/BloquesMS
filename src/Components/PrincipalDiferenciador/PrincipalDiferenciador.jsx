@@ -7,11 +7,11 @@ import bloques from '../../assets/img/bloques.png'
 
 const DivContainer = styled.div`
   width: 100%;
-  height: 150vh;
+  height: 140vh;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10vh 12.5vw 1vh;
+  padding: 0 12.5vw 1vh;
   gap: 1.5rem;
 `
 
@@ -22,7 +22,7 @@ const ImgBloque = styled.div`
   background-repeat: no-repeat;
   width: calc(100% - 768px);
   height: 100%;
-  max-height: 756px;
+  max-height: 800px;
   border-radius: 1rem;
 `
 
