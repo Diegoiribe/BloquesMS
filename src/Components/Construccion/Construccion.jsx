@@ -12,7 +12,6 @@ const Div = styled.div`
   @media (max-width: 980px) {
     padding: 2.5rem 2.5rem 0 2.5rem;
     height: 150vh;
-
     justify-content: start;
   }
 `
