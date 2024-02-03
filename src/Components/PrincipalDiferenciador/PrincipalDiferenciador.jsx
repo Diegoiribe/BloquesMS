@@ -13,6 +13,9 @@ const DivContainer = styled.div`
   justify-content: space-between;
   padding: 0 12.5vw 1vh;
   gap: 1.5rem;
+  @media (max-width: 980px) {
+    align-items: start;
+  }
 `
 
 const ImgBloque = styled.div`
@@ -22,8 +25,11 @@ const ImgBloque = styled.div`
   background-repeat: no-repeat;
   width: calc(100% - 768px);
   height: 100%;
-  max-height: 800px;
+  max-height: 840px;
   border-radius: 1rem;
+  @media (max-width: 980px) {
+    display: none;
+  }
 `
 
 const Div = styled.div`
@@ -45,6 +51,10 @@ const Container = styled.div`
   background: #e8eaeb;
   padding: 1rem;
   border-radius: 1rem;
+  @media (max-width: 980px) {
+    height: 40%;
+    max-height: 40%;
+  }
 `
 
 const Sub = styled.div`
@@ -57,6 +67,10 @@ const Sub = styled.div`
   border-radius: 1rem;
   max-width: 768px;
   max-height: 600px;
+  @media (max-width: 980px) {
+    height: 22%;
+    max-height: 22%;
+  }
 `
 const Nav = styled.div`
   width: 100%;
@@ -70,6 +84,13 @@ const Nav = styled.div`
     border-radius: 1rem;
     font-weight: 550;
     cursor: pointer;
+  }
+  @media (max-width: 980px) {
+    gap: 0.5rem;
+    p {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.85rem;
+    }
   }
 `
 
