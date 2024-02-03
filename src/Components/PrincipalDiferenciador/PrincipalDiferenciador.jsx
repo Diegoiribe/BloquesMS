@@ -40,6 +40,9 @@ const Div = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
+  @media (max-width: 980px) {
+    align-items: start;
+  }
 `
 
 const Container = styled.div`
@@ -68,8 +71,8 @@ const Sub = styled.div`
   max-width: 768px;
   max-height: 600px;
   @media (max-width: 980px) {
-    height: 22%;
-    max-height: 22%;
+    height: 32%;
+    max-height: 32%;
   }
 `
 const Nav = styled.div`
@@ -86,10 +89,11 @@ const Nav = styled.div`
     cursor: pointer;
   }
   @media (max-width: 980px) {
+    height: 20%;
     gap: 0.5rem;
     p {
       padding: 0.25rem 0.5rem;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
     }
   }
 `
