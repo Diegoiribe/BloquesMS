@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import banco from '../../assets/img/banco.png'
 import cetes from '../../assets/img/cetes.png'
@@ -15,7 +16,8 @@ const DivContainer = styled.div`
   gap: 1.5rem;
   @media (max-width: 980px) {
     align-items: start;
-    height: 100vh;
+    height: 110vh;
+    margin-bottom: 5rem;
   }
 `
 
@@ -56,8 +58,8 @@ const Container = styled.div`
   padding: 1rem;
   border-radius: 1rem;
   @media (max-width: 980px) {
-    height: 40%;
-    max-height: 40%;
+    height: 43%;
+    max-height: 43%;
   }
 `
 
@@ -140,6 +142,19 @@ const Bloques = styled.div`
   background-repeat: no-repeat;
   width: 90%;
   height: 95%;
+`
+
+const P = styled.p`
+  text-align: center;
+  padding: 0.5rem 0;
+  max-width: 768px;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  border-radius: 10px;
+  background: rgb(5, 109, 174);
+  cursor: pointer;
 `
 
 const PrincipalDiferenciador = () => {
@@ -252,6 +267,12 @@ const PrincipalDiferenciador = () => {
             </Img>
           ) : null}
         </Sub>
+        <Link
+          to="/home"
+          style={{ textDecoration: 'none', width: '100%', maxWidth: '768px' }}
+        >
+          <P>Quiero invertir</P>
+        </Link>
       </Div>
       <ImgBloque></ImgBloque>
     </DivContainer>
