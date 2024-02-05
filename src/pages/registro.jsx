@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import Input from '../Components/Input/Input'
 import { blanco, azul, gris } from '../Components/UI/UI'
 import { useNavigate } from 'react-router-dom'
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../config'
 
 const DivLogin = styled.div`
   width: 80vw;
@@ -88,7 +90,7 @@ const Btn = styled.button`
   cursor: pointer;
 `
 
-const Registro = ({ usuarios }) => {
+const Registro = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [name, setName] = useState('')
@@ -98,6 +100,15 @@ const Registro = ({ usuarios }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    let datos = {
+      nombre: name,
+      telefono: phone,
+      email: email,
+      password: password
+    }
+    const registroUsuario = collection(db, 'usuarios')
+    addDoc(registroUsuario, datos)
+    navigate('/inicio')
   }
 
   const mobil = window.innerWidth < 980

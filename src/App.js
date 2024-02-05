@@ -3,6 +3,7 @@ import './App.css'
 import HeaderWithRouting from './Components/HeaderWithRouting/HeaderWithRouting'
 import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
+import ScrollToTop from './ScrollTop.js'
 import {
   collection,
   onSnapshot,
@@ -189,6 +190,7 @@ function App() {
   return (
     <Router className="App">
       <HeaderWithRouting usuarios={usuarios} />
+      <ScrollToTop />
       <Routes>
         <Route
           path="/"
@@ -222,7 +224,7 @@ function App() {
           }
         />
         <Route
-          path="/admin/:id"
+          path="/admin/68894"
           element={
             <Admin
               reservas={reservas}
