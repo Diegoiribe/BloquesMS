@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import Input from '../Components/Input/Input'
 import { blanco, azul, gris } from '../Components/UI/UI'
-import { useNavigate, Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const DivLogin = styled.div`
   width: 80vw;
@@ -29,6 +29,9 @@ const DivTop = styled.div`
   flex-direction: column;
   gap: 1rem;
 
+  @media (max-width: 1560px) {
+    margin-bottom: 2rem;
+  }
   @media (max-width: 980px) {
     width: 100%;
     h1 {
@@ -51,13 +54,12 @@ const Label = styled.label`
   color: ${gris};
   text-align: justify;
   margin: 0 0 0 10px;
-  cursor: pointer;
 `
 const DivInput = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
   gap: 1rem;
+  flex-wrap: wrap;
 `
 const DivCondiciones = styled.div`
   display: flex;
@@ -86,49 +88,25 @@ const Btn = styled.button`
   cursor: pointer;
 `
 
-const Login = ({ usuarios }) => {
+const Registro = ({ usuarios }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [name, setName] = useState('')
+  const [phone, setphone] = useState('')
 
   const navigate = useNavigate()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
-
-    // Comprobar si 'usuarios' está definido y es un arreglo
-    const usuariosArray = Array.isArray(usuarios)
-      ? usuarios
-      : [usuarios].filter(Boolean)
-    console.log(usuariosArray)
-    try {
-      const usuarioEncontrado = usuariosArray.find(
-        (user) => user.email === email && user.password === password
-      )
-
-      if (usuarioEncontrado) {
-        console.log('Credenciales correctas')
-        // Aquí agregas la lógica para determinar a qué página redirigir
-        if (usuarioEncontrado.email === 'admin@bloquesms.com') {
-          navigate(`/admin/${usuarioEncontrado.id}`)
-        } else {
-          navigate(`/home/${usuarioEncontrado.id}`)
-        }
-
-        // Manejo de credenciales correctas
-      } else {
-        console.log('Credenciales incorrectas')
-        // Manejo de credenciales incorrectas
-      }
-    } catch (error) {
-      console.log(error)
-    }
   }
+
+  const mobil = window.innerWidth < 980
 
   return (
     <DivLogin>
       <DivTop>
         <h1>Empieza a invertir en BLOQUES MS</h1>
-        <p>Ingresa tus datos para iniciar sesion</p>
+        <p>Ingresa tus datos para registrarte</p>
       </DivTop>
       <DivBottom>
         <form
@@ -141,6 +119,36 @@ const Login = ({ usuarios }) => {
           onSubmit={handleSubmit}
         >
           <DivInput>
+            <Input
+              type="text"
+              titulo="Nombre completo"
+              placeholder="Nombre completo"
+              value={name}
+              setValor={setName}
+              onChange={handleSubmit}
+              width={mobil ? '100%' : '57%'}
+              height="3rem"
+              padding="1rem"
+              fontSize="1rem"
+              borderColor={gris}
+              borderRadius="0.5rem"
+              border="1px solid"
+            />
+            <Input
+              type="number"
+              titulo="Numero de telefono"
+              placeholder="Numero de telefono"
+              value={phone}
+              setValor={setphone}
+              onChange={handleSubmit}
+              width={mobil ? '100%' : '39%'}
+              height="3rem"
+              padding="1rem"
+              fontSize="1rem"
+              borderColor={gris}
+              borderRadius="0.5rem"
+              border="1px solid"
+            />
             <Input
               type="email"
               titulo="Email"
@@ -172,9 +180,6 @@ const Login = ({ usuarios }) => {
               borderRadius="0.5rem"
             />
           </DivInput>
-          <Link to="/registro">
-            <Label>Aun no tienes cuenta? Registrate</Label>
-          </Link>
           <DivCondiciones>
             <LabelInput>
               <input type="checkbox" id="span" />
@@ -184,11 +189,11 @@ const Login = ({ usuarios }) => {
               tratamiento de mis datos según el Aviso de Privacidad.
             </Label>
           </DivCondiciones>
-          <Btn type="submit">Iniciar sesion</Btn>
+          <Btn type="submit">Registrarme</Btn>
         </form>
       </DivBottom>
     </DivLogin>
   )
 }
 
-export default Login
+export default Registro

@@ -20,6 +20,7 @@ import Login from './pages/Login'
 import Usuario from './pages/Usuario'
 import Admin from './pages/Admin'
 import Principal from './pages/Principal'
+import Registro from './pages/registro.jsx'
 
 function App() {
   const [post, setPost] = useState([])
@@ -208,6 +209,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login usuarios={usuarios} />} />
+        <Route path="/registro" element={<Registro usuarios={usuarios} />} />
         <Route
           path="/usuario/:id"
           element={

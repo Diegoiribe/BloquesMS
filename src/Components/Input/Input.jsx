@@ -26,11 +26,11 @@ const Input = (props) => {
   }
 
   return (
-    <InputDiv>
+    <InputDiv style={{ width: props.width }}>
       <H3>{props.titulo}</H3>
       <InputText
         style={{
-          width: props.width,
+          width: '100%',
           height: props.height,
           borderRadius: props.borderRadius,
           color: props.color,
