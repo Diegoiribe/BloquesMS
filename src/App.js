@@ -81,77 +81,22 @@ function App() {
   const [mainCard, setMainCard] = useState([
     {
       id: 1,
-      titulo: 'Diseño de Interiores',
-      subtitulo: 'Diseños personalizados.',
-      img: 'https://pbs.twimg.com/media/GCIpNcQbEAAjQ81?format=jpg&name=900x900',
+      titulo: 'Largo Plazo',
+      subtitulo: 'Sunset Sabalo',
+      img: 'https://assets.easybroker.com/property_images/3718246/60808449/EB-NG8246.jpg?version=1683137617',
       activa: false,
-      color: '#364020',
+      color: '#5f97d0',
       colorP: '#f5f5f7',
       informacion:
         'La arquitectura y el diseño de interiores son más que la suma de sus partes. Son la colaboración de ideas, la convergencia de arte y la funcionalidad vivida. A cada trazo y textura, inyecto la visión colectiva de quienes serán sus habitantes y los artesanos que lo hacen realidad.'
     },
     {
       id: 5,
-      titulo: 'Diseño de Interiores',
-      subtitulo: 'Diseños personalizados.',
-      img: 'https://pbs.twimg.com/media/GCIpNcQbEAAjQ81?format=jpg&name=900x900',
+      titulo: 'Corto Plazo',
+      subtitulo: 'Fondo inmobiliario',
+      img: 'https://images.unsplash.com/photo-1583248483203-555f3d850303?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29uc3RydWNjaSVDMyVCM24lMjBkZSUyMGVkaWZpY2lvc3xlbnwwfHwwfHx8MA%3D%3D',
       activa: false,
-      color: '#402921',
-      colorP: '#f5f5f7',
-      informacion:
-        'La arquitectura y el diseño de interiores son más que la suma de sus partes. Son la colaboración de ideas, la convergencia de arte y la funcionalidad vivida. A cada trazo y textura, inyecto la visión colectiva de quienes serán sus habitantes y los artesanos que lo hacen realidad.'
-    },
-    {
-      id: 8,
-      titulo: 'Diseño de Interiores',
-      subtitulo: 'Diseños personalizados.',
-      img: 'https://pbs.twimg.com/media/GCIpNcQbEAAjQ81?format=jpg&name=900x900',
-      activa: false,
-      color: '#202040',
-      colorP: '#f5f5f7',
-      informacion:
-        'La arquitectura y el diseño de interiores son más que la suma de sus partes. Son la colaboración de ideas, la convergencia de arte y la funcionalidad vivida. A cada trazo y textura, inyecto la visión colectiva de quienes serán sus habitantes y los artesanos que lo hacen realidad.'
-    },
-    {
-      id: 2,
-      titulo: 'Diseño de Interiores',
-      subtitulo: 'Diseños personalizados.',
-      img: 'https://pbs.twimg.com/media/GCIpNcQbEAAjQ81?format=jpg&name=900x900',
-      activa: false,
-      color: '#e8eaeb',
-      colorP: '#000000',
-      informacion:
-        'La arquitectura y el diseño de interiores son más que la suma de sus partes. Son la colaboración de ideas, la convergencia de arte y la funcionalidad vivida. A cada trazo y textura, inyecto la visión colectiva de quienes serán sus habitantes y los artesanos que lo hacen realidad.'
-    },
-    {
-      id: 3,
-      titulo: 'Diseño de Interiores',
-      subtitulo: 'Diseños personalizados.',
-      img: 'https://pbs.twimg.com/media/GCIpNcQbEAAjQ81?format=jpg&name=900x900',
-      activa: false,
-      color: '#050505',
-      colorP: '#f5f5f7',
-      informacion:
-        'La arquitectura y el diseño de interiores son más que la suma de sus partes. Son la colaboración de ideas, la convergencia de arte y la funcionalidad vivida. A cada trazo y textura, inyecto la visión colectiva de quienes serán sus habitantes y los artesanos que lo hacen realidad.'
-    },
-    {
-      id: 9,
-      titulo: 'Diseño de Interiores',
-      subtitulo: 'Diseños personalizados.',
-      img: 'https://pbs.twimg.com/media/GCIpNcQbEAAjQ81?format=jpg&name=900x900',
-      activa: false,
-      color: '#e8eaeb',
-      colorP: '#000000',
-      informacion:
-        'La arquitectura y el diseño de interiores son más que la suma de sus partes. Son la colaboración de ideas, la convergencia de arte y la funcionalidad vivida. A cada trazo y textura, inyecto la visión colectiva de quienes serán sus habitantes y los artesanos que lo hacen realidad.'
-    },
-    {
-      id: 7,
-      titulo: 'Diseño de Interiores',
-      subtitulo: 'Diseños personalizados.',
-      img: 'https://pbs.twimg.com/media/GCIpNcQbEAAjQ81?format=jpg&name=900x900',
-      activa: false,
-      color: '#204035',
+      color: '#aea5a0',
       colorP: '#f5f5f7',
       informacion:
         'La arquitectura y el diseño de interiores son más que la suma de sus partes. Son la colaboración de ideas, la convergencia de arte y la funcionalidad vivida. A cada trazo y textura, inyecto la visión colectiva de quienes serán sus habitantes y los artesanos que lo hacen realidad.'

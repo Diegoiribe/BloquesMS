@@ -114,18 +114,22 @@ const PrincipalInvertir = () => {
           <H1>¿Porque invertir en Bloques MS?</H1>
           <ol>
             <li>
-              <Span>1.</Span>Los mejores proyectos
+              <Span>1.</Span>Acceso a proyectos exclusivos
             </li>
             <li>
               <Span>2.</Span>Ofrecemos atractivas tasas para incrementar tu
               patrimonio
             </li>
             <li>
-              <Span>3.</Span>Podras dar uso del la propiedad y disfrutar sus
-              amenidades
+              <Span>3.</Span>Podrás dar uso y disfrutar las amenidades de la
+              propiedad que elijas
             </li>
             <li>
-              <Span>4.</Span>Pagar tu inversion en mensualidades
+              <Span>4.</Span>Pagar tu inversión en cómodas mensualidades
+            </li>
+            <li>
+              <Span>5.</Span>Ganar y hacer crecer tu capital mientras tu
+              vacacionas
             </li>
           </ol>
           <Link to="/home" style={{ textDecoration: 'none', width: '100%' }}>

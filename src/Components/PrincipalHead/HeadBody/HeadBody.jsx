@@ -4,6 +4,7 @@ import { azul, azulClaro } from '../../UI/UI'
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety'
 import Logo from '../../../assets/img/img.png'
 import Mobile from '../../../assets/img/mobile.png'
+import { Link } from 'react-router-dom'
 
 const Div = styled.div`
   width: 100%;
@@ -55,7 +56,6 @@ const ImgText = styled.div`
 
   @media (max-width: 980px) {
     padding: 2rem 0 2rem 1rem;
-    height: 60%;
 
     h1 {
       font-size: 1.5rem;
@@ -97,7 +97,7 @@ const CardOne = styled.div`
   height: 80%;
   background: white;
   border-radius: 20px;
-  padding: 2rem;
+  padding: 1rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -145,7 +145,7 @@ const CardOne = styled.div`
   }
   @media (max-width: 1030px) {
     width: 70%;
-    height: 90%;
+    height: 93%;
 
     .one {
       div {
@@ -214,7 +214,7 @@ const CardTwo = styled.div`
     }
   }
   @media (max-width: 1030px) {
-    height: 90%;
+    height: 93%;
     div {
       div {
         width: 80px;
@@ -241,10 +241,22 @@ const HeadBody = () => {
     <Div>
       <Img>
         <ImgText>
-          <h1>Haz crecer tu capital</h1>
-          <h2>Conoce lo que tennemos para ti como inversionista</h2>
+          <h1>Haz crecer tu capital a través de inversiones inmobiliarias.</h1>
+          <h2>Desde $2,500, ¡ganas por vacacionar!</h2>
           <Btn>
-            <p>Elige donde invertir</p>
+            <Link
+              to="/home"
+              style={{
+                width: '100%',
+                height: '100%',
+                textDecoration: 'none',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}
+            >
+              <p style={{ color: 'white' }}>Elige dónde invertir</p>
+            </Link>
           </Btn>
         </ImgText>
       </Img>
@@ -252,9 +264,10 @@ const HeadBody = () => {
         <CardOne>
           <div className="one">
             <div></div>
-            <h1>Arranca o crece como inversionista</h1>
+            <h1>Arranca y vacaciona mientras tu capital crece</h1>
             <p>
-              Te acompañamos y brindamos en tu camino a crecer el patrimonio
+              Te acompañamos brindándote apoyo y las herramientas necesarias
+              para alcanzar tus metas
             </p>
           </div>
           <div className="two"></div>

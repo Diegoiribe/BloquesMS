@@ -269,7 +269,7 @@ const Article = ({ post, id, usuarios, setPost }) => {
               </Sub>
             </DivTwo>
             <DivFooter>
-              <h3>Quedan 8 dias para invertir</h3>
+              <h3>Quedan 180 dias para invertir</h3>
               <Btn onClick={() => ActualizarItems(item.id)}>
                 {usuarios.find((item) => item.id === idUsuario) ? (
                   <p>Comprar</p>
@@ -286,7 +286,7 @@ const Article = ({ post, id, usuarios, setPost }) => {
                 }}
               >
                 <p>
-                  ¡<span style={{ color: azul, fontWeight: 'bold' }}>301</span>{' '}
+                  ¡<span style={{ color: azul, fontWeight: 'bold' }}>35</span>{' '}
                   personas ya han invertido!
                 </p>
                 <DivImg>

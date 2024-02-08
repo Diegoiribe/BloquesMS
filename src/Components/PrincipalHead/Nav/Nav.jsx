@@ -191,7 +191,7 @@ const Nav = () => {
               onClick={() => cambiarSeccion('4')}
               href="#section4"
             >
-              Galeria
+              Amenidades
             </Li>
             <Li
               style={{
@@ -201,7 +201,7 @@ const Nav = () => {
               onClick={() => cambiarSeccion('5')}
               href="#section5"
             >
-              Contacto
+              INFO
             </Li>
           </Ul>
         ) : (
@@ -242,14 +242,14 @@ const Nav = () => {
               onClick={() => cambiarSeccion('4')}
               href="#section4"
             >
-              Galeria
+              Amenidades
             </Li>
             <Li
               style={seccion === '5' ? customStyle : null}
               onClick={() => cambiarSeccion('5')}
               href="#section5"
             >
-              Contacto
+              INFO
             </Li>
           </Ul>
         )}
@@ -258,7 +258,7 @@ const Nav = () => {
             style={{ width: '100%', height: '100%', textDecoration: 'none' }}
             to="/home"
           >
-            <P>Plataforma de Inversion</P>
+            <P>Inicia sesión</P>
           </Link>
         </Btn>
       </Div>

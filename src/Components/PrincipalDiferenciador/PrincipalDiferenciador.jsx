@@ -16,7 +16,7 @@ const DivContainer = styled.div`
   gap: 1.5rem;
   @media (max-width: 980px) {
     align-items: start;
-    height: 110vh;
+    height: 115vh;
     margin-bottom: 5rem;
   }
 `
@@ -197,13 +197,15 @@ const PrincipalDiferenciador = () => {
         <h1>Lo que nos hace diferentes</h1>
         <Container>
           <p>
-            En Bloques MS, nuestro objetivo es democratizar y simplificar el
-            acceso a las inversiones inmobiliarias en México. Esto significa que
-            facilitamos el ingreso al mundo de las inversiones inmobiliarias,
-            que generalmente tienen una barrera de entrada alta, para que más
-            mexicanos puedan participar. Las inversiones inmobiliarias en México
-            han demostrado ser una opción sólida y estable a lo largo de la
-            historia.
+            En Bloques MS, inversionistas aportan para el financiamiento a un
+            exclusivo inmueble, adquiriendo una fracción del mismo llamado
+            bloque, con el fin de obtener rendimientos cuando el valor del
+            inmueble aumente y se venda.
+            <br />
+            <br />
+            "Con esto tienes derecho a usar la propiedad año con año durante el
+            periodo de la inversión y lograr vacacionar mientras tu dinero
+            crece".
           </p>
         </Container>
         <Sub>

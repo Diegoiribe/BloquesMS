@@ -120,7 +120,7 @@ const Calculadora = ({ post, id }) => {
   }
 
   const intereses = (tasa, precio) => {
-    let calculo = ((tasa / 100) * precio * valor) / 4
+    let calculo = (tasa / 100) * precio * valor
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 2,
@@ -191,7 +191,7 @@ const Calculadora = ({ post, id }) => {
               </p>
               <p>
                 Recibira <Span>${intereses(item.tasa, item.monto)} </Span>de
-                intereses cada <Span>3</Span> meses y{' '}
+                intereses cada <Span>12</Span> meses y{' '}
                 <Span>${valorFinal(valor, item.monto)}</Span> finalizar el plazo
               </p>
             </DivTwo>

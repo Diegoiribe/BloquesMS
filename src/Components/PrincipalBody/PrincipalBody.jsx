@@ -115,25 +115,34 @@ const PrincipalBody = () => {
 
       <Div>
         <Container>
-          <DivImg>
-            <Imagen
-              style={{
-                backgroundImage: `url(https://static.vecteezy.com/system/resources/previews/032/318/935/non_2x/ai-generated-modern-handsome-businessman-suit-confidence-attractive-successful-white-caucasian-person-professional-adult-male-hair-executive-business-mature-men-portrait-studio-free-photo.jpg)`,
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center top 10%'
-              }}
-            >
-              <Inf>
-                <p>Luis A. Meza Salazar</p>
-              </Inf>
-            </Imagen>
-          </DivImg>
           <DivInf>
             <Titulo>
               <P>
-                <Span>Crear solo, inspirar juntos: </Span>
-                la esencia de la arquitectura moderna.
+                <Span>MISION </Span>
+              </P>
+            </Titulo>
+            <Subtitulo>
+              {mobil ? (
+                <p style={{ background: 'transparent' }}>
+                  La arquitectura y el diseño de interiores son más que la suma
+                  de sus partes.
+                </p>
+              ) : (
+                <p style={{ background: 'transparent' }}>
+                  La arquitectura y el diseño de interiores son más que la suma
+                  de sus partes. Son la colaboración de ideas, la convergencia
+                  de arte y la funcionalidad vivida. A cada trazo y textura,
+                  inyecto la visión colectiva de quienes serán sus habitantes y
+                  los artesanos que lo hacen realidad. Descubre cómo cada
+                  espacio es una historia de cooperación y creatividad.
+                </p>
+              )}
+            </Subtitulo>
+          </DivInf>
+          <DivInf>
+            <Titulo>
+              <P>
+                <Span></Span>VISION
               </P>
             </Titulo>
             <Subtitulo>

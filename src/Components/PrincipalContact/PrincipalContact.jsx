@@ -71,12 +71,14 @@ const PrincipalContact = () => {
   return (
     <Div id="section5">
       <DivContact>
-        <H1>Contacto</H1>
+        <H1>Mas Información</H1>
         <ContactForm />
       </DivContact>
       <DivCard>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d57958.07994779892!2d-107.4102272!3d24.7824384!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2smx!4v1703828928164!5m2!1ses!2smx"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d58657.96980181034!2d-106.38040937127332!3d23.23860665366016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x869f5341681837c1%3A0x62a4c4aaf13c72b2!2zTWF6YXRsw6FuLCBTaW4u!5e0!3m2!1ses!2smx!4v1707317650358!5m2!1ses!2smx"
+          width="600"
+          height="450"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
