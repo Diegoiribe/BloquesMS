@@ -19,8 +19,8 @@ const Logo = styled.div`
 const DivHImg = styled.img`
   box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.2);
   object-fit: contain;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 `
 const DivImg = styled.img`
@@ -77,7 +77,7 @@ const Head = ({ post, id }) => {
               <Logo>
                 <DivHImg src={item.logo} />
                 <div>
-                  <P>{item.name}</P>
+                  <P>{item.title}</P>
                 </div>
               </Logo>
               <DivImg src={item.img}></DivImg>
