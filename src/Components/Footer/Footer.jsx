@@ -7,111 +7,90 @@ import YouTubeIcon from '@mui/icons-material/YouTube'
 import TwitterIcon from '@mui/icons-material/Twitter'
 import { Link } from 'react-router-dom'
 
-const DivFooter = styled.div`
-  width: 100vw;
-  height: 30vh;
-  padding: 0 10vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-`
-
-const DivTop = styled.div`
-  width: 100vw;
-  height: 80%;
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  align-items: center;
-  background: ${azul};
-`
-const DivFooterTop = styled.div`
+const FooterContainer = styled.footer`
   width: 100%;
-  height: 40%;
+  background: ${azul};
+  color: ${blanco};
+  font-family: 'Arial', sans-serif;
+`
+
+const FooterContent = styled.div`
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
 `
 
-const DivLineaLeft = styled.div`
-  margin: 0 0 0 10vw;
-  width: 30vw;
-  height: 1px;
-  background: ${blanco};
-  @media (max-width: 1300px) {
-    margin: 0 0 0 5vw;
-  }
-`
-
-const DivIcons = styled.div`
-  width: 20vw;
-  height: 100%;
+const Column = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 2.5rem;
-  padding: 1rem;
-  @media (max-width: 1300px) {
-    width: 30vw;
-  }
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 200px;
+  margin: 0 10px;
 `
 
-const DivLineaRight = styled.div`
-  margin: 0 10 0 0vw;
-  width: 30vw;
-  height: 1px;
-  background: ${blanco};
-  @media (max-width: 1300px) {
-    margin: 0 5 0 0vw;
-  }
-`
-const DivFooterBottom = styled.div`
-  H1 {
-    color: ${blanco};
-  }
-`
-
-const DivBottom = styled.div`
-  width: 100vw;
-  height: 20%;
+const SocialMedia = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  gap: 20px;
+`
+
+const FooterLink = styled.a`
+  color: ${blanco};
+  text-decoration: none;
+  margin: 5px 0;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+const FooterText = styled.p`
+  margin: 5px 0;
 `
 
 const Footer = () => {
   return (
-    <DivFooter>
-      <DivTop>
-        <DivFooterTop>
-          <DivLineaLeft />
-          <DivIcons>
-            <Link to="/">
-              <FacebookIcon fontSize="large" style={{ color: blanco }} />
-            </Link>
-            <Link to="/">
-              <InstagramIcon fontSize="large" style={{ color: blanco }} />
-            </Link>
-            <Link to="/">
-              <YouTubeIcon fontSize="large" style={{ color: blanco }} />
-            </Link>
-            <Link to="/">
-              <TwitterIcon fontSize="large" style={{ color: blanco }} />
-            </Link>
-          </DivIcons>
-          <DivLineaRight />
-        </DivFooterTop>
-        <DivFooterBottom>
-          <h1>BLOQUES MS</h1>
-        </DivFooterBottom>
-      </DivTop>
-      <DivBottom>
-        <h4>© Copyright IsThisTheWay</h4>
-      </DivBottom>
-    </DivFooter>
+    <FooterContainer>
+      <FooterContent>
+        <Column>
+          <FooterText>BLOQUES MSZ SAPI DE CV</FooterText>
+          <FooterText>MAZATLAN, SINALOA C.P. 82100</FooterText>
+          <FooterText>TEL. 667 188 8281</FooterText>
+        </Column>
+        <Column>
+          <SocialMedia>
+            <FooterLink href="https://www.facebook.com/profile.php?id=61554278412098">
+              <FacebookIcon fontSize="large" />
+            </FooterLink>
+            <FooterLink href="https://www.instagram.com/bloques.ms/">
+              <InstagramIcon fontSize="large" />
+            </FooterLink>
+            <FooterLink to="/">
+              <YouTubeIcon fontSize="large" />
+            </FooterLink>
+            <FooterLink to="/">
+              <TwitterIcon fontSize="large" />
+            </FooterLink>
+          </SocialMedia>
+        </Column>
+        <Column>
+          <FooterLink to="/">Inicio</FooterLink>
+          <FooterLink to="/">Sobre Nosotros</FooterLink>
+          <FooterLink to="/">Servicios</FooterLink>
+          <FooterLink to="/">Contacto</FooterLink>
+        </Column>
+        <Column>
+          <FooterText>Mejorando tu entorno, un bloque a la vez.</FooterText>
+          <FooterText>
+            © {new Date().getFullYear()} IsThisTheWay. Todos los derechos
+            reservados.
+          </FooterText>
+        </Column>
+      </FooterContent>
+    </FooterContainer>
   )
 }
 
