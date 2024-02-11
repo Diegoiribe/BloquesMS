@@ -67,7 +67,7 @@ const H1 = styled.h1`
   background: transparent;
 `
 const P = styled.p`
-  font-size: 28px;
+  font-size: 20px;
   line-height: 1.1428571429;
   font-weight: 600;
   letter-spacing: 0.007em;
@@ -76,10 +76,10 @@ const P = styled.p`
   color: #f5f5f7;
   background: transparent;
   @media (max-width: 1300px) {
-    font-size: 20px;
+    font-size: 15px;
   }
   @media (max-width: 980px) {
-    font-size: 20px;
+    font-size: 15px;
   }
 `
 
@@ -94,7 +94,7 @@ const DivOneActivo = styled.div`
   background: transparent;
   @media (max-width: 980px) {
     width: 100%;
-    height: 50%;
+    height: 100%;
   }
 `
 const Titulo = styled.div`
@@ -124,8 +124,13 @@ const DivTwoActivo = styled.div`
   }
   @media (max-width: 980px) {
     width: 100%;
-    height: 50%;
-    padding: 0.5rem 0.5rem 0 0.5rem;
+    height: 15%;
+  }
+`
+
+const Img = styled.div`
+  @media (max-width: 980px) {
+    display: none;
   }
 `
 const DivIconActivo = styled.div`
@@ -175,7 +180,7 @@ const MainCard = ({ mainCard, widthMainCard }) => {
                 </Informacion>
               </DivOneActivo>
               <DivTwoActivo>
-                <div
+                <Img
                   style={{
                     backgroundImage: `url(${item.img})`,
                     backgroundSize: 'cover',
@@ -185,7 +190,7 @@ const MainCard = ({ mainCard, widthMainCard }) => {
                     height: '90%',
                     borderRadius: '14px'
                   }}
-                ></div>
+                ></Img>
                 <DivIconActivo>
                   <DivIcon>
                     <AddIcon

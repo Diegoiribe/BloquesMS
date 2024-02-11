@@ -61,7 +61,7 @@ const ImgText = styled.div`
       font-size: 1.5rem;
     }
     h2 {
-      font-size: 1rem;
+      font-size: 1.25rem;
     }
   }
 `
@@ -242,7 +242,7 @@ const HeadBody = () => {
       <Img>
         <ImgText>
           <h1>Haz crecer tu capital a través de inversiones inmobiliarias.</h1>
-          <h2>Desde $2,500, ¡ganas por vacacionar!</h2>
+          <h2>Desde $2,500, ¡Ganas por vacacionar!</h2>
           <Btn>
             <Link
               to="/home"

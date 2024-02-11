@@ -64,6 +64,7 @@ const H1 = styled.h1`
   font-size: 48px;
   @media (max-width: 980px) {
     font-size: 2rem;
+    padding: 0 0 0 5vw;
   }
 `
 
@@ -71,7 +72,7 @@ const PrincipalContact = () => {
   return (
     <Div id="section5">
       <DivContact>
-        <H1>Mas Información</H1>
+        <H1>Mas Información / Contacta a un asesor</H1>
         <ContactForm />
       </DivContact>
       <DivCard>

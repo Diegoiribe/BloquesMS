@@ -11,6 +11,7 @@ const Div = styled.div`
 `
 const P = styled.p`
   font-size: 1.25rem;
+  margin-bottom: 0.5rem;
   @media (max-width: 980px) {
     font-size: 1rem;
   }
@@ -96,10 +97,13 @@ const Main = ({ post, id }) => {
     <>
       {post
         .filter((item) => item.id === id)
+
         .map((item, index) => (
           <Div key={index}>
             <div>
-              <P>{item.detalles}</P>
+              {item.detalles.split('\n').map((linea, lineaIndex) => (
+                <P key={`${index}-${lineaIndex}`}>{linea}</P>
+              ))}
             </div>
             <SubDiv>
               <SubDivOne>

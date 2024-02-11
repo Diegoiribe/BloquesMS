@@ -126,6 +126,20 @@ const PTasa = styled.p`
   }
 `
 
+const MSI = styled.p`
+  font-weight: bold;
+  width: 40%;
+  border-radius: 10px;
+  text-align: center;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.4);
+
+  &:hover {
+    background: #056dae;
+    color: white;
+  }
+`
+
 const Article = ({ post, id, usuarios, setPost }) => {
   const navigate = useNavigate()
   const location = useLocation()
@@ -201,6 +215,34 @@ const Article = ({ post, id, usuarios, setPost }) => {
     return formatter.format(calculo)
   }
 
+  const [meses, setMeses] = useState(0)
+
+  // Manejadores para ajustar el número de meses
+  const handleSetMeses = (numMeses) => {
+    setMeses(numMeses)
+  }
+
+  const generarFilas = (numMeses, valor) => {
+    // Crear un formateador para números con estilo decimal, dos dígitos decimales
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    })
+
+    return Array.from({ length: numMeses }, (_, i) => (
+      <tr
+        key={i}
+        style={{ backgroundColor: i % 2 === 0 ? '#f2f2f2' : 'white' }}
+      >
+        <td style={{ textAlign: 'center', fontWeight: 'bold' }}>{i + 1}</td>
+        <td style={{ textAlign: 'center', fontWeight: 'bold' }}>
+          {formatter.format((i + 1) * valor)}
+        </td>
+      </tr>
+    ))
+  }
+
   return (
     <>
       {post
@@ -270,6 +312,35 @@ const Article = ({ post, id, usuarios, setPost }) => {
             </DivTwo>
             <DivFooter>
               <h3>Quedan 180 dias para invertir</h3>
+              <div
+                style={{
+                  display: 'flex',
+                  width: '90%',
+                  justifyContent: 'space-around',
+                  alignItems: 'center'
+                }}
+              >
+                <MSI
+                  onClick={() => handleSetMeses(24)}
+                  style={{
+                    background: meses === 24 ? '#056dae' : null,
+                    color: meses === 24 ? 'white' : null
+                  }}
+                >
+                  24 Meses
+                </MSI>
+
+                <MSI
+                  onClick={() => handleSetMeses(12)}
+                  style={{
+                    background: meses === 12 ? '#056dae' : null,
+                    color: meses === 12 ? 'white' : null
+                  }}
+                >
+                  12 Meses
+                </MSI>
+              </div>
+
               <Btn onClick={() => ActualizarItems(item.id)}>
                 {usuarios.find((item) => item.id === idUsuario) ? (
                   <p>Comprar</p>
@@ -361,6 +432,76 @@ const Article = ({ post, id, usuarios, setPost }) => {
             </DivFooter>
           </Div>
         ))}
+      {meses === 24 && (
+        <>
+          {post
+            .filter((item) => item.id === id)
+            .map((item, index) => (
+              <Div key={index}>
+                <h3 style={{ width: '100%', textAlign: 'center' }}>
+                  Tabla de pagos en meses
+                </h3>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Mes</th>
+                      <th>Valor </th>
+                    </tr>
+                  </thead>
+                  <td style={{ textAlign: 'center', fontWeight: 'bold' }}>0</td>
+                  <td
+                    style={{
+                      textAlign: 'center',
+                      fontWeight: 'bold',
+                      padding: '.5rem 0'
+                    }}
+                  >
+                    {item.contado24.toLocaleString('en-US', {
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 0
+                    })}
+                  </td>
+                  <tbody>{generarFilas(meses, item.meses24)}</tbody>
+                </table>
+              </Div>
+            ))}
+        </>
+      )}
+      {meses === 12 && (
+        <>
+          {post
+            .filter((item) => item.id === id)
+            .map((item, index) => (
+              <Div key={index}>
+                <h3 style={{ width: '100%', textAlign: 'center' }}>
+                  Tabla de pagos en meses
+                </h3>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Mes</th>
+                      <th>Valor </th>
+                    </tr>
+                  </thead>
+                  <td style={{ textAlign: 'center', fontWeight: 'bold' }}>0</td>
+                  <td
+                    style={{
+                      textAlign: 'center',
+                      fontWeight: 'bold',
+                      padding: '.5rem 0'
+                    }}
+                  >
+                    {item.contado12.toLocaleString('en-US', {
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 0
+                    })}
+                  </td>
+                  <tbody>{generarFilas(meses, item.meses12)}</tbody>
+                </table>
+              </Div>
+            ))}
+        </>
+      )}
     </>
   )
 }
