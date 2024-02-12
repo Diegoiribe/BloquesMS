@@ -237,7 +237,7 @@ const Article = ({ post, id, usuarios, setPost }) => {
       >
         <td style={{ textAlign: 'center', fontWeight: 'bold' }}>{i + 1}</td>
         <td style={{ textAlign: 'center', fontWeight: 'bold' }}>
-          {formatter.format((i + 1) * valor)}
+          {formatter.format(valor)}
         </td>
       </tr>
     ))
