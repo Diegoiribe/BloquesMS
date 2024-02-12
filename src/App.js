@@ -88,7 +88,8 @@ function App() {
       color: '#5f97d0',
       colorP: '#f5f5f7',
       informacion:
-        'Conviértete en copropietario de un destacado edificio en Sabalo Country, Mazatlán, con una inversión a largo plazo de 7 años. Además de beneficiarte de la apreciación del inmueble, disfrutarás de sus exclusivas amenidades y tendrás el privilegio de pasar 2 noches por año durante el perido de la inversion en tu propiedad. Ofrecemos opciones de pago flexibles para adaptarnos a tus necesidades financieras.\nSabalo Country ofrece una oportunidad única de inversión en un desarrollo inmobiliario de primer nivel. \n¡Únete a nosotros y haz realidad tus sueños de inversión y estilo de vida en Mazatlán!'
+        'Conviértete en copropietario de un destacado edificio en Sabalo Country, Mazatlán, con una inversión a largo plazo de 7 años. Además de beneficiarte de la apreciación del inmueble, disfrutarás de sus exclusivas amenidades y tendrás el privilegio de pasar 2 noches por año durante el perido de la inversion en tu propiedad. Ofrecemos opciones de pago flexibles para adaptarnos a tus necesidades financieras.\nSabalo Country ofrece una oportunidad única de inversión en un desarrollo inmobiliario de primer nivel. \n¡Únete a nosotros y haz realidad tus sueños de inversión y estilo de vida en Mazatlán!',
+      link: '/home/informacion/5an6AJGIYfICqNFwq6N8/undefined'
     },
     {
       id: 5,
@@ -99,7 +100,8 @@ function App() {
       color: '#aea5a0',
       colorP: '#f5f5f7',
       informacion:
-        '¡Únete a BLOQUES MS para una inversión inmobiliaria inteligente y flexible!\nRevende tu bloque en uno o dos años y obtén un rendimiento del 18% en 12 meses y del 40% en 24 meses. Es una forma accesible de ingresar al mercado inmobiliario con retornos significativos en periodos más breves.\nIdeal para quienes buscan retornos en un período más breve sin comprometerse a una inversión a largo plazo.\n¡Maximiza tu capital con BLOQUES MS ahora!'
+        '¡Únete a BLOQUES MS para una inversión inmobiliaria inteligente y flexible!\nRevende tu bloque en uno o dos años y obtén un rendimiento del 18% en 12 meses y del 40% en 24 meses. Es una forma accesible de ingresar al mercado inmobiliario con retornos significativos en periodos más breves.\nIdeal para quienes buscan retornos en un período más breve sin comprometerse a una inversión a largo plazo.\n¡Maximiza tu capital con BLOQUES MS ahora!',
+      link: '/home/informacion/11Lc0mr3OrHtmeva2RiU/undefined'
     }
   ])
 

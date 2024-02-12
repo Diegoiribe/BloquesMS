@@ -3,6 +3,7 @@ import styled from 'styled-components'
 // import { buscar } from '../../../api/api'
 import { useState, useEffect } from 'react'
 import AddIcon from '@mui/icons-material/Add'
+import { Link } from 'react-router-dom'
 
 const Div = styled.div`
   width: 17vw;
@@ -171,14 +172,27 @@ const MainCard = ({ mainCard, widthMainCard }) => {
               }}
             >
               <DivOneActivo>
-                <Titulo>
-                  <H1 style={{ color: item.colorP }}>{item.titulo}</H1>
-                  <P style={{ color: item.colorP }}>{item.subtitulo}</P>
-                </Titulo>
-                <Informacion>
-                  <P style={{ color: item.colorP }}>{item.informacion}</P>
-                </Informacion>
+                <Link
+                  to={`${item.link}`}
+                  style={{
+                    textDecoration: 'none',
+                    width: '100% ',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-around'
+                  }}
+                >
+                  <Titulo>
+                    <H1 style={{ color: item.colorP }}>{item.titulo}</H1>
+                    <P style={{ color: item.colorP }}>{item.subtitulo}</P>
+                  </Titulo>
+                  <Informacion>
+                    <P style={{ color: item.colorP }}>{item.informacion}</P>
+                  </Informacion>
+                </Link>
               </DivOneActivo>
+
               <DivTwoActivo>
                 <Img
                   style={{
@@ -215,10 +229,19 @@ const MainCard = ({ mainCard, widthMainCard }) => {
                 backgroundPosition: 'bottom'
               }}
             >
-              <DivOne>
-                <H1>{item.titulo}</H1>
-                <P>{item.subtitulo}</P>
-              </DivOne>
+              <Link
+                to={`${item.link}`}
+                style={{
+                  textDecoration: 'none',
+                  width: '100%',
+                  height: '100%'
+                }}
+              >
+                <DivOne>
+                  <H1>{item.titulo}</H1>
+                  <P>{item.subtitulo}</P>
+                </DivOne>
+              </Link>
               <DivTwo>
                 <DivIcon>
                   <AddIcon

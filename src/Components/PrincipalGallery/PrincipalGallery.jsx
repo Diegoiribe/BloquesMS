@@ -42,7 +42,7 @@ const PrincipalGallery = ({ gallery }) => {
           height: '90vh'
         }}
       >
-        <H1>Amenidades</H1>
+        <H1>Amenidades que podras disfrutar</H1>
         <div
           style={{
             display: 'grid',
