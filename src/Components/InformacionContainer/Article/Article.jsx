@@ -424,7 +424,7 @@ const Article = ({ post, id, usuarios, setPost }) => {
                         color: 'white'
                       }}
                     >
-                      + 295
+                      + 29
                     </p>
                   </Img>
                 </DivImg>
