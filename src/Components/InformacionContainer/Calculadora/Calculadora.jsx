@@ -140,7 +140,17 @@ const Calculadora = ({ post, id }) => {
   }
 
   const total = (tasa, precio, valor) => {
-    let calculo = (tasa / 100) * precio * valor + valor * precio
+    let calculo = (tasa / 100) * precio * valor * 7
+    const formatter = new Intl.NumberFormat('en-US', {
+      style: 'decimal',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    })
+    return formatter.format(calculo)
+  }
+
+  const totales = (tasa, precio, valor) => {
+    let calculo = (tasa / 100) * precio * valor * 7 + valor * precio
     const formatter = new Intl.NumberFormat('en-US', {
       style: 'decimal',
       minimumFractionDigits: 2,
@@ -201,8 +211,8 @@ const Calculadora = ({ post, id }) => {
                 <div>
                   <p>Numero de bloques</p>
                   <p>Valor de bloques</p>
-                  <p>Rendimiento</p>
-                  <p>Total</p>
+                  <p>Rendimient anual</p>
+                  <p>Total rendimiento</p>
                   <p>A recibir</p>
                 </div>
                 <div>
@@ -212,7 +222,7 @@ const Calculadora = ({ post, id }) => {
                   <p style={{ borderBottom: 'solid 2px black' }}>
                     ${total(item.tasa, item.monto, valor)}
                   </p>
-                  <p>${total(item.tasa, item.monto, valor)}</p>
+                  <p>${totales(item.tasa, item.monto, valor)}</p>
                 </div>
               </SubThree>
               <p style={{ color: '#e0e0e0;', fontSize: '.75rem' }}>

@@ -65,6 +65,19 @@ const DivInf = styled.div`
     padding: 1rem;
   }
 `
+const MSI = styled.p`
+  font-weight: bold;
+  width: 40%;
+  border-radius: 10px;
+  text-align: center;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.4);
+
+  &:hover {
+    background: #056dae;
+    color: white;
+  }
+`
 
 const Titulo = styled.div`
   width: 100%;
@@ -115,53 +128,54 @@ const PrincipalBody = () => {
 
       <Div>
         <Container>
+          <DivImg>
+            <Imagen
+              style={{
+                backgroundImage: `url(https://www.bbva.mx/content/dam/public-web/mexico/photos/etiqueta-promociones-hombre.im1626295788608im.png?imwidth=1600)`,
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center top 10%'
+              }}
+            >
+              <Inf>
+                <p>.</p>
+              </Inf>
+            </Imagen>
+          </DivImg>
           <DivInf>
             <Titulo>
               <P>
-                <Span>MISION </Span>
+                Se
+                <Span> dueño y ganas</Span> por vacacionar desde $2,500.00
               </P>
             </Titulo>
             <Subtitulo>
               {mobil ? (
                 <p style={{ background: 'transparent' }}>
-                  La arquitectura y el diseño de interiores son más que la suma
-                  de sus partes.
+                  Estableces un plan de ahorro mensual para disfrutar del
+                  departamento cada año, recibiendo tu inversión total más los
+                  rendimientos generados por el alquiler de tu propiedad, los
+                  cuales se calculan anualmente.
                 </p>
               ) : (
                 <p style={{ background: 'transparent' }}>
-                  La arquitectura y el diseño de interiores son más que la suma
-                  de sus partes. Son la colaboración de ideas, la convergencia
-                  de arte y la funcionalidad vivida. A cada trazo y textura,
-                  inyecto la visión colectiva de quienes serán sus habitantes y
-                  los artesanos que lo hacen realidad. Descubre cómo cada
-                  espacio es una historia de cooperación y creatividad.
+                  Estableces un plan de ahorro mensual para disfrutar del
+                  departamento cada año, recibiendo tu inversión total más los
+                  rendimientos generados por el alquiler de tu propiedad, los
+                  cuales se calculan anualmente.
                 </p>
               )}
             </Subtitulo>
-          </DivInf>
-          <DivInf>
-            <Titulo>
-              <P>
-                <Span></Span>VISION
-              </P>
-            </Titulo>
-            <Subtitulo>
-              {mobil ? (
-                <p style={{ background: 'transparent' }}>
-                  La arquitectura y el diseño de interiores son más que la suma
-                  de sus partes.
-                </p>
-              ) : (
-                <p style={{ background: 'transparent' }}>
-                  La arquitectura y el diseño de interiores son más que la suma
-                  de sus partes. Son la colaboración de ideas, la convergencia
-                  de arte y la funcionalidad vivida. A cada trazo y textura,
-                  inyecto la visión colectiva de quienes serán sus habitantes y
-                  los artesanos que lo hacen realidad. Descubre cómo cada
-                  espacio es una historia de cooperación y creatividad.
-                </p>
-              )}
-            </Subtitulo>
+            <div
+              style={{
+                display: 'flex',
+                width: '100%',
+                justifyContent: 'space-around'
+              }}
+            >
+              <MSI>24 Meses</MSI>
+              <MSI>12 Meses</MSI>
+            </div>
           </DivInf>
         </Container>
       </Div>
