@@ -158,7 +158,7 @@ function App() {
           }
         />
         <Route path="/login" element={<Login usuarios={usuarios} />} />
-        <Route path="/registro" element={<Registro usuarios={usuarios} />} />
+        {/* <Route path="/registro" element={<Registro usuarios={usuarios} />} /> */}
         <Route
           path="/usuario/:id"
           element={
