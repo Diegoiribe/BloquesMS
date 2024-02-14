@@ -126,13 +126,15 @@ const PTasa = styled.p`
   }
 `
 
-const MSI = styled.p`
+const MSI = styled.a`
+  text-decoration: none;
   font-weight: bold;
   width: 40%;
   border-radius: 10px;
   text-align: center;
   padding: 0.5rem;
   background: rgba(0, 0, 0, 0.4);
+  color: black;
 
   &:hover {
     background: #056dae;
@@ -321,6 +323,7 @@ const Article = ({ post, id, usuarios, setPost }) => {
                 }}
               >
                 <MSI
+                  href="#msi24"
                   onClick={() => handleSetMeses(24)}
                   style={{
                     background: meses === 24 ? '#056dae' : null,
@@ -331,6 +334,7 @@ const Article = ({ post, id, usuarios, setPost }) => {
                 </MSI>
 
                 <MSI
+                  href="#msi12"
                   onClick={() => handleSetMeses(12)}
                   style={{
                     background: meses === 12 ? '#056dae' : null,
@@ -437,7 +441,7 @@ const Article = ({ post, id, usuarios, setPost }) => {
           {post
             .filter((item) => item.id === id)
             .map((item, index) => (
-              <Div key={index}>
+              <Div id="msi24" key={index}>
                 <h3 style={{ width: '100%', textAlign: 'center' }}>
                   Tabla de pagos en meses
                 </h3>
@@ -472,7 +476,7 @@ const Article = ({ post, id, usuarios, setPost }) => {
           {post
             .filter((item) => item.id === id)
             .map((item, index) => (
-              <Div key={index}>
+              <Div id="msi12" key={index}>
                 <h3 style={{ width: '100%', textAlign: 'center' }}>
                   Tabla de pagos en meses
                 </h3>
