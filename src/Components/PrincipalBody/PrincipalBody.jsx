@@ -63,6 +63,7 @@ const DivInf = styled.div`
   @media (max-width: 980px) {
     width: 100%;
     padding: 1rem;
+    height: 150%;
   }
 `
 const MSI = styled.a`
@@ -94,7 +95,7 @@ const P = styled.p`
   font-size: 2rem;
   font-weight: 600;
   @media (max-width: 980px) {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
 `
 
@@ -105,7 +106,7 @@ const Span = styled.span`
   color: ${azul};
   font-weight: 600;
   @media (max-width: 980px) {
-    font-size: 1.15rem;
+    font-size: 1.5rem;
   }
 `
 
@@ -116,7 +117,7 @@ const Subtitulo = styled.div`
   background: transparent;
   @media (max-width: 980px) {
     p {
-      font-size: 0.85rem;
+      font-size: 1rem;
     }
   }
 `
@@ -154,17 +155,15 @@ const PrincipalBody = () => {
             <Subtitulo>
               {mobil ? (
                 <p style={{ background: 'transparent' }}>
-                  Estableces un plan de ahorro mensual para disfrutar del
+                  Estableces un plan de ahorro mensual para disfrutar el
                   departamento cada año, recibiendo tu inversión total más los
-                  rendimientos generados por el alquiler de tu propiedad, los
-                  cuales se calculan anualmente.
+                  rendimientos generados anualmente
                 </p>
               ) : (
                 <p style={{ background: 'transparent' }}>
-                  Estableces un plan de ahorro mensual para disfrutar del
+                  Estableces un plan de ahorro mensual para disfrutar el
                   departamento cada año, recibiendo tu inversión total más los
-                  rendimientos generados por el alquiler de tu propiedad, los
-                  cuales se calculan anualmente.
+                  rendimientos generados anualmente
                 </p>
               )}
             </Subtitulo>
