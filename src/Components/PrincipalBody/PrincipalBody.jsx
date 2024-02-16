@@ -65,7 +65,9 @@ const DivInf = styled.div`
     padding: 1rem;
   }
 `
-const MSI = styled.p`
+const MSI = styled.a`
+  text-decoration: none;
+  color: black;
   font-weight: bold;
   width: 40%;
   border-radius: 10px;
@@ -173,8 +175,12 @@ const PrincipalBody = () => {
                 justifyContent: 'space-around'
               }}
             >
-              <MSI>24 Meses</MSI>
-              <MSI>12 Meses</MSI>
+              <MSI href="https://www.bloquesms.com/home/informacion/5an6AJGIYfICqNFwq6N8/undefined">
+                24 Meses
+              </MSI>
+              <MSI href="https://www.bloquesms.com/home/informacion/5an6AJGIYfICqNFwq6N8/undefined">
+                12 Meses
+              </MSI>
             </div>
           </DivInf>
         </Container>
