@@ -94,7 +94,7 @@ const AdminUsuarioForm = () => {
       bloques: bloques
     }
     const registroUsuario = collection(db, 'usuarios')
-    // addDoc(registroUsuario, datos)
+    addDoc(registroUsuario, datos)
   }
 
   return (
